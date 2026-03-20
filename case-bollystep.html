@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BollyStep — Case Study · Priya T</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+/* ── CASE STUDY SHARED STYLES ── */
+.cs-hero { padding: 130px 0 80px; background: linear-gradient(160deg, #fce8d8 0%, #f7f4ef 60%); border-bottom: 1px solid var(--cream-dark); }
+.cs-hero .eyebrow { margin-bottom: 1rem; }
+.cs-hero h1 { font-family: var(--serif); font-size: clamp(2.4rem,4.5vw,3.8rem); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 1rem; max-width: 700px; }
+.cs-hero .cs-tagline { font-size: 1.05rem; font-weight: 300; color: var(--ink-muted); max-width: 580px; line-height: 1.85; margin-bottom: 2.5rem; }
+.cs-meta-bar { display: flex; flex-wrap: wrap; gap: 2rem; padding: 1.5rem 2rem; background: var(--white); border-radius: 10px; border: 1px solid var(--cream-dark); }
+.cs-meta-item { display: flex; flex-direction: column; gap: 2px; }
+.cs-meta-item label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.cs-meta-item span { font-size: 0.92rem; font-weight: 500; }
+
+.cs-body { background: var(--white); }
+.cs-layout { display: grid; grid-template-columns: 220px 1fr; gap: 4rem; align-items: start; }
+.cs-toc { position: sticky; top: 90px; }
+.cs-toc nav { background: var(--cream); border: 1px solid var(--cream-dark); border-radius: 10px; padding: 1.25rem; }
+.cs-toc nav h4 { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+.cs-toc nav a { display: block; font-size: 0.82rem; color: var(--ink-muted); text-decoration: none; padding: 5px 0; border-bottom: 1px solid transparent; transition: color var(--t); }
+.cs-toc nav a:hover { color: var(--accent); }
+
+.cs-content { max-width: 760px; }
+.cs-section { margin-bottom: 4rem; scroll-margin-top: 80px; }
+.cs-section h2 { font-family: var(--serif); font-size: clamp(1.6rem,2.2vw,2.1rem); margin-bottom: 1.25rem; letter-spacing: -0.02em; }
+.cs-section h3 { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 0.75rem; margin-top: 1.75rem; }
+.cs-section p { font-size: 0.95rem; font-weight: 300; color: var(--ink-muted); line-height: 1.9; margin-bottom: 1rem; }
+.cs-section ul { list-style: none; margin: 0.5rem 0 1rem; }
+.cs-section ul li { font-size: 0.92rem; font-weight: 300; color: var(--ink-muted); padding-left: 18px; position: relative; margin-bottom: 6px; line-height: 1.7; }
+.cs-section ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem; top: 3px; }
+.cs-section strong { color: var(--ink); font-weight: 500; }
+
+.cs-divider { height: 1px; background: var(--cream-dark); margin: 3rem 0; }
+.cs-callout { background: var(--accent-light); border-left: 3px solid var(--accent); padding: 18px 22px; border-radius: 0 var(--radius) var(--radius) 0; margin: 1.5rem 0; font-size: 0.95rem; color: var(--ink-muted); line-height: 1.8; }
+.cs-callout strong { color: var(--ink); }
+
+.insight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+.insight-card { background: var(--cream); border: 1px solid var(--cream-dark); border-radius: 8px; padding: 1.25rem; }
+.insight-card .ic-icon { font-size: 1.3rem; margin-bottom: 0.5rem; display: block; }
+.insight-card h4 { font-size: 0.85rem; font-weight: 500; margin-bottom: 0.4rem; }
+.insight-card p { font-size: 0.82rem; color: var(--ink-muted); line-height: 1.7; margin: 0; }
+
+.decision-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; margin: 1.5rem 0; }
+.decision-table th { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); padding: 8px 12px; text-align: left; border-bottom: 2px solid var(--cream-dark); }
+.decision-table td { padding: 10px 12px; border-bottom: 1px solid var(--cream-dark); color: var(--ink-muted); vertical-align: top; line-height: 1.6; }
+.decision-table td:first-child { color: var(--ink); font-weight: 500; }
+
+.outcome-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+.outcome-card { background: var(--cream); border-radius: 8px; padding: 1.25rem; border: 1px solid var(--cream-dark); text-align: center; }
+.outcome-card .big-num { font-family: var(--serif); font-size: 2.5rem; color: var(--accent); line-height: 1; display: block; margin-bottom: 0.4rem; }
+.outcome-card p { font-size: 0.82rem; color: var(--ink-muted); margin: 0; line-height: 1.6; }
+
+.img-placeholder { width: 100%; aspect-ratio: 16/9; background: var(--cream-dark); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.82rem; color: var(--ink-faint); font-style: italic; margin: 1.5rem 0; border: 1px dashed var(--ink-faint); }
+.img-placeholder-tall { aspect-ratio: 4/3; }
+
+.nav-between { display: flex; justify-content: space-between; align-items: center; padding: 2.5rem 0; border-top: 1px solid var(--cream-dark); margin-top: 2rem; }
+.nav-between a { font-size: 0.85rem; font-weight: 500; color: var(--ink-muted); text-decoration: none; transition: color var(--t); display: flex; align-items: center; gap: 8px; }
+.nav-between a:hover { color: var(--accent); }
+.back-all { font-size: 0.82rem; font-weight: 500; color: var(--ink-muted); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color var(--t); }
+.back-all:hover { color: var(--accent); }
+
+@media (max-width: 860px) {
+  .cs-layout { grid-template-columns: 1fr; }
+  .cs-toc { display: none; }
+  .insight-grid, .outcome-grid, .decision-table { }
+}
+@media (max-width: 600px) {
+  .insight-grid, .outcome-grid { grid-template-columns: 1fr; }
+  .cs-meta-bar { gap: 1rem; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Priya T.</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="cs-hero">
+  <div class="container">
+    <a href="index.html" class="back-all" style="margin-bottom:1.5rem;display:inline-flex;">← All Projects</a>
+    <div class="eyebrow">Capstone · Website Redesign</div>
+    <h1>BollyStep — Helping South Asian Wedding Groups Coordinate and Learn Dances <em>Asynchronously</em></h1>
+    <p class="cs-tagline">Users struggled with coordination and a confusing platform experience. I redesigned onboarding, navigation, and structure to improve usability and trust across three distinct user roles.</p>
+    <div class="cs-meta-bar">
+      <div class="cs-meta-item"><label>Timeline</label><span>3 Weeks</span></div>
+      <div class="cs-meta-item"><label>Role</label><span>UX Designer</span></div>
+      <div class="cs-meta-item"><label>Scope</label><span>Onboarding, Navigation, UX Redesign</span></div>
+      <div class="cs-meta-item"><label>Platform</label><span>Live Beta Web Product</span></div>
+      <div class="cs-meta-item"><label>Tools</label><span>Figma, FigJam, Jira</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BODY -->
+<section class="cs-body">
+  <div class="container">
+    <div style="padding: 80px 0;">
+    <div class="cs-layout">
+      <!-- TOC -->
+      <div class="cs-toc">
+        <nav>
+          <h4>Contents</h4>
+          <a href="#problem">The Problem</a>
+          <a href="#goal">Goal</a>
+          <a href="#research">Research</a>
+          <a href="#insights">Key Insights</a>
+          <a href="#decisions">Design Decisions</a>
+          <a href="#architecture">Site Architecture</a>
+          <a href="#flows">User Flows</a>
+          <a href="#ideation">Ideation</a>
+          <a href="#wireframes">Wireframes</a>
+          <a href="#final">Final Design</a>
+          <a href="#testing">Usability Testing</a>
+          <a href="#outcome">Outcome</a>
+          <a href="#reflection">Reflection</a>
+        </nav>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="cs-content">
+
+        <div class="cs-section" id="problem">
+          <div class="eyebrow">The Problem</div>
+          <h2>Coordination chaos and a broken sign-up flow</h2>
+          <p>Users struggled to coordinate group dances across different schedules, time zones, and experience levels. But the platform itself made things worse — with unclear navigation, no pricing transparency, and a broken sign-up flow that redirected users to a contact form instead of letting them create an account.</p>
+          <div class="cs-callout">
+            <strong>Result:</strong> Low trust and high drop-off rates before users even completed onboarding. We hypothesized that the current user flow was not as streamlined as it could be and set out to validate this through user interviews and usability testing on bollystep.com.
+          </div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="goal">
+          <div class="eyebrow">Goal</div>
+          <h2>Clear paths for three distinct roles</h2>
+          <p>Simplify onboarding, clarify the platform's value early, create separate experiences for Dancers, Organizers, and Choreographers, and enable users to confidently create and manage dance events.</p>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="research">
+          <div class="eyebrow">Research</div>
+          <h2>Three methods to surface the real friction</h2>
+
+          <h3>User Interviews (6 participants)</h3>
+          <p>Conducted to understand user needs and pain points. Revealed that coordination challenges and lack of platform clarity were the key barriers preventing users from moving forward on the platform.</p>
+
+          <h3>Heuristic Evaluation</h3>
+          <p>Evaluated the platform using established usability heuristics. Found significant issues in navigation consistency, unclear flows, and a lack of trust signals throughout the experience.</p>
+
+          <h3>Content Audit</h3>
+          <p>Reviewed all content across the landing page and client-facing pages for clarity and structure. Found dense information, unclear messaging, and poor content hierarchy creating cognitive overload for new users.</p>
+
+          <h3>Affinity Mapping</h3>
+          <p>Organized research data to identify patterns across user behaviors and pain points. Grouped insights revealed four key themes: navigation confusion, onboarding friction, lack of trust, and coordination challenges.</p>
+          <div class="img-placeholder">[Image Placeholder — Affinity Map: Synthesized research into themes to identify key usability and trust gaps]</div>
+
+          <h3>Persona &amp; User Journey</h3>
+          <p>Created a persona to represent key user needs, goals, and frustrations — keeping design decisions user-focused. The persona highlighted users' challenges with coordination, need for clarity, and expectations for a simple, guided experience.</p>
+          <div class="img-placeholder">[Image Placeholder — Persona Snapshot]</div>
+          <p>Mapped the end-to-end user experience to identify key friction points. The journey highlighted pain points in onboarding, navigation, and coordination — especially in the stages before event creation.</p>
+          <div class="img-placeholder">[Image Placeholder — User Journey Map]</div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="insights">
+          <div class="eyebrow">Key Insights</div>
+          <h2>Five critical barriers to user trust</h2>
+          <div class="insight-grid">
+            <div class="insight-card">
+              <span class="ic-icon">📝</span>
+              <h4>Expected instant sign-up</h4>
+              <p>Users expected to create an account directly — not fill out a contact form that redirected them externally.</p>
+            </div>
+            <div class="insight-card">
+              <span class="ic-icon">🗺️</span>
+              <h4>Navigation felt overwhelming</h4>
+              <p>Too many options with unclear hierarchy left users unsure of where to go or what the platform was for.</p>
+            </div>
+            <div class="insight-card">
+              <span class="ic-icon">👤</span>
+              <h4>Roles were unclear</h4>
+              <p>Users couldn't tell whether the platform was for them — Dancer, Organizer, or Choreographer — from the homepage.</p>
+            </div>
+            <div class="insight-card">
+              <span class="ic-icon">💰</span>
+              <h4>No pricing transparency</h4>
+              <p>Hidden pricing and no previews reduced trust. Users weren't willing to commit without knowing what they were signing up for.</p>
+            </div>
+            <div class="insight-card" style="grid-column: 1/-1;">
+              <span class="ic-icon">📅</span>
+              <h4>Coordination was the core pain point</h4>
+              <p>Managing group dances across different schedules, time zones, and skill levels was the fundamental challenge the product needed to solve — but the existing platform barely addressed it.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="decisions">
+          <div class="eyebrow">Design Decisions</div>
+          <h2>From insight to design — the golden thread</h2>
+          <table class="decision-table">
+            <thead>
+              <tr><th>Insight</th><th>Design Decision</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Confusing sign-up → contact form</td><td>Replaced with instant account creation — direct sign-up/login from homepage</td></tr>
+              <tr><td>Unclear user roles</td><td>Role-based navigation with tailored entry points for Organizers, Dancers, and Choreographers</td></tr>
+              <tr><td>Overwhelming content</td><td>Simplified information structure, cleaner hierarchy, reduced cognitive load</td></tr>
+              <tr><td>Low trust signals</td><td>Added pricing transparency and social proof throughout the funnel</td></tr>
+              <tr><td>Coordination pain</td><td>"Explore before commit" — users can browse dances and preview content before creating an event</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="architecture">
+          <div class="eyebrow">Site Architecture</div>
+          <h2>Restructured for three distinct user roles</h2>
+          <p>The original navigation was a catch-all — one muddled structure trying to serve every user type. The redesigned architecture creates clear, separate entry points for each role:</p>
+          <ul>
+            <li>Introduced dedicated pages for <strong>Organizers, Dancers, and Choreographers</strong> with tailored content and flows</li>
+            <li>Added a dedicated CTA: <strong>"Apply to be a Choreographer"</strong> to support onboarding of new talent</li>
+            <li>Replaced the vague "Join Now" button with a clear <strong>Log In / Sign Up</strong> flow accessible directly from the homepage</li>
+          </ul>
+          <div class="img-placeholder">[Image Placeholder — Site Architecture Map]</div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="flows">
+          <div class="eyebrow">User Flows</div>
+          <h2>Reducing friction from discovery to event creation</h2>
+          <p>The original flow asked too much of users before giving them any value. Key problems and how they were solved:</p>
+          <ul>
+            <li>Users expected instant account creation but were redirected to a contact form — <strong>fixed with direct sign-up access</strong></li>
+            <li>Additional steps in the app increased effort and caused frustration — <strong>reduced unnecessary steps</strong></li>
+            <li>Organizers needed a faster, low-effort flow during time-sensitive event planning — <strong>combined the marketing site and platform into a single seamless flow</strong></li>
+          </ul>
+          <div class="img-placeholder">[Image Placeholder — User Flow Diagram: Discovery → Sign-up → Event Creation]</div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="ideation">
+          <div class="eyebrow">Ideation</div>
+          <h2>Sketching multiple directions before committing</h2>
+          <p>Used design studio sessions to quickly explore multiple ideas for improving navigation and onboarding. Sketched and iterated on different concepts to identify the most intuitive and scalable solution — showing rough thinking before refining.</p>
+          <div class="img-placeholder">[Image Placeholder — Sketches / Design Studio Exploration]</div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="wireframes">
+          <div class="eyebrow">Mid-Fi Wireframes</div>
+          <h2>Validating layout before final design</h2>
+          <p>Mid-fidelity wireframes were used to validate layout, navigation flow, and content structure before committing to visual design. Tested information hierarchy, user flows, and clarity of key interactions with real users — then iterated before moving to high-fidelity.</p>
+          <div class="img-placeholder img-placeholder-tall">[Image Placeholder — Mid-Fidelity Wireframes]</div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="final">
+          <div class="eyebrow">Final Design</div>
+          <h2>Three focused design decisions</h2>
+
+          <h3>Role-Based Navigation</h3>
+          <p>To reduce confusion and help users quickly understand how the platform applies to them. Created clear entry points for Organizers, Dancers, and Choreographers with tailored content and flows — so the first visit immediately answers "is this for me?"</p>
+          <div class="img-placeholder">[Image Placeholder — Role-Based Navigation Screens]</div>
+
+          <h3>Explore Before You Commit</h3>
+          <p>To build trust and reduce hesitation before event creation. Users can browse dances and preview content before committing — addressing the #1 trust barrier identified in research.</p>
+          <div class="img-placeholder">[Image Placeholder — Explore Dance Feature Screens]</div>
+
+          <h3>Simplified Onboarding</h3>
+          <p>To reduce friction and speed up the user journey. Combined the marketing and client-facing platform into a single seamless flow and removed the NDA barrier that was blocking users from signing up.</p>
+          <div class="img-placeholder">[Image Placeholder — Simplified Sign-Up Flow]</div>
+
+          <div class="cs-callout" style="margin-top:2rem;">
+            <strong>Prototype:</strong> Full interactive prototype available in Figma — link to be embedded when ready for publication.
+          </div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="testing">
+          <div class="eyebrow">Usability Testing</div>
+          <h2>Two rounds — existing site vs. redesign</h2>
+          <p>Conducted two rounds of usability testing: Round 1 with the existing website, Round 2 with the proposed mid-fi prototype. Observed significant gains in clarity, navigation understanding, and task success rates. Feedback from R2 was then implemented in the high-fidelity design.</p>
+          <div class="img-placeholder">[Image Placeholder — Usability Testing Notes / Screens]</div>
+          <h3>Key findings from testing:</h3>
+          <ul>
+            <li>Users understood their roles faster with the new navigation structure</li>
+            <li>Reduced confusion about where to go to sign up or log in</li>
+            <li>Improved onboarding success — more users completed the flow without assistance</li>
+            <li>Increased engagement with the "Explore" content before event creation</li>
+          </ul>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="outcome">
+          <div class="eyebrow">Outcome</div>
+          <h2>Reduced friction, improved trust</h2>
+          <p>The redesign reduced onboarding friction and improved usability across key flows. Provided clear pathways for dancers, choreographers, and organizers — strengthening trust through clearer navigation, transparency, and better user adoption.</p>
+          <div class="outcome-grid">
+            <div class="outcome-card">
+              <span class="big-num">3</span>
+              <p>Distinct role-based experiences designed for Organizers, Dancers &amp; Choreographers</p>
+            </div>
+            <div class="outcome-card">
+              <span class="big-num">↓</span>
+              <p>Significant reduction in onboarding drop-offs through streamlined sign-up flow</p>
+            </div>
+            <div class="outcome-card">
+              <span class="big-num">2</span>
+              <p>Rounds of usability testing — validating improvements before high-fidelity design</p>
+            </div>
+            <div class="outcome-card">
+              <span class="big-num">✓</span>
+              <p>Pricing transparency + social proof added to build trust earlier in the funnel</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="reflection">
+          <div class="eyebrow">Reflection</div>
+          <h2>Simplifying flows is about building trust, not just usability</h2>
+          <p>I learned that simplifying user flows isn't just about usability — it's about building trust early. Aligning navigation, onboarding, and content with user expectations created a more intuitive and confident experience.</p>
+          <p>If I had more time, I would have run more rounds of usability testing on the high-fidelity prototype, explored A/B testing for the role-based entry points, and dug deeper into the coordination features that remain the platform's core value proposition.</p>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="nav-between">
+          <a href="index.html">← All Projects</a>
+          <a href="case-food4u.html">Next: Food4U →</a>
+        </div>
+
+      </div><!-- /cs-content -->
+    </div><!-- /cs-layout -->
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed &amp; built by <a href="index.html">Priya T.</a> · UX Designer · Sunnyvale, CA · 2026</p>
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>

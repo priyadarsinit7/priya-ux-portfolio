@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Food4U — Case Study · Priya T</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+.cs-hero { padding: 130px 0 80px; background: linear-gradient(160deg, #d8eddf 0%, #f7f4ef 60%); border-bottom: 1px solid var(--cream-dark); }
+.cs-hero .eyebrow { margin-bottom: 1rem; }
+.cs-hero h1 { font-family: var(--serif); font-size: clamp(2.4rem,4.5vw,3.8rem); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 1rem; max-width: 700px; }
+.cs-hero .cs-tagline { font-size: 1.05rem; font-weight: 300; color: var(--ink-muted); max-width: 580px; line-height: 1.85; margin-bottom: 2.5rem; }
+.cs-meta-bar { display: flex; flex-wrap: wrap; gap: 2rem; padding: 1.5rem 2rem; background: var(--white); border-radius: 10px; border: 1px solid var(--cream-dark); }
+.cs-meta-item { display: flex; flex-direction: column; gap: 2px; }
+.cs-meta-item label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.cs-meta-item span { font-size: 0.92rem; font-weight: 500; }
+
+.cs-body { background: var(--white); }
+.cs-layout { display: grid; grid-template-columns: 220px 1fr; gap: 4rem; align-items: start; }
+.cs-toc { position: sticky; top: 90px; }
+.cs-toc nav { background: var(--cream); border: 1px solid var(--cream-dark); border-radius: 10px; padding: 1.25rem; }
+.cs-toc nav h4 { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+.cs-toc nav a { display: block; font-size: 0.82rem; color: var(--ink-muted); text-decoration: none; padding: 5px 0; transition: color var(--t); }
+.cs-toc nav a:hover { color: var(--accent); }
+
+.cs-content { max-width: 760px; }
+.cs-section { margin-bottom: 4rem; scroll-margin-top: 80px; }
+.cs-section h2 { font-family: var(--serif); font-size: clamp(1.6rem,2.2vw,2.1rem); margin-bottom: 1.25rem; letter-spacing: -0.02em; }
+.cs-section h3 { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 0.75rem; margin-top: 1.75rem; }
+.cs-section p { font-size: 0.95rem; font-weight: 300; color: var(--ink-muted); line-height: 1.9; margin-bottom: 1rem; }
+.cs-section ul { list-style: none; margin: 0.5rem 0 1rem; }
+.cs-section ul li { font-size: 0.92rem; font-weight: 300; color: var(--ink-muted); padding-left: 18px; position: relative; margin-bottom: 6px; line-height: 1.7; }
+.cs-section ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem; top: 3px; }
+.cs-section strong { color: var(--ink); font-weight: 500; }
+.cs-divider { height: 1px; background: var(--cream-dark); margin: 3rem 0; }
+.cs-callout { background: #d8eddf; border-left: 3px solid #4a7c6b; padding: 18px 22px; border-radius: 0 var(--radius) var(--radius) 0; margin: 1.5rem 0; font-size: 0.95rem; color: var(--ink-muted); line-height: 1.8; }
+.cs-callout strong { color: var(--ink); }
+
+.insight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+.insight-card { background: var(--cream); border: 1px solid var(--cream-dark); border-radius: 8px; padding: 1.25rem; }
+.insight-card .ic-icon { font-size: 1.3rem; margin-bottom: 0.5rem; display: block; }
+.insight-card h4 { font-size: 0.85rem; font-weight: 500; margin-bottom: 0.4rem; }
+.insight-card p { font-size: 0.82rem; color: var(--ink-muted); line-height: 1.7; margin: 0; }
+
+.vision-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+.vision-card { background: var(--cream); border-radius: 8px; padding: 1.25rem; border: 1px solid var(--cream-dark); }
+.vision-card label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #4a7c6b; display: block; margin-bottom: 0.5rem; }
+.vision-card p { font-size: 0.85rem; color: var(--ink-muted); margin: 0; line-height: 1.7; }
+
+.decision-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; margin: 1.5rem 0; }
+.decision-table th { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); padding: 8px 12px; text-align: left; border-bottom: 2px solid var(--cream-dark); }
+.decision-table td { padding: 10px 12px; border-bottom: 1px solid var(--cream-dark); color: var(--ink-muted); vertical-align: top; line-height: 1.6; }
+.decision-table td:first-child { color: var(--ink); font-weight: 500; }
+
+.outcome-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+.outcome-card { background: var(--cream); border-radius: 8px; padding: 1.25rem; border: 1px solid var(--cream-dark); text-align: center; }
+.outcome-card .big-num { font-family: var(--serif); font-size: 2.5rem; color: #4a7c6b; line-height: 1; display: block; margin-bottom: 0.4rem; }
+.outcome-card p { font-size: 0.82rem; color: var(--ink-muted); margin: 0; line-height: 1.6; }
+
+.img-placeholder { width: 100%; aspect-ratio: 16/9; background: var(--cream-dark); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.82rem; color: var(--ink-faint); font-style: italic; margin: 1.5rem 0; border: 1px dashed var(--ink-faint); }
+.img-placeholder-tall { aspect-ratio: 4/3; }
+
+.nav-between { display: flex; justify-content: space-between; align-items: center; padding: 2.5rem 0; border-top: 1px solid var(--cream-dark); margin-top: 2rem; }
+.nav-between a { font-size: 0.85rem; font-weight: 500; color: var(--ink-muted); text-decoration: none; transition: color var(--t); display: flex; align-items: center; gap: 8px; }
+.nav-between a:hover { color: var(--accent); }
+.back-all { font-size: 0.82rem; font-weight: 500; color: var(--ink-muted); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color var(--t); }
+.back-all:hover { color: var(--accent); }
+
+@media (max-width: 860px) {
+  .cs-layout { grid-template-columns: 1fr; }
+  .cs-toc { display: none; }
+  .vision-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .insight-grid, .outcome-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Priya T.</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="cs-hero">
+  <div class="container">
+    <a href="index.html" class="back-all" style="margin-bottom:1.5rem;display:inline-flex;">← All Projects</a>
+    <div class="eyebrow">Social Impact · Native Mobile App</div>
+    <h1>Food4U — Connecting Surplus Food to <em>Communities in Need</em></h1>
+    <p class="cs-tagline">Restaurants waste large amounts of edible food while communities face food insecurity. I designed a mobile platform to enable real-time food redistribution — simplifying donations and improving access.</p>
+    <div class="cs-meta-bar">
+      <div class="cs-meta-item"><label>Timeline</label><span>3 Weeks</span></div>
+      <div class="cs-meta-item"><label>Role</label><span>UX Researcher &amp; Designer</span></div>
+      <div class="cs-meta-item"><label>Platform</label><span>Native Mobile App</span></div>
+      <div class="cs-meta-item"><label>Scope</label><span>End-to-End (Research → Design → Testing)</span></div>
+      <div class="cs-meta-item"><label>Tools</label><span>Figma, FigJam</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-body">
+  <div class="container">
+    <div style="padding: 80px 0;">
+    <div class="cs-layout">
+      <div class="cs-toc">
+        <nav>
+          <h4>Contents</h4>
+          <a href="#problem">The Problem</a>
+          <a href="#vision">Product Vision</a>
+          <a href="#research">Research</a>
+          <a href="#insights">Key Insights</a>
+          <a href="#persona">User Understanding</a>
+          <a href="#decisions">Design Decisions</a>
+          <a href="#flows">User Flow</a>
+          <a href="#mvp">MVP Strategy</a>
+          <a href="#wireframes">Wireframes</a>
+          <a href="#final">Final Design</a>
+          <a href="#accessibility">Accessibility</a>
+          <a href="#testing">Usability Testing</a>
+          <a href="#outcome">Outcome</a>
+          <a href="#reflection">Reflection</a>
+        </nav>
+      </div>
+
+      <div class="cs-content">
+
+        <div class="cs-section" id="problem">
+          <div class="eyebrow">The Problem</div>
+          <h2>Food wasted. Communities hungry. No simple system to connect them.</h2>
+          <p>Restaurants frequently discard surplus prepared food due to time pressure, food safety concerns, and operational complexity — while local organizations struggle to access consistent, timely donations.</p>
+          <div class="cs-callout">
+            <strong>Three compounding problems:</strong> Wasted food, missed opportunities to support communities, and no simple system connecting both sides at the right moment.
+          </div>
+          <h3>How Might We…</h3>
+          <ul>
+            <li>Motivate restaurants to want to donate their surplus food?</li>
+            <li>Make it easy for restaurants to donate surplus food without adding staff burden?</li>
+          </ul>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="vision">
+          <div class="eyebrow">Product Vision</div>
+          <h2>A clear purpose from the start</h2>
+          <p>Since this was a from-scratch product, establishing a clear purpose was essential before any design decisions were made. It ensured every feature tied back to the mission.</p>
+          <div class="vision-row">
+            <div class="vision-card"><label>Mission</label><p>Prevent food waste by rescuing surplus food and delivering it to communities in need.</p></div>
+            <div class="vision-card"><label>Vision</label><p>A world where no food is wasted and no community goes hungry.</p></div>
+            <div class="vision-card"><label>Unique Value</label><p>Turning surplus food into meals through real-time, last-minute redistribution.</p></div>
+          </div>
+          <h3>Product Principles</h3>
+          <ul>
+            <li>Food should not be wasted when people are hungry</li>
+            <li>Make donations effortless for restaurants</li>
+            <li>Ensure trust through safety and quality standards</li>
+            <li>Prioritize social impact over profit</li>
+            <li>Focus on maximizing meals served</li>
+          </ul>
+          <p>These principles guided key decisions around simplicity, trust, and real-time coordination throughout the design process.</p>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="research">
+          <div class="eyebrow">Research</div>
+          <h2>Understanding both sides of the exchange</h2>
+
+          <h3>Surveys (Restaurant owners &amp; Organizations)</h3>
+          <p>Conducted separate surveys for both user groups. Insights showed a stronger opportunity and clearer pain points on the restaurant side — leading us to focus the core solution on restaurant workflows first.</p>
+
+          <h3>User Interviews</h3>
+          <p>Conducted to uncover donation challenges in depth. Found three key barriers: time sensitivity (food has a narrow window), safety concerns (liability fears), and process complexity (donation feels like extra work during a busy closing rush).</p>
+
+          <h3>Competitive &amp; Comparative Analysis</h3>
+          <p>Evaluated existing solutions including Goodr and Too Good To Go. Most solutions lacked real-time coordination, simplicity, and reliable logistics support — creating the opportunity space for Food4U.</p>
+          <div class="img-placeholder">[Image Placeholder — Feature Analysis / Competitive Matrix]</div>
+
+          <h3>SWOT Analysis</h3>
+          <p>Conducted to evaluate strengths, weaknesses, opportunities, and risks. Identified areas for differentiation including real-time coordination, Uber Eats logistics integration, and a dead-simple posting flow.</p>
+
+          <h3>Secondary Research</h3>
+          <p>Revealed the scale of food waste (approximately 40% of food in the US is wasted), key safety concerns (Good Samaritan laws in most states), and gaps in existing redistribution processes.</p>
+
+          <h3>Affinity Mapping</h3>
+          <p>Organized all research data to uncover patterns. Key themes: time sensitivity, safety concerns, and complexity in the donation process.</p>
+          <div class="img-placeholder">[Image Placeholder — Affinity Map]</div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="persona">
+          <div class="eyebrow">User Understanding</div>
+          <h2>Katie — the restaurant owner who just wants to do the right thing</h2>
+          <p>Persona: <strong>Katie, Restaurant Owner, New York.</strong> Katie needs a fast, reliable way to donate food with minimal effort, while ensuring safety and reducing operational stress. She represents the needs and challenges of restaurant owners managing surplus food every single day.</p>
+          <div class="img-placeholder">[Image Placeholder — Katie Persona Card]</div>
+          <h3>User Journey</h3>
+          <p>Mapped Katie's end-of-shift workflow to identify pain points in managing surplus food during busy closing hours. Revealed challenges around time pressure, coordination, and the absence of a quick donation pathway.</p>
+          <div class="img-placeholder">[Image Placeholder — Katie's User Journey Map]</div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="decisions">
+          <div class="eyebrow">Design Decisions</div>
+          <h2>From research to features — the golden thread</h2>
+          <p>Used MoSCoW prioritization to identify the most critical features for the MVP, focusing on core actions like food listing, discovery, and delivery coordination.</p>
+          <div class="img-placeholder">[Image Placeholder — MoSCoW Prioritization Matrix]</div>
+          <table class="decision-table">
+            <thead>
+              <tr><th>Insight</th><th>Design Decision</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Donations are highly time-sensitive</td><td>Real-time food listing system with instant visibility to nearby organizations</td></tr>
+              <tr><td>Donation process feels complex</td><td>Quick, low-effort posting flow — smart dropdowns, pre-filled repeating items</td></tr>
+              <tr><td>Restaurants fear liability</td><td>Clear safety guidelines and Good Samaritan law info embedded in the flow</td></tr>
+              <tr><td>Surplus patterns are repetitive</td><td>Copy-paste previous listing feature — one tap to repost yesterday's surplus</td></tr>
+              <tr><td>Logistics are a barrier</td><td>Delivery integration via Uber Eats API — restaurants don't need to coordinate drivers</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="flows">
+          <div class="eyebrow">User Flow</div>
+          <h2>End-to-end: restaurant posts → organization claims → Uber Eats delivers</h2>
+          <p>Created an end-to-end flow connecting restaurants to organizations in real time. The flow enables quick posting, instant notifications to nearby organizations, and seamless delivery coordination through Uber Eats — all without requiring staff to manage logistics.</p>
+          <div class="img-placeholder">[Image Placeholder — Full User Flow Diagram]</div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="mvp">
+          <div class="eyebrow">MVP Strategy</div>
+          <h2>Focus on what makes donation fast and easy</h2>
+          <p>Prioritized core actions: posting surplus food, the copy-paste repost feature, allowing organizations to view nearby listings, and enabling Uber Eats delivery to complete the logistics loop. Everything else was scoped to future iterations.</p>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="wireframes">
+          <div class="eyebrow">Mid-Fi Wireframes</div>
+          <h2>Testing structure before adding visual polish</h2>
+          <p>Focused on layout, navigation, and simplifying key interactions to make the process quick and easy before committing to visual design decisions.</p>
+          <div class="img-placeholder img-placeholder-tall">[Image Placeholder — Mid-Fi Wireframe Screens]</div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="final">
+          <div class="eyebrow">Final Design</div>
+          <h2>Three core features that power the platform</h2>
+
+          <h3>Real-Time Food Listing</h3>
+          <p>Smart dropdown menus allow restaurant staff to post surplus food in seconds — even during the closing rush. Pre-populated fields and a copy-paste feature for repeating items reduce effort to the absolute minimum.</p>
+          <div class="img-placeholder">[Image Placeholder — Food Listing Screen]</div>
+
+          <h3>Nearby Discovery &amp; Feed</h3>
+          <p>Organizations see available donations on a map and feed view, with real-time updates as new listings go live. Filtering by distance, food type, and quantity helps organizations claim the most relevant donations quickly.</p>
+          <div class="img-placeholder">[Image Placeholder — Nearby Listings Map / Feed]</div>
+
+          <h3>Claim &amp; Delivery Tracking</h3>
+          <p>Real-time pickup status and notifications reassure restaurants that food will be collected — without requiring any staff coordination. Uber Eats integration handles driver dispatch and delivery tracking automatically.</p>
+          <div class="img-placeholder">[Image Placeholder — Claim Flow &amp; Delivery Tracking]</div>
+
+          <div class="cs-callout" style="background:#d8eddf; border-color:#4a7c6b;">
+            <strong>Prototype:</strong> Full interactive prototype available in Figma — link to be embedded when ready for publication.
+          </div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="accessibility">
+          <div class="eyebrow">Accessibility (WCAG)</div>
+          <h2>Designed for a wide range of users</h2>
+          <p>Applied WCAG guidelines to ensure the app is usable and accessible for all users — particularly important given the diverse staff and volunteer base who would interact with the product.</p>
+          <ul>
+            <li>Color contrast ratios checked for readability in all states</li>
+            <li>Clear typography hierarchy — no reliance on color alone to convey meaning</li>
+            <li>Touch targets sized to minimum 44×44px for comfortable use</li>
+            <li>Simple and intuitive navigation — minimal steps, clear labels</li>
+          </ul>
+          <div class="img-placeholder">[Image Placeholder — WCAG Scorecard / Accessibility Checks]</div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="testing">
+          <div class="eyebrow">Usability Testing</div>
+          <h2>Two rounds, with meaningful iterations between them</h2>
+          <p>Conducted two rounds of usability testing (R1 &amp; R2) and iterated the design based on user feedback between each round.</p>
+          <h3>Key changes after R1:</h3>
+          <ul>
+            <li>Made the primary CTA more prominent — users were missing the main action button</li>
+            <li>Surfaced the Donation Guide on the home screen — it was previously buried but users needed it to feel confident donating</li>
+            <li>Simplified the posting flow by reducing the number of required fields</li>
+          </ul>
+          <h3>R2 improvements:</h3>
+          <ul>
+            <li>Improved visibility of key actions and reduced user effort</li>
+            <li>Users completed the full posting flow without guidance</li>
+            <li>Organizations successfully found and claimed nearby listings</li>
+          </ul>
+          <div class="img-placeholder">[Image Placeholder — Usability Testing Notes / Before &amp; After Screens]</div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="outcome">
+          <div class="eyebrow">Outcome</div>
+          <h2>Streamlined platform for real-time food redistribution</h2>
+          <p>Designed a platform that reduces donation friction and enables real-time coordination between restaurants and organizations. Created a clear and efficient experience for both user types — making it genuinely possible for a busy restaurant worker to donate surplus food in under 60 seconds.</p>
+          <div class="outcome-grid">
+            <div class="outcome-card">
+              <span class="big-num">&lt;60s</span>
+              <p>Target time for a restaurant to post surplus food using the smart dropdown flow</p>
+            </div>
+            <div class="outcome-card">
+              <span class="big-num">2</span>
+              <p>Rounds of usability testing with meaningful design improvements between each round</p>
+            </div>
+            <div class="outcome-card">
+              <span class="big-num">∞</span>
+              <p>Copy-paste repost feature eliminates re-entry for restaurants with repetitive daily surplus</p>
+            </div>
+            <div class="outcome-card">
+              <span class="big-num">0</span>
+              <p>Logistics coordination required from restaurant staff — Uber Eats handles driver dispatch</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="reflection">
+          <div class="eyebrow">Reflection</div>
+          <h2>Simplifying workflows is critical in time-sensitive scenarios</h2>
+          <p>I learned that in high-pressure, time-constrained environments, every extra step matters enormously. What feels like a minor friction in testing becomes a complete abandonment in the real world when a restaurant worker is doing five other things at closing time.</p>
+          <p>By reducing effort and aligning with real-world operational constraints, the design better supports both operational efficiency and social impact. If I had more time, I'd invest in deeper research with organizations on the receiving end, and explore how to design for low-tech environments where not every volunteer has a smartphone.</p>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="nav-between">
+          <a href="case-bollystep.html">← BollyStep</a>
+          <a href="case-mayura.html">Next: Mayura Roots →</a>
+        </div>
+
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed &amp; built by <a href="index.html">Priya T.</a> · UX Designer · Sunnyvale, CA · 2026</p>
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mayura Roots — Case Study · Priya T</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+.cs-hero { padding: 130px 0 80px; background: linear-gradient(160deg, #e8daf5 0%, #f7f4ef 60%); border-bottom: 1px solid var(--cream-dark); }
+.cs-hero .eyebrow { margin-bottom: 1rem; }
+.cs-hero h1 { font-family: var(--serif); font-size: clamp(2.4rem,4.5vw,3.8rem); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 1rem; max-width: 700px; }
+.cs-hero .cs-tagline { font-size: 1.05rem; font-weight: 300; color: var(--ink-muted); max-width: 580px; line-height: 1.85; margin-bottom: 2.5rem; }
+.cs-meta-bar { display: flex; flex-wrap: wrap; gap: 2rem; padding: 1.5rem 2rem; background: var(--white); border-radius: 10px; border: 1px solid var(--cream-dark); }
+.cs-meta-item { display: flex; flex-direction: column; gap: 2px; }
+.cs-meta-item label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.cs-meta-item span { font-size: 0.92rem; font-weight: 500; }
+
+.cs-body { background: var(--white); }
+.cs-layout { display: grid; grid-template-columns: 220px 1fr; gap: 4rem; align-items: start; }
+.cs-toc { position: sticky; top: 90px; }
+.cs-toc nav { background: var(--cream); border: 1px solid var(--cream-dark); border-radius: 10px; padding: 1.25rem; }
+.cs-toc nav h4 { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+.cs-toc nav a { display: block; font-size: 0.82rem; color: var(--ink-muted); text-decoration: none; padding: 5px 0; transition: color var(--t); }
+.cs-toc nav a:hover { color: var(--accent); }
+
+.cs-content { max-width: 760px; }
+.cs-section { margin-bottom: 4rem; scroll-margin-top: 80px; }
+.cs-section h2 { font-family: var(--serif); font-size: clamp(1.6rem,2.2vw,2.1rem); margin-bottom: 1.25rem; letter-spacing: -0.02em; }
+.cs-section h3 { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 0.75rem; margin-top: 1.75rem; }
+.cs-section p { font-size: 0.95rem; font-weight: 300; color: var(--ink-muted); line-height: 1.9; margin-bottom: 1rem; }
+.cs-section ul { list-style: none; margin: 0.5rem 0 1rem; }
+.cs-section ul li { font-size: 0.92rem; font-weight: 300; color: var(--ink-muted); padding-left: 18px; position: relative; margin-bottom: 6px; line-height: 1.7; }
+.cs-section ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem; top: 3px; }
+.cs-section strong { color: var(--ink); font-weight: 500; }
+.cs-divider { height: 1px; background: var(--cream-dark); margin: 3rem 0; }
+.cs-callout { background: #ede9f7; border-left: 3px solid #7a5cbf; padding: 18px 22px; border-radius: 0 var(--radius) var(--radius) 0; margin: 1.5rem 0; font-size: 0.95rem; color: var(--ink-muted); line-height: 1.8; }
+.cs-callout strong { color: var(--ink); }
+
+.archetype-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+.archetype-card { background: var(--cream); border: 1px solid var(--cream-dark); border-radius: 8px; padding: 1.5rem; }
+.archetype-card .ac-badge { display: inline-block; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; background: #ede9f7; color: #7a5cbf; padding: 3px 9px; border-radius: 30px; margin-bottom: 0.75rem; }
+.archetype-card h4 { font-family: var(--serif); font-size: 1rem; margin-bottom: 0.5rem; }
+.archetype-card p { font-size: 0.85rem; color: var(--ink-muted); line-height: 1.7; margin: 0; }
+
+.insight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+.insight-card { background: var(--cream); border: 1px solid var(--cream-dark); border-radius: 8px; padding: 1.25rem; }
+.insight-card .ic-icon { font-size: 1.3rem; margin-bottom: 0.5rem; display: block; }
+.insight-card h4 { font-size: 0.85rem; font-weight: 500; margin-bottom: 0.4rem; }
+.insight-card p { font-size: 0.82rem; color: var(--ink-muted); line-height: 1.7; margin: 0; }
+
+.decision-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; margin: 1.5rem 0; }
+.decision-table th { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); padding: 8px 12px; text-align: left; border-bottom: 2px solid var(--cream-dark); }
+.decision-table td { padding: 10px 12px; border-bottom: 1px solid var(--cream-dark); color: var(--ink-muted); vertical-align: top; line-height: 1.6; }
+.decision-table td:first-child { color: var(--ink); font-weight: 500; }
+
+.outcome-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+.outcome-card { background: var(--cream); border-radius: 8px; padding: 1.25rem; border: 1px solid var(--cream-dark); text-align: center; }
+.outcome-card .big-num { font-family: var(--serif); font-size: 2.5rem; color: #7a5cbf; line-height: 1; display: block; margin-bottom: 0.4rem; }
+.outcome-card p { font-size: 0.82rem; color: var(--ink-muted); margin: 0; line-height: 1.6; }
+
+.img-placeholder { width: 100%; aspect-ratio: 16/9; background: var(--cream-dark); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.82rem; color: var(--ink-faint); font-style: italic; margin: 1.5rem 0; border: 1px dashed var(--ink-faint); text-align:center; padding: 1rem; }
+.img-placeholder-tall { aspect-ratio: 4/3; }
+
+.nav-between { display: flex; justify-content: space-between; align-items: center; padding: 2.5rem 0; border-top: 1px solid var(--cream-dark); margin-top: 2rem; }
+.nav-between a { font-size: 0.85rem; font-weight: 500; color: var(--ink-muted); text-decoration: none; transition: color var(--t); display: flex; align-items: center; gap: 8px; }
+.nav-between a:hover { color: var(--accent); }
+.back-all { font-size: 0.82rem; font-weight: 500; color: var(--ink-muted); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color var(--t); }
+.back-all:hover { color: var(--accent); }
+
+@media (max-width: 860px) {
+  .cs-layout { grid-template-columns: 1fr; }
+  .cs-toc { display: none; }
+}
+@media (max-width: 600px) {
+  .insight-grid, .outcome-grid, .archetype-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Priya T.</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="cs-hero">
+  <div class="container">
+    <a href="index.html" class="back-all" style="margin-bottom:1.5rem;display:inline-flex;">← All Projects</a>
+    <div class="eyebrow">E-Commerce · Website Redesign</div>
+    <h1>Mayura Roots — Improving Navigation and Cultural Storytelling for a <em>Traditional Products Marketplace</em></h1>
+    <p class="cs-tagline">Users couldn't find or understand traditional Indian products due to cluttered navigation and missing cultural context. I redesigned the information architecture to feel like exploring a cultural marketplace — not just browsing products.</p>
+    <div class="cs-meta-bar">
+      <div class="cs-meta-item"><label>Timeline</label><span>3 Weeks</span></div>
+      <div class="cs-meta-item"><label>Role</label><span>UX Research, IA, UX Design</span></div>
+      <div class="cs-meta-item"><label>Platform</label><span>E-Commerce Website</span></div>
+      <div class="cs-meta-item"><label>Methodology</label><span>Double Diamond</span></div>
+      <div class="cs-meta-item"><label>Tools</label><span>Figma, FigJam</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-body">
+  <div class="container">
+    <div style="padding: 80px 0;">
+    <div class="cs-layout">
+      <div class="cs-toc">
+        <nav>
+          <h4>Contents</h4>
+          <a href="#problem">The Problem</a>
+          <a href="#goal">Goal</a>
+          <a href="#research">Research</a>
+          <a href="#insights">Key Insights</a>
+          <a href="#archetypes">User Archetypes</a>
+          <a href="#problem-statement">Problem Statement</a>
+          <a href="#strategy">Design Strategy</a>
+          <a href="#ia">IA Improvements</a>
+          <a href="#flows">User Flows</a>
+          <a href="#prototype">Prototype</a>
+          <a href="#testing">Usability Testing</a>
+          <a href="#outcome">Outcome</a>
+          <a href="#next">Next Steps</a>
+        </nav>
+      </div>
+
+      <div class="cs-content">
+
+        <div class="cs-section" id="problem">
+          <div class="eyebrow">The Problem</div>
+          <h2>Meaningful products, lost in a confusing experience</h2>
+          <p>Mayura Roots is an e-commerce platform selling Indian traditional and cultural products. While the products themselves are unique and meaningful, the website experience made it difficult for users to discover and understand them.</p>
+          <div class="cs-callout">
+            <strong>Three compounding problems:</strong> The navigation is crowded and unclear, product information lacks cultural context, and the overall design reduces trust and clarity for shoppers — particularly first-time buyers who have no prior familiarity with the products.
+          </div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="goal">
+          <div class="eyebrow">Goal</div>
+          <h2>Navigate the culture, not just the catalogue</h2>
+          <p>Redesign the website's primary navigation and information architecture to make the shopping experience clearer, more engaging, and culturally informative — so users can discover products while learning about their significance.</p>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="research">
+          <div class="eyebrow">Research Methods</div>
+          <h2>Six methods to understand a complex problem</h2>
+          <p>Used the Double Diamond methodology to structure the research and design process, ensuring insights drove every decision.</p>
+
+          <h3>Heuristic Evaluation</h3>
+          <p>Evaluated the existing website against established usability heuristics. Found multiple violations around navigation consistency, unclear affordances, error prevention, and lack of flexibility for different user types.</p>
+
+          <h3>Content Audit</h3>
+          <p>Reviewed all existing content for clarity, structure, and accuracy. Found that product descriptions were sparse, cultural context was almost entirely absent, and the content hierarchy on key pages was confusing.</p>
+
+          <h3>Competitive &amp; Comparative Analysis</h3>
+          <p>Analyzed competing and comparable cultural e-commerce sites to understand best practices in navigation design, product storytelling, and trust-building. Identified patterns that work and gaps in the market.</p>
+
+          <h3>Card Sorting</h3>
+          <p>Conducted card sorting with participants to understand their mental models for organizing cultural products. Results directly informed the new navigation categories and site hierarchy.</p>
+
+          <h3>User Interviews</h3>
+          <p>Spoke with a range of potential users — from those familiar with Indian cultural products to complete newcomers. Revealed that users want to understand the meaning, origin, and usage of products before purchasing, not just see price and photos.</p>
+
+          <h3>Information Architecture Analysis</h3>
+          <p>Mapped the existing site structure to identify gaps, orphaned pages, and illogical groupings. Provided a baseline for the redesigned sitemap.</p>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="insights">
+          <div class="eyebrow">Key Insights</div>
+          <h2>Four themes that shaped the redesign</h2>
+          <div class="insight-grid">
+            <div class="insight-card">
+              <span class="ic-icon">🗺️</span>
+              <h4>Navigation is the core issue</h4>
+              <p>Users often felt lost — too many options, no clear categorization, and no sense of where they were or where to go next.</p>
+            </div>
+            <div class="insight-card">
+              <span class="ic-icon">📖</span>
+              <h4>Lack of cultural storytelling</h4>
+              <p>Users wanted to understand the meaning, origin, and usage of products before purchasing — not just see a product name and price.</p>
+            </div>
+            <div class="insight-card">
+              <span class="ic-icon">🛡️</span>
+              <h4>Trust &amp; credibility issues</h4>
+              <p>Outdated design and limited product information reduced confidence in the authenticity and quality of products.</p>
+            </div>
+            <div class="insight-card">
+              <span class="ic-icon">🧭</span>
+              <h4>Users want to be guided</h4>
+              <p>First-time buyers expected the website to guide them through cultural products — like a knowledgeable shopkeeper would in a physical store.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="archetypes">
+          <div class="eyebrow">User Archetypes</div>
+          <h2>Two distinct types of shoppers</h2>
+          <div class="archetype-grid">
+            <div class="archetype-card">
+              <span class="ac-badge">Primary</span>
+              <h4>Purposeful Product Seekers</h4>
+              <p>Users who visit the site with a clear intent to purchase a specific cultural product — but rely on the website to understand its meaning and usage before buying.</p>
+            </div>
+            <div class="archetype-card">
+              <span class="ac-badge">Secondary</span>
+              <h4>Marketplace Meanderers</h4>
+              <p>Casual browsers who explore for inspiration and cultural discovery rather than immediate purchase. They want to learn and be surprised.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="problem-statement">
+          <div class="eyebrow">Problem Statement</div>
+          <h2>Purposeful product seekers need a clearer way to explore and purchase</h2>
+          <div class="cs-callout">
+            Purposeful product seekers need a <strong>clear and trustworthy way to explore and purchase cultural products</strong> because the current website lacks intuitive navigation, detailed product information, and cultural storytelling.
+          </div>
+          <h3>How Might We…</h3>
+          <ul>
+            <li>Help users understand the cultural significance of products before purchasing?</li>
+            <li>Simplify navigation for easier product discovery?</li>
+            <li>Modernize the visual design while preserving the cultural identity of the brand?</li>
+            <li>Guide users through the shopping experience as if they were browsing in a physical cultural store?</li>
+          </ul>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="strategy">
+          <div class="eyebrow">Design Strategy</div>
+          <h2>A shopping experience that feels like cultural exploration</h2>
+          <p>The core design strategy was to create a shopping experience that feels like exploring a cultural marketplace — not just browsing a product catalogue. Four areas of focus:</p>
+          <table class="decision-table">
+            <thead><tr><th>Focus Area</th><th>Design Direction</th></tr></thead>
+            <tbody>
+              <tr><td>Navigation clarity</td><td>Simplified menu structure based on card sorting results — fewer, clearer categories</td></tr>
+              <tr><td>Information architecture</td><td>New sitemap with logical groupings, better hierarchy, and improved product discoverability</td></tr>
+              <tr><td>Product storytelling</td><td>Enhanced product pages with cultural context, origin information, and usage guidance</td></tr>
+              <tr><td>Trust &amp; credibility</td><td>Modern visual refresh while preserving cultural identity — improved photography standards, cleaner layouts</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="ia">
+          <div class="eyebrow">Information Architecture</div>
+          <h2>Restructuring the foundation of the experience</h2>
+          <p>The primary design change was simplifying the navigation structure and organizing products in an intuitive way. A new sitemap was created to support easier product discovery and better reflect how users actually think about cultural products.</p>
+          <ul>
+            <li>Clearer product categories based on card sorting results</li>
+            <li>Better grouping of related cultural products by occasion, tradition, and type</li>
+            <li>Simplified navigation menu — fewer top-level items, more logical sub-categories</li>
+            <li>Improved overall site hierarchy — users always know where they are</li>
+          </ul>
+          <div class="img-placeholder">[Image Placeholder — Old vs. New Sitemap Comparison]</div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="flows">
+          <div class="eyebrow">User Flows</div>
+          <h2>Smoother paths to discovery and purchase</h2>
+          <p>Redesigned user flows to help shoppers move more confidently through the experience. New flows enabled users to:</p>
+          <ul>
+            <li>Easily explore product categories without getting lost</li>
+            <li>Learn about cultural context before committing to a product page</li>
+            <li>Review product details with full context — meaning, origin, usage</li>
+            <li>Complete purchases confidently with trust signals throughout</li>
+          </ul>
+          <div class="img-placeholder">[Image Placeholder — Redesigned User Flow Diagram]</div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="prototype">
+          <div class="eyebrow">Prototype</div>
+          <h2>Simplified navigation with cultural depth</h2>
+          <p>The redesigned prototype demonstrates the new simplified navigation structure, improved product pages with cultural storytelling, and a modern visual design that maintains cultural identity throughout.</p>
+          <div class="img-placeholder img-placeholder-tall">[Image Placeholder — Final Hi-Fi Prototype Screens]</div>
+          <div class="cs-callout" style="background:#ede9f7; border-color:#7a5cbf;">
+            <strong>Prototype link:</strong> <a href="https://www.figma.com/proto/sCNxhIMfkL42Ftk35x3OUT/P2-Redesign?node-id=107-213&p=f&t=6SVanpAEvLaEvfGR-0&scaling=scale-down&content-scaling=fixed&page-id=1%3A6" target="_blank" style="color:#7a5cbf;">View interactive Figma prototype →</a>
+          </div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="testing">
+          <div class="eyebrow">Usability Testing</div>
+          <h2>Validating navigation and cultural clarity</h2>
+          <p>Usability testing was conducted on the redesigned prototype to evaluate whether the new navigation and site structure actually solved the problems identified in research.</p>
+          <h3>Testing validated three things:</h3>
+          <ul>
+            <li>Whether users could find products more easily with the new navigation</li>
+            <li>Whether users could understand product meaning and cultural significance</li>
+            <li>Whether users could navigate the website without confusion or dead ends</li>
+          </ul>
+          <h3>Key results:</h3>
+          <ul>
+            <li>The redesigned navigation significantly reduced browsing friction — users located products faster with fewer wrong turns</li>
+            <li>Users reported feeling more confident and engaged when browsing the redesigned interface</li>
+            <li>Cultural context on product pages was described as "genuinely helpful" — users felt better equipped to make purchasing decisions</li>
+          </ul>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="outcome">
+          <div class="eyebrow">Outcome</div>
+          <h2>A marketplace that honours what it sells</h2>
+          <p>The redesigned website creates a more structured and engaging shopping experience by combining clear navigation with cultural storytelling. The new design allows users to discover products more easily while learning about the traditions and cultural heritage behind them.</p>
+          <div class="outcome-grid">
+            <div class="outcome-card">
+              <span class="big-num">↑</span>
+              <p>User confidence when browsing — reported feeling more engaged with redesigned interface</p>
+            </div>
+            <div class="outcome-card">
+              <span class="big-num">↓</span>
+              <p>Navigation confusion — users located products faster with fewer dead ends</p>
+            </div>
+            <div class="outcome-card">
+              <span class="big-num">6</span>
+              <p>Research methods used — heuristic eval, content audit, card sorting, interviews, competitive analysis, IA analysis</p>
+            </div>
+            <div class="outcome-card">
+              <span class="big-num">✓</span>
+              <p>Cultural storytelling integrated into product pages — meaning, origin, and usage context for each item</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="cs-section" id="next">
+          <div class="eyebrow">Next Steps</div>
+          <h2>Building on the foundation</h2>
+          <ul>
+            <li>Adding educational content — blogs, cultural guides, and tradition explainers to deepen engagement</li>
+            <li>Highlighting artisan stories and community impact to build brand trust and emotional connection</li>
+            <li>Enhancing product recommendations based on browsing behavior and occasion-based filtering</li>
+            <li>Supporting international customers with localized experiences and shipping clarity</li>
+            <li>A/B testing product page layouts to optimize the balance between cultural storytelling and purchase conversion</li>
+          </ul>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <div class="nav-between">
+          <a href="case-food4u.html">← Food4U</a>
+          <a href="index.html">All Projects →</a>
+        </div>
+
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed &amp; built by <a href="index.html">Priya T.</a> · UX Designer · Sunnyvale, CA · 2026</p>
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>

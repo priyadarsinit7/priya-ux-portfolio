@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — Priya T · UX Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+.page-hero { padding: 130px 0 80px; background: var(--white); border-bottom: 1px solid var(--cream-dark); }
+.page-hero .eyebrow { margin-bottom: 1rem; }
+.page-hero h1 { font-family: var(--serif); font-size: clamp(2.8rem,5vw,4rem); line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 1.5rem; }
+.page-hero p { font-size: 1.05rem; font-weight: 300; color: var(--ink-muted); line-height: 1.9; max-width: 580px; }
+
+#about-main { background: var(--cream); }
+.about-layout { display: grid; grid-template-columns: 340px 1fr; gap: 5rem; align-items: start; }
+.about-sidebar { position: sticky; top: 90px; }
+.sidebar-portrait { width: 100%; aspect-ratio: 3/4; background: var(--cream-dark); border-radius: 160px 160px 12px 12px; border: 1px solid rgba(0,0,0,0.06); position: relative; overflow: hidden; margin-bottom: 1.5rem; }
+.sidebar-portrait-inner { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 9rem; color: var(--accent); opacity: 0.1; }
+.sidebar-info { background: var(--white); border: 1px solid var(--cream-dark); border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem; }
+.sidebar-info-row { display: flex; justify-content: space-between; align-items: baseline; padding: 6px 0; border-bottom: 1px solid var(--cream-dark); font-size: 0.85rem; }
+.sidebar-info-row:last-child { border-bottom: none; }
+.sidebar-info-row span:first-child { color: var(--ink-muted); font-size: 0.78rem; }
+.sidebar-info-row span:last-child { font-weight: 500; text-align: right; }
+
+.about-body h2 { font-family: var(--serif); font-size: clamp(1.7rem,2.5vw,2.3rem); line-height: 1.2; margin-bottom: 1rem; letter-spacing: -0.02em; }
+.about-body p { font-size: 0.97rem; font-weight: 300; color: var(--ink-muted); line-height: 1.9; margin-bottom: 1.1rem; }
+.pull-quote { background: var(--accent-light); border-left: 3px solid var(--accent); padding: 20px 24px; margin: 2.5rem 0; border-radius: 0 var(--radius) var(--radius) 0; font-family: var(--serif); font-size: 1.15rem; color: var(--ink); line-height: 1.6; font-style: italic; }
+.about-divider { height: 1px; background: var(--cream-dark); margin: 2.5rem 0; }
+
+.skills-section { margin-top: 0.5rem; }
+.skills-section h3 { font-family: var(--serif); font-size: 1.4rem; margin-bottom: 1.5rem; }
+.skills-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
+.skill-col h4 { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+.skill-col ul { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.skill-col li { font-size: 0.87rem; color: var(--ink-muted); padding-left: 14px; position: relative; }
+.skill-col li::before { content: '—'; position: absolute; left: 0; color: var(--ink-faint); font-size: 0.65rem; top: 5px; }
+
+#values { background: var(--white); }
+.values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+.value-card { background: var(--cream); border: 1px solid var(--cream-dark); border-radius: 10px; padding: 1.5rem; }
+.value-card .v-icon { font-size: 1.5rem; margin-bottom: 0.75rem; display: block; }
+.value-card h4 { font-family: var(--serif); font-size: 1.1rem; margin-bottom: 0.5rem; }
+.value-card p { font-size: 0.85rem; font-weight: 300; color: var(--ink-muted); line-height: 1.7; }
+
+@media (max-width: 860px) {
+  .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-sidebar { position: static; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .values-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .skills-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Priya T.</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Work</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="eyebrow">About Me</div>
+    <h1>Hi, I'm Priya — <em>UX Designer</em><br/>based in Sunnyvale, CA.</h1>
+    <p>I design experiences that feel intuitive, empathetic, and grounded in real human needs. I recently completed the General Assembly UX Design Bootcamp (March 2026), and I'm actively looking for UX Designer, Product Designer, or UX Research Intern roles.</p>
+  </div>
+</section>
+
+<section id="about-main">
+  <div class="container">
+    <div class="about-layout">
+      <div class="about-sidebar fade-up">
+        <div class="sidebar-portrait">
+          <div class="sidebar-portrait-inner">PT</div>
+        </div>
+        <div class="sidebar-info">
+          <div class="sidebar-info-row"><span>Location</span><span>Sunnyvale, CA</span></div>
+          <div class="sidebar-info-row"><span>Work Auth</span><span>H4 EAD · US Auth</span></div>
+          <div class="sidebar-info-row"><span>Email</span><span style="color:var(--accent);font-size:0.78rem;">tpriyadarsini25@gmail.com</span></div>
+          <div class="sidebar-info-row"><span>Languages</span><span>English, Tamil</span></div>
+          <div class="sidebar-info-row"><span>Availability</span><span style="color:#4a7c6b;">Open to Roles</span></div>
+        </div>
+        <a href="resume.html" class="btn" style="width:100%;justify-content:center;">View Resume →</a>
+      </div>
+
+      <div class="about-body fade-up">
+        <h2>Designer, researcher,<br/>former educator.</h2>
+        <p>I came to UX design through an unusual path — I spent years as a preschool and computer science teacher before pivoting to design. Those roles gave me something most designers have to learn over time: how to truly observe people, adapt to their individual needs, and communicate complexity in clear, accessible ways.</p>
+
+        <p>My MCA background in software development rounds out my analytical thinking — I understand how products are built, which helps me design within real constraints and collaborate more meaningfully with engineers.</p>
+
+        <div class="pull-quote">"I believe great design starts with listening — to users, to data, and to the spaces in between where frustration quietly lives."</div>
+
+        <p>For my capstone project, I worked on Bollystep — a platform to help users like Sanjana, who wanted to organize a dance performance for her wedding. She struggled with coordinating choreography across different schedules, time zones, and experience levels. I designed a tool that helps users learn dances asynchronously while streamlining logistics to reduce stress.</p>
+
+        <p>I'm excited to apply my skills to projects that bridge the gap between user needs and business goals. I believe in an empathetic, collaborative, and iterative approach to design — and I'm just getting started.</p>
+
+        <div class="about-divider"></div>
+
+        <div class="skills-section">
+          <h3>Skills &amp; Methods</h3>
+          <div class="skills-grid">
+            <div class="skill-col">
+              <h4>UX Research</h4>
+              <ul>
+                <li>User Interviews</li>
+                <li>Usability Testing</li>
+                <li>Heuristic Evaluation</li>
+                <li>Card Sorting</li>
+                <li>Competitive Analysis</li>
+                <li>Content Audits</li>
+                <li>Affinity Mapping</li>
+                <li>Persona Creation</li>
+                <li>Journey Mapping</li>
+              </ul>
+            </div>
+            <div class="skill-col">
+              <h4>Design</h4>
+              <ul>
+                <li>Interaction Design</li>
+                <li>Wireframing</li>
+                <li>Prototyping</li>
+                <li>Visual Design</li>
+                <li>Information Architecture</li>
+                <li>Responsive / Mobile UX</li>
+                <li>Accessibility (WCAG)</li>
+                <li>Design Systems</li>
+                <li>User Flows</li>
+              </ul>
+            </div>
+            <div class="skill-col">
+              <h4>Tools &amp; Process</h4>
+              <ul>
+                <li>Figma &amp; FigJam</li>
+                <li>Jira</li>
+                <li>Notion</li>
+                <li>Wix</li>
+                <li>Canva</li>
+                <li>Agile / Sprints</li>
+                <li>Design Thinking</li>
+                <li>Double Diamond</li>
+                <li>Google Workspace</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="values">
+  <div class="container">
+    <div class="eyebrow">How I Work</div>
+    <h2 class="section-title">Design principles<br/>I <em>actually believe in.</em></h2>
+    <div class="values-grid fade-up">
+      <div class="value-card">
+        <span class="v-icon">👂</span>
+        <h4>Listen first, design second</h4>
+        <p>Every design decision should trace back to something a real user said, did, or felt. I start with research — not assumptions.</p>
+      </div>
+      <div class="value-card">
+        <span class="v-icon">🔄</span>
+        <h4>Iterate, don't over-polish</h4>
+        <p>The best design is never done. I test early, gather feedback, and improve — rather than waiting for perfection that never arrives.</p>
+      </div>
+      <div class="value-card">
+        <span class="v-icon">🤝</span>
+        <h4>Collaborate across silos</h4>
+        <p>Great products come from designers, engineers, and stakeholders working together — not in isolation. I make that collaboration easier.</p>
+      </div>
+      <div class="value-card">
+        <span class="v-icon">🎯</span>
+        <h4>Simplicity is the goal</h4>
+        <p>Reducing friction, clarifying hierarchy, and removing cognitive load are design acts of respect — for users and for their time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed &amp; built by <a href="index.html">Priya T.</a> · UX Designer · Sunnyvale, CA · 2026</p>
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>
