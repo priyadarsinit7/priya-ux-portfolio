@@ -1,453 +1,723 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Food4U — Case Study · Priya T</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet"/>
 <style>
-/* SHARED STYLES — imported by all pages */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --ink: #1a1815;
-  --ink-muted: #6b6560;
-  --ink-faint: #b0aba5;
-  --cream: #f7f4ef;
-  --cream-dark: #ede9e1;
-  --accent: #c85a2a;
-  --accent-light: #f5ede7;
-  --white: #ffffff;
-  --serif: 'DM Serif Display', Georgia, serif;
-  --sans: 'DM Sans', system-ui, sans-serif;
-  --max: 1100px;
-  --radius: 4px;
-  --t: 0.3s cubic-bezier(0.4,0,0.2,1);
+:root{
+  --linen:#f7f3ec;--linen-deep:#ede8df;--bark:#2d2418;--bark-light:#5c4a30;--warm-gray:#7a6e62;
+  --forest:#2e6b3e;--forest-mid:#3d8c52;--forest-light:#d4eddb;
+  --terra:#c0522a;--terra-light:#f5dfd4;
+  --gold:#d4922a;--gold-light:#fbefd8;
+  --sky:#2a6e9e;--sky-light:#daeaf6;
+  --rule:#ddd5c8;
+  --fd:'Playfair Display',Georgia,serif;
+  --fb:'Lato',system-ui,sans-serif;
+  --max:1140px;--r:10px;--rlg:18px;
+  --sh-sm:0 2px 8px rgba(45,36,24,.08);
+  --sh-md:0 6px 28px rgba(45,36,24,.13);
+  --sh-lg:0 16px 56px rgba(45,36,24,.18);
 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--fb);background:var(--linen);color:var(--bark);line-height:1.72;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
 
-html { scroll-behavior: smooth; }
-body { font-family: var(--sans); background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+h1{font-family:var(--fd);font-size:clamp(3rem,7.5vw,6rem);font-weight:900;line-height:1.05;letter-spacing:-.02em;}
+h2{font-family:var(--fd);font-size:clamp(1.9rem,3.8vw,2.9rem);font-weight:700;line-height:1.15;letter-spacing:-.01em;}
+h3{font-family:var(--fd);font-size:clamp(1.2rem,2.2vw,1.6rem);font-weight:700;line-height:1.2;}
+h4{font-size:.97rem;font-weight:700;letter-spacing:.02em;}
+p{font-size:.97rem;color:var(--warm-gray);}
+p.lead{font-size:1.08rem;color:var(--bark);}
 
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(247,244,239,0.93); backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--cream-dark);
-  padding: 0 2.5rem; height: 64px;
-  display: flex; align-items: center; justify-content: space-between;
+.wrap{max-width:var(--max);margin:0 auto;padding:0 2rem;}
+.section{padding:90px 0;}
+.section--alt{background:var(--linen-deep);}
+.section--dark{background:#1e2e22;}
+.section--dark h2,.section--dark h3,.section--dark h4{color:#e8ede9;}
+.section--dark p{color:#93a99a;}
+.divider{height:1px;background:var(--rule);}
+
+.lbl{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--forest);margin-bottom:.6rem;}
+.section--dark .lbl{color:#7dc494;}
+.sec-hd{margin-bottom:3.5rem;}
+.sec-hd p{margin-top:.6rem;}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+
+/* Placeholders */
+.ph{background:linear-gradient(135deg,var(--linen-deep),#ddd0be);border:2px dashed var(--rule);border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;color:#a0907e;font-size:.78rem;font-weight:600;text-align:center;padding:1.5rem;min-height:220px;}
+.ph-icon{font-size:2rem;opacity:.4;}
+.ph--tall{min-height:360px;}
+.ph--short{min-height:140px;}
+.ph--wide{min-height:180px;}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.75rem;border-radius:100px;font-family:var(--fb);font-size:.88rem;font-weight:700;cursor:pointer;border:2px solid transparent;transition:all .25s ease;text-decoration:none;}
+.btn-primary{background:var(--forest);color:#fff;border-color:var(--forest);}
+.btn-primary:hover{background:var(--forest-mid);transform:translateY(-2px);}
+.btn-ghost{background:transparent;color:var(--bark);border-color:var(--rule);}
+.btn-ghost:hover{background:var(--linen-deep);border-color:var(--warm-gray);}
+.btn-outline{background:transparent;color:#fff;border-color:rgba(255,255,255,.4);}
+.btn-outline:hover{background:rgba(255,255,255,.1);border-color:#fff;}
+
+/* Nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(247,243,236,.92);backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s;}
+.nav.scrolled{border-color:var(--rule);box-shadow:var(--sh-sm);}
+.nav-logo{font-family:var(--fd);font-size:1.4rem;font-weight:700;color:var(--bark);display:flex;align-items:center;gap:.4rem;}
+.nav-logo span{width:7px;height:7px;background:var(--forest);border-radius:50%;display:inline-block;margin-bottom:2px;}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{font-size:.82rem;font-weight:600;color:var(--warm-gray);transition:color .2s;}
+.nav-links a:hover{color:var(--bark);}
+
+/* Hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(150deg,#0d1f12 0%,#1a3d22 30%,#2e6b3e 65%,#4ca866 88%,#7dc494 100%);}
+.hero-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 60%,rgba(212,146,42,.15) 0%,transparent 50%),radial-gradient(circle at 75% 25%,rgba(77,168,102,.1) 0%,transparent 40%);}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.06) 1px,transparent 1px);background-size:28px 28px;}
+.hero-visual{position:absolute;right:0;top:0;width:50%;height:100%;display:flex;align-items:center;justify-content:center;opacity:.2;color:var(--forest-mid);}
+.hero-visual .ph-em{font-size:12rem;line-height:1;}
+.hero-content{position:relative;z-index:2;padding:7rem 2rem 4.5rem;max-width:var(--max);margin:0 auto;width:100%;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.75rem;}
+.hero-tag{display:inline-flex;align-items:center;gap:.3rem;padding:.28rem .8rem;border-radius:100px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.85);font-size:.72rem;font-weight:600;backdrop-filter:blur(8px);}
+.hero-tag .dot{width:5px;height:5px;border-radius:50%;background:#7dc494;flex-shrink:0;}
+.hero h1{color:#fff;margin-bottom:.85rem;text-shadow:0 2px 20px rgba(0,0,0,.3);}
+.hero-sub{font-family:var(--fd);font-size:clamp(.95rem,2vw,1.3rem);color:rgba(255,255,255,.7);font-style:italic;max-width:52ch;margin-bottom:2rem;}
+.hero-strip{display:flex;flex-wrap:wrap;gap:2rem;padding:1.25rem 0;border-top:1px solid rgba(255,255,255,.15);border-bottom:1px solid rgba(255,255,255,.15);margin-bottom:2rem;}
+.hero-stat .slbl{font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#7dc494;}
+.hero-stat .sval{font-size:.88rem;color:rgba(255,255,255,.9);font-weight:600;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;color:rgba(255,255,255,.3);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;animation:bounce 2s infinite;}
+.hero-scroll::before{content:'';display:block;width:1px;height:36px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.28));}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(6px);}}
+
+/* HMW Banner */
+.hmw-banner{background:linear-gradient(135deg,var(--forest),#1a3d22);border-radius:var(--rlg);padding:2.5rem;margin-top:3rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.hmw-item{border-left:3px solid rgba(125,196,148,.4);padding-left:1.25rem;}
+.hmw-item .hmw-q{font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#7dc494;margin-bottom:.4rem;}
+.hmw-item p{font-family:var(--fd);font-size:1.05rem;font-style:italic;color:rgba(255,255,255,.85);max-width:none;}
+
+/* Vision cards */
+.vision-card{background:#fff;border:1px solid var(--rule);border-radius:var(--rlg);padding:1.75rem;box-shadow:var(--sh-sm);}
+.vision-icon{font-size:2rem;margin-bottom:.75rem;}
+.vision-card h4{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--forest);margin-bottom:.5rem;}
+.vision-card p{font-family:var(--fd);font-size:1.05rem;font-style:italic;max-width:none;color:var(--bark);}
+
+/* Research cards */
+.r-card{background:#fff;border:1px solid var(--rule);border-radius:var(--rlg);padding:1.75rem;box-shadow:var(--sh-sm);transition:transform .25s,box-shadow .25s;}
+.r-card:hover{transform:translateY(-4px);box-shadow:var(--sh-md);}
+.r-icon{width:44px;height:44px;border-radius:var(--r);background:linear-gradient(135deg,var(--forest),var(--forest-mid));display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1rem;}
+.r-card h3{font-size:1.1rem;margin-bottom:.4rem;}
+.r-card p{font-size:.82rem;}
+.r-stat{font-family:var(--fd);font-size:2.2rem;font-weight:700;color:var(--forest);line-height:1;margin-top:.75rem;display:block;}
+
+/* Persona */
+.persona{background:#fff;border:1px solid var(--rule);border-radius:var(--rlg);padding:2rem;box-shadow:var(--sh-md);display:grid;grid-template-columns:160px 1fr;gap:2rem;align-items:start;}
+.p-avatar{display:flex;flex-direction:column;align-items:center;gap:.6rem;text-align:center;}
+.p-img{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,#fdebd0,#e8a87c);border:3px solid var(--forest);display:flex;align-items:center;justify-content:center;font-size:2.5rem;}
+.p-name{font-family:var(--fd);font-size:1.1rem;font-weight:700;}
+.p-badge{display:inline-block;padding:.2rem .65rem;background:var(--terra-light);color:var(--terra);border-radius:100px;font-size:.68rem;font-weight:700;}
+.p-details h3{font-size:1.3rem;margin-bottom:.25rem;}
+.p-bio{font-size:.875rem;margin:.6rem 0 1rem;}
+.p-attrs{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem;}
+.p-attr{padding:.65rem;background:var(--linen-deep);border-radius:var(--r);}
+.p-attr .al{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:.15rem;}
+.p-attr .av{font-size:.82rem;color:var(--bark);font-weight:600;}
+.p-quote{background:linear-gradient(135deg,var(--forest-light),#b8e5c4);border-left:3px solid var(--forest);border-radius:0 var(--r) var(--r) 0;padding:.9rem 1.1rem;font-family:var(--fd);font-size:1rem;font-style:italic;color:#1a3d22;}
+
+/* Journey */
+.journey{background:#fff;border:1px solid var(--rule);border-radius:var(--rlg);padding:2rem;box-shadow:var(--sh-sm);overflow-x:auto;}
+.journey-flow{display:flex;gap:0;align-items:flex-start;min-width:700px;margin-top:1.25rem;}
+.j-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;}
+.j-step::after{content:'→';position:absolute;top:15px;right:-10px;font-size:1rem;color:var(--rule);z-index:1;}
+.j-step:last-child::after{display:none;}
+.j-node{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--forest),var(--forest-mid));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.78rem;margin-bottom:.55rem;position:relative;z-index:2;box-shadow:0 2px 8px rgba(46,107,62,.35);}
+.j-label{font-size:.7rem;font-weight:700;margin-bottom:.35rem;color:var(--bark);line-height:1.3;}
+.j-friction{background:#fff1f2;border:1px solid #fda4af;border-radius:var(--r);padding:.32rem .5rem;font-size:.63rem;color:#be123c;font-weight:600;line-height:1.4;margin-top:.35rem;}
+.j-friction::before{content:'⚠ ';}
+.j-ok{background:var(--forest-light);border:1px solid #86efac;border-radius:var(--r);padding:.32rem .5rem;font-size:.63rem;color:var(--forest);font-weight:600;margin-top:.35rem;}
+
+/* MoSCoW */
+.moscow-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.5rem;}
+.moscow-col h4{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.5rem 1rem;border-radius:var(--r) var(--r) 0 0;margin-bottom:0;}
+.moscow-col ul{border:1px solid var(--rule);border-top:none;border-radius:0 0 var(--r) var(--r);padding:1rem;}
+.moscow-col ul li{font-size:.78rem;color:var(--warm-gray);padding:.3rem 0;border-bottom:1px solid var(--rule);display:flex;align-items:flex-start;gap:.4rem;}
+.moscow-col ul li::before{content:'→';color:var(--forest);flex-shrink:0;font-size:.7rem;margin-top:2px;}
+.moscow-col ul li:last-child{border-bottom:none;}
+.moscow-col.must h4{background:linear-gradient(135deg,var(--forest),var(--forest-mid));color:#fff;}
+.moscow-col.should h4{background:linear-gradient(135deg,var(--sky),#1a5a8c);color:#fff;}
+.moscow-col.could h4{background:linear-gradient(135deg,var(--gold),#b87e22);color:#fff;}
+.moscow-col.wont h4{background:linear-gradient(135deg,#7a6e62,#5c4a30);color:#fff;}
+
+/* Decision table */
+.d-table{width:100%;border-collapse:collapse;font-size:.875rem;margin-top:1.5rem;}
+.d-table th{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--forest);padding:10px 14px;text-align:left;border-bottom:2px solid var(--rule);background:var(--linen-deep);}
+.d-table td{padding:10px 14px;border-bottom:1px solid var(--rule);color:var(--warm-gray);vertical-align:top;line-height:1.6;}
+.d-table td:first-child{color:var(--bark);font-weight:600;}
+.d-table tr:hover td{background:#f3ede4;}
+
+/* Feature flow cards */
+.flow-card{background:#fff;border:1px solid var(--rule);border-radius:var(--rlg);overflow:hidden;box-shadow:var(--sh-sm);}
+.flow-card-top{padding:1.5rem;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.flow-card-bottom{padding:1.25rem 1.5rem;background:var(--linen-deep);}
+.flow-badge{display:inline-block;padding:.2rem .7rem;border-radius:100px;font-size:.68rem;font-weight:700;margin-bottom:.6rem;}
+.flow-badge.restaurant{background:var(--terra-light);color:var(--terra);}
+.flow-badge.org{background:var(--forest-light);color:var(--forest);}
+.fl-lbl{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem;display:flex;align-items:center;gap:.35rem;}
+.fl-lbl.before{color:#be123c;}.fl-lbl.before::before{content:'';width:7px;height:7px;border-radius:50%;background:#be123c;display:inline-block;}
+.fl-lbl.after{color:var(--forest);}.fl-lbl.after::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--forest);display:inline-block;}
+
+/* Metrics */
+.metric-card{background:#fff;border-radius:var(--rlg);padding:1.75rem;text-align:center;border:1px solid rgba(125,196,148,.2);}
+.metric-icon{font-size:2rem;margin-bottom:.6rem;display:block;}
+.metric-val{font-family:var(--fd);font-size:3.2rem;font-weight:700;color:#7dc494;line-height:1;display:block;}
+.metric-lbl{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin:.4rem 0 .25rem;}
+.metric-desc{font-size:.76rem;color:rgba(255,255,255,.4);line-height:1.6;max-width:none;}
+
+/* Reflection */
+.ref-card{border-top:3px solid var(--forest);padding:1.5rem 0;display:flex;flex-direction:column;gap:.5rem;}
+.ref-icon{font-size:1.8rem;}
+.ref-card h4{font-size:.95rem;}
+.ref-card p{font-size:.82rem;}
+
+/* WCAG checks */
+.wcag-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.5rem;}
+.wcag-item{background:#fff;border:1px solid var(--rule);border-radius:var(--r);padding:1.25rem;text-align:center;box-shadow:var(--sh-sm);}
+.wcag-check{font-size:1.5rem;margin-bottom:.5rem;display:block;}
+.wcag-item h4{font-size:.82rem;margin-bottom:.25rem;}
+.wcag-item p{font-size:.75rem;}
+
+/* Footer */
+.footer{background:#1e2e22;padding:3rem 2rem;text-align:center;}
+.footer-logo{font-family:var(--fd);font-size:1.8rem;color:#e8ede9;margin-bottom:1rem;}
+.footer-links{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;list-style:none;margin-bottom:1rem;}
+.footer-links a{font-size:.82rem;color:rgba(255,255,255,.4);transition:color .2s;}
+.footer-links a:hover{color:#7dc494;}
+.footer p{font-size:.78rem;color:rgba(255,255,255,.25);}
+
+/* Fade */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease;}
+.fade-in.visible{opacity:1;transform:none;}
+.fade-in-delay-1{transition-delay:.1s;}.fade-in-delay-2{transition-delay:.2s;}.fade-in-delay-3{transition-delay:.3s;}.fade-in-delay-4{transition-delay:.4s;}
+
+@media(max-width:900px){
+  .grid-2,.persona{grid-template-columns:1fr;}
+  .grid-3{grid-template-columns:1fr 1fr;}
+  .moscow-grid,.wcag-grid{grid-template-columns:1fr 1fr;}
+  .hmw-banner{grid-template-columns:1fr;}
+  .flow-card-top{grid-template-columns:1fr;}
 }
-.nav-logo { font-family: var(--serif); font-size: 1.2rem; color: var(--ink); text-decoration: none; }
-.nav-links { display: flex; gap: 2.5rem; list-style: none; }
-.nav-links a { font-size: 0.8rem; font-weight: 500; color: var(--ink-muted); text-decoration: none; letter-spacing: 0.07em; text-transform: uppercase; transition: color var(--t); }
-.nav-links a:hover, .nav-links a.active { color: var(--accent); }
-
-footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem; text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.3); }
-footer a { color: var(--accent); text-decoration: none; }
-
-.container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
-section { padding: 90px 0; }
-.fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
-.fade-up.visible { opacity: 1; transform: none; }
-
-.eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
-.eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--accent); }
-h1.display { font-family: var(--serif); font-size: clamp(2.4rem,4.5vw,3.8rem); line-height: 1.1; letter-spacing: -0.02em; }
-h2.section-title { font-family: var(--serif); font-size: clamp(1.8rem,3vw,2.8rem); line-height: 1.15; letter-spacing: -0.02em; }
-em { color: var(--accent); font-style: italic; }
-
-.pill { background: var(--white); border: 1px solid var(--cream-dark); padding: 5px 13px; border-radius: 40px; font-size: 0.78rem; font-weight: 500; color: var(--ink-muted); display: inline-block; }
-.pill-row { display: flex; flex-wrap: wrap; gap: 8px; }
-
-.btn { display: inline-flex; align-items: center; gap: 8px; background: var(--ink); color: var(--white); text-decoration: none; padding: 13px 26px; font-size: 0.875rem; font-weight: 500; border-radius: var(--radius); transition: background var(--t), transform var(--t); }
-.btn:hover { background: var(--accent); transform: translateY(-2px); }
-.btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink-faint); }
-.btn-ghost:hover { background: transparent; color: var(--accent); border-color: var(--accent); }
-
-@media (max-width: 768px) {
-  nav { padding: 0 1rem; }
-  .nav-links { gap: 1.5rem; }
-  .container { padding: 0 1.25rem; }
-  section { padding: 60px 0; }
-}
-
-</style>
-<style>
-.cs-hero { padding: 130px 0 80px; background: linear-gradient(160deg, #d8eddf 0%, #f7f4ef 60%); border-bottom: 1px solid var(--cream-dark); }
-.cs-hero .eyebrow { margin-bottom: 1rem; }
-.cs-hero h1 { font-family: var(--serif); font-size: clamp(2.4rem,4.5vw,3.8rem); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 1rem; max-width: 700px; }
-.cs-hero .cs-tagline { font-size: 1.05rem; font-weight: 300; color: var(--ink-muted); max-width: 580px; line-height: 1.85; margin-bottom: 2.5rem; }
-.cs-meta-bar { display: flex; flex-wrap: wrap; gap: 2rem; padding: 1.5rem 2rem; background: var(--white); border-radius: 10px; border: 1px solid var(--cream-dark); }
-.cs-meta-item { display: flex; flex-direction: column; gap: 2px; }
-.cs-meta-item label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
-.cs-meta-item span { font-size: 0.92rem; font-weight: 500; }
-
-.cs-body { background: var(--white); }
-.cs-layout { display: grid; grid-template-columns: 220px 1fr; gap: 4rem; align-items: start; }
-.cs-toc { position: sticky; top: 90px; }
-.cs-toc nav { background: var(--cream); border: 1px solid var(--cream-dark); border-radius: 10px; padding: 1.25rem; }
-.cs-toc nav h4 { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
-.cs-toc nav a { display: block; font-size: 0.82rem; color: var(--ink-muted); text-decoration: none; padding: 5px 0; transition: color var(--t); }
-.cs-toc nav a:hover { color: var(--accent); }
-
-.cs-content { max-width: 760px; }
-.cs-section { margin-bottom: 4rem; scroll-margin-top: 80px; }
-.cs-section h2 { font-family: var(--serif); font-size: clamp(1.6rem,2.2vw,2.1rem); margin-bottom: 1.25rem; letter-spacing: -0.02em; }
-.cs-section h3 { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 0.75rem; margin-top: 1.75rem; }
-.cs-section p { font-size: 0.95rem; font-weight: 300; color: var(--ink-muted); line-height: 1.9; margin-bottom: 1rem; }
-.cs-section ul { list-style: none; margin: 0.5rem 0 1rem; }
-.cs-section ul li { font-size: 0.92rem; font-weight: 300; color: var(--ink-muted); padding-left: 18px; position: relative; margin-bottom: 6px; line-height: 1.7; }
-.cs-section ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem; top: 3px; }
-.cs-section strong { color: var(--ink); font-weight: 500; }
-.cs-divider { height: 1px; background: var(--cream-dark); margin: 3rem 0; }
-.cs-callout { background: #d8eddf; border-left: 3px solid #4a7c6b; padding: 18px 22px; border-radius: 0 var(--radius) var(--radius) 0; margin: 1.5rem 0; font-size: 0.95rem; color: var(--ink-muted); line-height: 1.8; }
-.cs-callout strong { color: var(--ink); }
-
-.insight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
-.insight-card { background: var(--cream); border: 1px solid var(--cream-dark); border-radius: 8px; padding: 1.25rem; }
-.insight-card .ic-icon { font-size: 1.3rem; margin-bottom: 0.5rem; display: block; }
-.insight-card h4 { font-size: 0.85rem; font-weight: 500; margin-bottom: 0.4rem; }
-.insight-card p { font-size: 0.82rem; color: var(--ink-muted); line-height: 1.7; margin: 0; }
-
-.vision-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
-.vision-card { background: var(--cream); border-radius: 8px; padding: 1.25rem; border: 1px solid var(--cream-dark); }
-.vision-card label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #4a7c6b; display: block; margin-bottom: 0.5rem; }
-.vision-card p { font-size: 0.85rem; color: var(--ink-muted); margin: 0; line-height: 1.7; }
-
-.decision-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; margin: 1.5rem 0; }
-.decision-table th { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); padding: 8px 12px; text-align: left; border-bottom: 2px solid var(--cream-dark); }
-.decision-table td { padding: 10px 12px; border-bottom: 1px solid var(--cream-dark); color: var(--ink-muted); vertical-align: top; line-height: 1.6; }
-.decision-table td:first-child { color: var(--ink); font-weight: 500; }
-
-.outcome-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
-.outcome-card { background: var(--cream); border-radius: 8px; padding: 1.25rem; border: 1px solid var(--cream-dark); text-align: center; }
-.outcome-card .big-num { font-family: var(--serif); font-size: 2.5rem; color: #4a7c6b; line-height: 1; display: block; margin-bottom: 0.4rem; }
-.outcome-card p { font-size: 0.82rem; color: var(--ink-muted); margin: 0; line-height: 1.6; }
-
-.img-placeholder { width: 100%; aspect-ratio: 16/9; background: var(--cream-dark); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.82rem; color: var(--ink-faint); font-style: italic; margin: 1.5rem 0; border: 1px dashed var(--ink-faint); }
-.img-placeholder-tall { aspect-ratio: 4/3; }
-
-.nav-between { display: flex; justify-content: space-between; align-items: center; padding: 2.5rem 0; border-top: 1px solid var(--cream-dark); margin-top: 2rem; }
-.nav-between a { font-size: 0.85rem; font-weight: 500; color: var(--ink-muted); text-decoration: none; transition: color var(--t); display: flex; align-items: center; gap: 8px; }
-.nav-between a:hover { color: var(--accent); }
-.back-all { font-size: 0.82rem; font-weight: 500; color: var(--ink-muted); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color var(--t); }
-.back-all:hover { color: var(--accent); }
-
-@media (max-width: 860px) {
-  .cs-layout { grid-template-columns: 1fr; }
-  .cs-toc { display: none; }
-  .vision-row { grid-template-columns: 1fr; }
-}
-@media (max-width: 600px) {
-  .insight-grid, .outcome-grid { grid-template-columns: 1fr; }
+@media(max-width:600px){
+  .grid-3,.grid-4,.moscow-grid,.wcag-grid{grid-template-columns:1fr;}
+  .nav-links{gap:1.25rem;}
 }
 </style>
 </head>
 <body>
-<nav>
-  <a href="index.html" class="nav-logo">Priya T.</a>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">Priya T <span></span></a>
   <ul class="nav-links">
-    <li><a href="index.html" class="active">Work</a></li>
+    <li><a href="index.html">Work</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="resume.html">Resume</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
 
-<section class="cs-hero">
-  <div class="container">
-    <a href="index.html" class="back-all" style="margin-bottom:1.5rem;display:inline-flex;">← All Projects</a>
-    <div class="eyebrow">Social Impact · Native Mobile App</div>
-    <h1>Food4U — Connecting Surplus Food to <em>Communities in Need</em></h1>
-    <p class="cs-tagline">Restaurants waste large amounts of edible food while communities face food insecurity. I designed a mobile platform to enable real-time food redistribution — simplifying donations and improving access.</p>
-    <div class="cs-meta-bar">
-      <div class="cs-meta-item"><label>Timeline</label><span>3 Weeks</span></div>
-      <div class="cs-meta-item"><label>Role</label><span>UX Researcher &amp; Designer</span></div>
-      <div class="cs-meta-item"><label>Platform</label><span>Native Mobile App</span></div>
-      <div class="cs-meta-item"><label>Scope</label><span>End-to-End (Research → Design → Testing)</span></div>
-      <div class="cs-meta-item"><label>Tools</label><span>Figma, FigJam</span></div>
+<!-- ── HERO ── -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-visual"><div class="ph-em">🌱</div></div>
+  <div class="hero-content">
+    <div class="hero-tags">
+      <span class="hero-tag"><span class="dot"></span>Social Impact</span>
+      <span class="hero-tag"><span class="dot"></span>Native Mobile App</span>
+      <span class="hero-tag"><span class="dot"></span>End-to-End UX</span>
+      <span class="hero-tag"><span class="dot"></span>3-Week Sprint</span>
+    </div>
+    <h1>Food4U</h1>
+    <p class="hero-sub">Turning surplus food into meals — through real-time, last-minute redistribution.</p>
+    <div class="hero-strip">
+      <div class="hero-stat"><div class="slbl">Role</div><div class="sval">UX Researcher &amp; Designer</div></div>
+      <div class="hero-stat"><div class="slbl">Timeline</div><div class="sval">3 Weeks</div></div>
+      <div class="hero-stat"><div class="slbl">Platform</div><div class="sval">Native Mobile App</div></div>
+      <div class="hero-stat"><div class="slbl">Scope</div><div class="sval">Research → Design → Testing</div></div>
+      <div class="hero-stat"><div class="slbl">Tools</div><div class="sval">Figma · FigJam</div></div>
+    </div>
+    <div class="hero-actions">
+      <a href="#prototype" class="btn btn-primary">View Prototype ↗</a>
+      <a href="index.html" class="btn btn-outline">← All Projects</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ── SNEAK PEEK ── -->
+<section class="section--alt section" id="sneak">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="lbl">01 — Final Design</span>
+      <h2>A glimpse of the platform.</h2>
+      <p>Real-time listings, nearby discovery, and one-tap claim — designed to make food donation effortless during a busy closing rush.</p>
+    </div>
+    <div class="grid-4">
+      <div class="fade-in"><div class="ph ph--tall"><span class="ph-icon">🏠</span>Home screen</div><p style="margin-top:.5rem;font-size:.75rem;text-align:center;">Restaurant dashboard</p></div>
+      <div class="fade-in fade-in-delay-1"><div class="ph ph--tall"><span class="ph-icon">📋</span>Post surplus</div><p style="margin-top:.5rem;font-size:.75rem;text-align:center;">Smart dropdown listing</p></div>
+      <div class="fade-in fade-in-delay-2"><div class="ph ph--tall"><span class="ph-icon">🗺️</span>Nearby map</div><p style="margin-top:.5rem;font-size:.75rem;text-align:center;">Discovery feed &amp; map</p></div>
+      <div class="fade-in fade-in-delay-3"><div class="ph ph--tall"><span class="ph-icon">🚚</span>Delivery</div><p style="margin-top:.5rem;font-size:.75rem;text-align:center;">Claim &amp; tracking</p></div>
     </div>
   </div>
 </section>
 
-<section class="cs-body">
-  <div class="container">
-    <div style="padding: 80px 0;">
-    <div class="cs-layout">
-      <div class="cs-toc">
-        <nav>
-          <h4>Contents</h4>
-          <a href="#problem">The Problem</a>
-          <a href="#vision">Product Vision</a>
-          <a href="#research">Research</a>
-          <a href="#insights">Key Insights</a>
-          <a href="#persona">User Understanding</a>
-          <a href="#decisions">Design Decisions</a>
-          <a href="#flows">User Flow</a>
-          <a href="#mvp">MVP Strategy</a>
-          <a href="#wireframes">Wireframes</a>
-          <a href="#final">Final Design</a>
-          <a href="#accessibility">Accessibility</a>
-          <a href="#testing">Usability Testing</a>
-          <a href="#outcome">Outcome</a>
-          <a href="#reflection">Reflection</a>
-        </nav>
+<div class="divider"></div>
+
+<!-- ── PROBLEM ── -->
+<section class="section" id="problem">
+  <div class="wrap">
+    <div class="grid-2" style="align-items:start;gap:4rem;">
+      <div>
+        <span class="lbl">02 — Problem</span>
+        <h2>Food wasted. Communities hungry. No simple bridge.</h2>
+        <p class="lead" style="margin-top:.75rem;">Restaurants discard edible food every night while local organizations struggle to access consistent donations.</p>
+        <div style="display:flex;flex-direction:column;gap:1.1rem;margin-top:1.75rem;">
+          <div style="display:flex;gap:.85rem;align-items:flex-start;" class="fade-in">
+            <div style="flex-shrink:0;width:38px;height:38px;border-radius:var(--r);background:linear-gradient(135deg,var(--linen-deep),#ddd0be);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:.95rem;margin-top:2px;">⏱️</div>
+            <div><h4 style="margin-bottom:.15rem;">Donations are time-sensitive</h4><p style="font-size:.82rem;">Surplus food has a narrow window — often 30–60 minutes before it must be discarded.</p></div>
+          </div>
+          <div style="display:flex;gap:.85rem;align-items:flex-start;" class="fade-in fade-in-delay-1">
+            <div style="flex-shrink:0;width:38px;height:38px;border-radius:var(--r);background:linear-gradient(135deg,var(--linen-deep),#ddd0be);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:.95rem;margin-top:2px;">⚖️</div>
+            <div><h4 style="margin-bottom:.15rem;">Liability fears stop donations</h4><p style="font-size:.82rem;">Restaurants worry about food safety liability — even though Good Samaritan laws protect them.</p></div>
+          </div>
+          <div style="display:flex;gap:.85rem;align-items:flex-start;" class="fade-in fade-in-delay-2">
+            <div style="flex-shrink:0;width:38px;height:38px;border-radius:var(--r);background:linear-gradient(135deg,var(--linen-deep),#ddd0be);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:.95rem;margin-top:2px;">😓</div>
+            <div><h4 style="margin-bottom:.15rem;">Donation feels like extra work</h4><p style="font-size:.82rem;">Staff are already exhausted at closing time. Any friction = no donation.</p></div>
+          </div>
+          <div style="display:flex;gap:.85rem;align-items:flex-start;" class="fade-in fade-in-delay-3">
+            <div style="flex-shrink:0;width:38px;height:38px;border-radius:var(--r);background:linear-gradient(135deg,var(--linen-deep),#ddd0be);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:.95rem;margin-top:2px;">🔗</div>
+            <div><h4 style="margin-bottom:.15rem;">No simple connection system</h4><p style="font-size:.82rem;">Existing solutions lack real-time coordination, simple logistics, and reliable delivery.</p></div>
+          </div>
+        </div>
       </div>
-
-      <div class="cs-content">
-
-        <div class="cs-section" id="problem">
-          <div class="eyebrow">The Problem</div>
-          <h2>Food wasted. Communities hungry. No simple system to connect them.</h2>
-          <p>Restaurants frequently discard surplus prepared food due to time pressure, food safety concerns, and operational complexity — while local organizations struggle to access consistent, timely donations.</p>
-          <div class="cs-callout">
-            <strong>Three compounding problems:</strong> Wasted food, missed opportunities to support communities, and no simple system connecting both sides at the right moment.
+      <div class="fade-in">
+        <div class="ph ph--tall" style="margin-bottom:1.5rem;"><span class="ph-icon">📊</span>Food waste statistics / secondary research visual</div>
+        <!-- HMW -->
+        <div class="hmw-banner">
+          <div class="hmw-item">
+            <div class="hmw-q">How Might We…</div>
+            <p>Motivate restaurants to want to donate their surplus food?</p>
           </div>
-          <h3>How Might We…</h3>
-          <ul>
-            <li>Motivate restaurants to want to donate their surplus food?</li>
-            <li>Make it easy for restaurants to donate surplus food without adding staff burden?</li>
-          </ul>
-        </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="vision">
-          <div class="eyebrow">Product Vision</div>
-          <h2>A clear purpose from the start</h2>
-          <p>Since this was a from-scratch product, establishing a clear purpose was essential before any design decisions were made. It ensured every feature tied back to the mission.</p>
-          <div class="vision-row">
-            <div class="vision-card"><label>Mission</label><p>Prevent food waste by rescuing surplus food and delivering it to communities in need.</p></div>
-            <div class="vision-card"><label>Vision</label><p>A world where no food is wasted and no community goes hungry.</p></div>
-            <div class="vision-card"><label>Unique Value</label><p>Turning surplus food into meals through real-time, last-minute redistribution.</p></div>
-          </div>
-          <h3>Product Principles</h3>
-          <ul>
-            <li>Food should not be wasted when people are hungry</li>
-            <li>Make donations effortless for restaurants</li>
-            <li>Ensure trust through safety and quality standards</li>
-            <li>Prioritize social impact over profit</li>
-            <li>Focus on maximizing meals served</li>
-          </ul>
-          <p>These principles guided key decisions around simplicity, trust, and real-time coordination throughout the design process.</p>
-        </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="research">
-          <div class="eyebrow">Research</div>
-          <h2>Understanding both sides of the exchange</h2>
-
-          <h3>Surveys (Restaurant owners &amp; Organizations)</h3>
-          <p>Conducted separate surveys for both user groups. Insights showed a stronger opportunity and clearer pain points on the restaurant side — leading us to focus the core solution on restaurant workflows first.</p>
-
-          <h3>User Interviews</h3>
-          <p>Conducted to uncover donation challenges in depth. Found three key barriers: time sensitivity (food has a narrow window), safety concerns (liability fears), and process complexity (donation feels like extra work during a busy closing rush).</p>
-
-          <h3>Competitive &amp; Comparative Analysis</h3>
-          <p>Evaluated existing solutions including Goodr and Too Good To Go. Most solutions lacked real-time coordination, simplicity, and reliable logistics support — creating the opportunity space for Food4U.</p>
-          <div class="img-placeholder">[Image Placeholder — Feature Analysis / Competitive Matrix]</div>
-
-          <h3>SWOT Analysis</h3>
-          <p>Conducted to evaluate strengths, weaknesses, opportunities, and risks. Identified areas for differentiation including real-time coordination, Uber Eats logistics integration, and a dead-simple posting flow.</p>
-
-          <h3>Secondary Research</h3>
-          <p>Revealed the scale of food waste (approximately 40% of food in the US is wasted), key safety concerns (Good Samaritan laws in most states), and gaps in existing redistribution processes.</p>
-
-          <h3>Affinity Mapping</h3>
-          <p>Organized all research data to uncover patterns. Key themes: time sensitivity, safety concerns, and complexity in the donation process.</p>
-          <div class="img-placeholder">[Image Placeholder — Affinity Map]</div>
-        </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="persona">
-          <div class="eyebrow">User Understanding</div>
-          <h2>Katie — the restaurant owner who just wants to do the right thing</h2>
-          <p>Persona: <strong>Katie, Restaurant Owner, New York.</strong> Katie needs a fast, reliable way to donate food with minimal effort, while ensuring safety and reducing operational stress. She represents the needs and challenges of restaurant owners managing surplus food every single day.</p>
-          <div class="img-placeholder">[Image Placeholder — Katie Persona Card]</div>
-          <h3>User Journey</h3>
-          <p>Mapped Katie's end-of-shift workflow to identify pain points in managing surplus food during busy closing hours. Revealed challenges around time pressure, coordination, and the absence of a quick donation pathway.</p>
-          <div class="img-placeholder">[Image Placeholder — Katie's User Journey Map]</div>
-        </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="decisions">
-          <div class="eyebrow">Design Decisions</div>
-          <h2>From research to features — the golden thread</h2>
-          <p>Used MoSCoW prioritization to identify the most critical features for the MVP, focusing on core actions like food listing, discovery, and delivery coordination.</p>
-          <div class="img-placeholder">[Image Placeholder — MoSCoW Prioritization Matrix]</div>
-          <table class="decision-table">
-            <thead>
-              <tr><th>Insight</th><th>Design Decision</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Donations are highly time-sensitive</td><td>Real-time food listing system with instant visibility to nearby organizations</td></tr>
-              <tr><td>Donation process feels complex</td><td>Quick, low-effort posting flow — smart dropdowns, pre-filled repeating items</td></tr>
-              <tr><td>Restaurants fear liability</td><td>Clear safety guidelines and Good Samaritan law info embedded in the flow</td></tr>
-              <tr><td>Surplus patterns are repetitive</td><td>Copy-paste previous listing feature — one tap to repost yesterday's surplus</td></tr>
-              <tr><td>Logistics are a barrier</td><td>Delivery integration via Uber Eats API — restaurants don't need to coordinate drivers</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="flows">
-          <div class="eyebrow">User Flow</div>
-          <h2>End-to-end: restaurant posts → organization claims → Uber Eats delivers</h2>
-          <p>Created an end-to-end flow connecting restaurants to organizations in real time. The flow enables quick posting, instant notifications to nearby organizations, and seamless delivery coordination through Uber Eats — all without requiring staff to manage logistics.</p>
-          <div class="img-placeholder">[Image Placeholder — Full User Flow Diagram]</div>
-        </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="mvp">
-          <div class="eyebrow">MVP Strategy</div>
-          <h2>Focus on what makes donation fast and easy</h2>
-          <p>Prioritized core actions: posting surplus food, the copy-paste repost feature, allowing organizations to view nearby listings, and enabling Uber Eats delivery to complete the logistics loop. Everything else was scoped to future iterations.</p>
-        </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="wireframes">
-          <div class="eyebrow">Mid-Fi Wireframes</div>
-          <h2>Testing structure before adding visual polish</h2>
-          <p>Focused on layout, navigation, and simplifying key interactions to make the process quick and easy before committing to visual design decisions.</p>
-          <div class="img-placeholder img-placeholder-tall">[Image Placeholder — Mid-Fi Wireframe Screens]</div>
-        </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="final">
-          <div class="eyebrow">Final Design</div>
-          <h2>Three core features that power the platform</h2>
-
-          <h3>Real-Time Food Listing</h3>
-          <p>Smart dropdown menus allow restaurant staff to post surplus food in seconds — even during the closing rush. Pre-populated fields and a copy-paste feature for repeating items reduce effort to the absolute minimum.</p>
-          <div class="img-placeholder">[Image Placeholder — Food Listing Screen]</div>
-
-          <h3>Nearby Discovery &amp; Feed</h3>
-          <p>Organizations see available donations on a map and feed view, with real-time updates as new listings go live. Filtering by distance, food type, and quantity helps organizations claim the most relevant donations quickly.</p>
-          <div class="img-placeholder">[Image Placeholder — Nearby Listings Map / Feed]</div>
-
-          <h3>Claim &amp; Delivery Tracking</h3>
-          <p>Real-time pickup status and notifications reassure restaurants that food will be collected — without requiring any staff coordination. Uber Eats integration handles driver dispatch and delivery tracking automatically.</p>
-          <div class="img-placeholder">[Image Placeholder — Claim Flow &amp; Delivery Tracking]</div>
-
-          <div class="cs-callout" style="background:#d8eddf; border-color:#4a7c6b;">
-            <strong>Prototype:</strong> Full interactive prototype available in Figma — link to be embedded when ready for publication.
+          <div class="hmw-item">
+            <div class="hmw-q">How Might We…</div>
+            <p>Make it easy to donate without adding staff burden?</p>
           </div>
         </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="accessibility">
-          <div class="eyebrow">Accessibility (WCAG)</div>
-          <h2>Designed for a wide range of users</h2>
-          <p>Applied WCAG guidelines to ensure the app is usable and accessible for all users — particularly important given the diverse staff and volunteer base who would interact with the product.</p>
-          <ul>
-            <li>Color contrast ratios checked for readability in all states</li>
-            <li>Clear typography hierarchy — no reliance on color alone to convey meaning</li>
-            <li>Touch targets sized to minimum 44×44px for comfortable use</li>
-            <li>Simple and intuitive navigation — minimal steps, clear labels</li>
-          </ul>
-          <div class="img-placeholder">[Image Placeholder — WCAG Scorecard / Accessibility Checks]</div>
-        </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="testing">
-          <div class="eyebrow">Usability Testing</div>
-          <h2>Two rounds, with meaningful iterations between them</h2>
-          <p>Conducted two rounds of usability testing (R1 &amp; R2) and iterated the design based on user feedback between each round.</p>
-          <h3>Key changes after R1:</h3>
-          <ul>
-            <li>Made the primary CTA more prominent — users were missing the main action button</li>
-            <li>Surfaced the Donation Guide on the home screen — it was previously buried but users needed it to feel confident donating</li>
-            <li>Simplified the posting flow by reducing the number of required fields</li>
-          </ul>
-          <h3>R2 improvements:</h3>
-          <ul>
-            <li>Improved visibility of key actions and reduced user effort</li>
-            <li>Users completed the full posting flow without guidance</li>
-            <li>Organizations successfully found and claimed nearby listings</li>
-          </ul>
-          <div class="img-placeholder">[Image Placeholder — Usability Testing Notes / Before &amp; After Screens]</div>
-        </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="outcome">
-          <div class="eyebrow">Outcome</div>
-          <h2>Streamlined platform for real-time food redistribution</h2>
-          <p>Designed a platform that reduces donation friction and enables real-time coordination between restaurants and organizations. Created a clear and efficient experience for both user types — making it genuinely possible for a busy restaurant worker to donate surplus food in under 60 seconds.</p>
-          <div class="outcome-grid">
-            <div class="outcome-card">
-              <span class="big-num">&lt;60s</span>
-              <p>Target time for a restaurant to post surplus food using the smart dropdown flow</p>
-            </div>
-            <div class="outcome-card">
-              <span class="big-num">2</span>
-              <p>Rounds of usability testing with meaningful design improvements between each round</p>
-            </div>
-            <div class="outcome-card">
-              <span class="big-num">∞</span>
-              <p>Copy-paste repost feature eliminates re-entry for restaurants with repetitive daily surplus</p>
-            </div>
-            <div class="outcome-card">
-              <span class="big-num">0</span>
-              <p>Logistics coordination required from restaurant staff — Uber Eats handles driver dispatch</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="reflection">
-          <div class="eyebrow">Reflection</div>
-          <h2>Simplifying workflows is critical in time-sensitive scenarios</h2>
-          <p>I learned that in high-pressure, time-constrained environments, every extra step matters enormously. What feels like a minor friction in testing becomes a complete abandonment in the real world when a restaurant worker is doing five other things at closing time.</p>
-          <p>By reducing effort and aligning with real-world operational constraints, the design better supports both operational efficiency and social impact. If I had more time, I'd invest in deeper research with organizations on the receiving end, and explore how to design for low-tech environments where not every volunteer has a smartphone.</p>
-        </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="nav-between">
-          <a href="case-bollystep.html">← BollyStep</a>
-          <a href="case-mayura.html">Next: Mayura Roots →</a>
-        </div>
-
       </div>
-    </div>
     </div>
   </div>
 </section>
 
-<footer>
-  <p>Designed &amp; built by <a href="index.html">Priya T.</a> · UX Designer · Sunnyvale, CA · 2026</p>
+<div class="divider"></div>
+
+<!-- ── PRODUCT VISION ── -->
+<section class="section section--alt" id="vision">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="lbl">03 — Product Vision</span>
+      <h2>Purpose before pixels.</h2>
+      <p>Establishing a clear mission before design decisions ensured every feature tied back to real impact.</p>
+    </div>
+    <div class="grid-3">
+      <div class="vision-card fade-in">
+        <div class="vision-icon">🎯</div>
+        <h4>Mission</h4>
+        <p>Prevent food waste by rescuing surplus food and delivering it to communities in need.</p>
+      </div>
+      <div class="vision-card fade-in fade-in-delay-1">
+        <div class="vision-icon">🔭</div>
+        <h4>Vision</h4>
+        <p>A world where no food is wasted and no community goes hungry.</p>
+      </div>
+      <div class="vision-card fade-in fade-in-delay-2">
+        <div class="vision-icon">💡</div>
+        <h4>Unique Value</h4>
+        <p>Real-time, last-minute food redistribution — fast enough to catch food before it's discarded.</p>
+      </div>
+    </div>
+    <div style="background:#fff;border:1px solid var(--rule);border-radius:var(--rlg);padding:1.75rem;margin-top:1.75rem;" class="fade-in">
+      <h4 style="font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--forest);margin-bottom:1rem;">Product Principles</h4>
+      <div class="grid-4" style="gap:1rem;">
+        <div style="display:flex;gap:.6rem;align-items:flex-start;font-size:.82rem;color:var(--warm-gray);"><span style="color:var(--forest);font-weight:700;flex-shrink:0;">→</span>Food should not be wasted when people are hungry</div>
+        <div style="display:flex;gap:.6rem;align-items:flex-start;font-size:.82rem;color:var(--warm-gray);"><span style="color:var(--forest);font-weight:700;flex-shrink:0;">→</span>Make donations effortless for restaurants</div>
+        <div style="display:flex;gap:.6rem;align-items:flex-start;font-size:.82rem;color:var(--warm-gray);"><span style="color:var(--forest);font-weight:700;flex-shrink:0;">→</span>Ensure trust through safety and quality standards</div>
+        <div style="display:flex;gap:.6rem;align-items:flex-start;font-size:.82rem;color:var(--warm-gray);"><span style="color:var(--forest);font-weight:700;flex-shrink:0;">→</span>Maximize meals served over profit</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── RESEARCH ── -->
+<section class="section" id="research">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="lbl">04 — Research</span>
+      <h2>Five methods. One clear direction.</h2>
+    </div>
+    <div class="grid-3">
+      <div class="r-card fade-in">
+        <div class="r-icon">📋</div>
+        <h3>Surveys</h3>
+        <p>Separate surveys for restaurants and organizations. Stronger pain points on the restaurant side — drove us to focus the MVP on restaurant workflows.</p>
+        <span class="r-stat">2</span>
+        <p style="font-size:.75rem;margin-top:.15rem;">stakeholder groups surveyed</p>
+      </div>
+      <div class="r-card fade-in fade-in-delay-1">
+        <div class="r-icon">🎙️</div>
+        <h3>User Interviews</h3>
+        <p>Uncovered three key barriers: time sensitivity, safety liability fears, and the complexity of the donation process during busy closing hours.</p>
+        <span class="r-stat">6</span>
+        <p style="font-size:.75rem;margin-top:.15rem;">restaurant staff interviewed</p>
+      </div>
+      <div class="r-card fade-in fade-in-delay-2">
+        <div class="r-icon">🔍</div>
+        <h3>Competitive Analysis</h3>
+        <p>Analyzed Goodr, Too Good To Go, and similar platforms. Most lacked real-time coordination, simplicity, and reliable logistics support.</p>
+        <span class="r-stat">5</span>
+        <p style="font-size:.75rem;margin-top:.15rem;">platforms analyzed</p>
+      </div>
+    </div>
+    <!-- Affinity map -->
+    <div style="background:#fff;border:1px solid var(--rule);border-radius:var(--rlg);padding:2rem;box-shadow:var(--sh-sm);margin-top:2.5rem;" class="fade-in">
+      <h3 style="margin-bottom:1.25rem;">Affinity Map — Key Themes</h3>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;">
+        <div style="background:#fff7ed;border:1.5px solid #fed7aa;border-radius:var(--r);padding:1rem;">
+          <div style="font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#c2410c;margin-bottom:.6rem;">Time Sensitivity</div>
+          <div style="background:rgba(255,255,255,.8);border-radius:3px;padding:.4rem .55rem;font-size:.7rem;color:var(--bark);margin-bottom:.35rem;">30–60 min window to donate</div>
+          <div style="background:rgba(255,255,255,.8);border-radius:3px;padding:.4rem .55rem;font-size:.7rem;color:var(--bark);margin-bottom:.35rem;">Closing rush = max stress</div>
+          <div style="background:rgba(255,255,255,.8);border-radius:3px;padding:.4rem .55rem;font-size:.7rem;color:var(--bark);">No time to coordinate logistics</div>
+        </div>
+        <div style="background:#fff1f2;border:1.5px solid #fda4af;border-radius:var(--r);padding:1rem;">
+          <div style="font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#be123c;margin-bottom:.6rem;">Safety Concerns</div>
+          <div style="background:rgba(255,255,255,.8);border-radius:3px;padding:.4rem .55rem;font-size:.7rem;color:var(--bark);margin-bottom:.35rem;">Fear of liability lawsuits</div>
+          <div style="background:rgba(255,255,255,.8);border-radius:3px;padding:.4rem .55rem;font-size:.7rem;color:var(--bark);margin-bottom:.35rem;">Don't know Good Samaritan laws</div>
+          <div style="background:rgba(255,255,255,.8);border-radius:3px;padding:.4rem .55rem;font-size:.7rem;color:var(--bark);">Quality control worries</div>
+        </div>
+        <div style="background:#fffbeb;border:1.5px solid #fcd34d;border-radius:var(--r);padding:1rem;">
+          <div style="font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#b45309;margin-bottom:.6rem;">Process Complexity</div>
+          <div style="background:rgba(255,255,255,.8);border-radius:3px;padding:.4rem .55rem;font-size:.7rem;color:var(--bark);margin-bottom:.35rem;">Multiple steps to post donation</div>
+          <div style="background:rgba(255,255,255,.8);border-radius:3px;padding:.4rem .55rem;font-size:.7rem;color:var(--bark);margin-bottom:.35rem;">Need to find organizations</div>
+          <div style="background:rgba(255,255,255,.8);border-radius:3px;padding:.4rem .55rem;font-size:.7rem;color:var(--bark);">Have to arrange pickup myself</div>
+        </div>
+        <div style="background:#f0fdf4;border:1.5px solid #86efac;border-radius:var(--r);padding:1rem;">
+          <div style="font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--forest);margin-bottom:.6rem;">Repetitive Patterns</div>
+          <div style="background:rgba(255,255,255,.8);border-radius:3px;padding:.4rem .55rem;font-size:.7rem;color:var(--bark);margin-bottom:.35rem;">Same surplus items daily</div>
+          <div style="background:rgba(255,255,255,.8);border-radius:3px;padding:.4rem .55rem;font-size:.7rem;color:var(--bark);margin-bottom:.35rem;">Predictable closing patterns</div>
+          <div style="background:rgba(255,255,255,.8);border-radius:3px;padding:.4rem .55rem;font-size:.7rem;color:var(--bark);">Could automate reposting</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── PERSONA ── -->
+<section class="section section--alt" id="persona">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="lbl">05 — User Understanding</span>
+      <h2>Meet Katie — restaurant owner, NYC.</h2>
+    </div>
+    <div class="persona fade-in">
+      <div class="p-avatar">
+        <div class="p-img">👩‍🍳</div>
+        <div class="p-name">Katie M.</div>
+        <div class="p-badge">Restaurant Owner</div>
+      </div>
+      <div class="p-details">
+        <h3>Managing surplus food every single night</h3>
+        <p class="p-bio" style="max-width:none;">Katie runs a mid-size restaurant in New York. Every night at closing she faces the same problem — 30+ portions of unsold prepared food that will be thrown away. She wants to donate but doesn't have the time or system to make it happen consistently.</p>
+        <div class="p-attrs">
+          <div class="p-attr"><div class="al">Goal</div><div class="av">Donate food fast with minimal effort</div></div>
+          <div class="p-attr"><div class="al">Frustration</div><div class="av">No easy, reliable system exists</div></div>
+          <div class="p-attr"><div class="al">Context</div><div class="av">Closing rush — exhausted staff, time pressure</div></div>
+          <div class="p-attr"><div class="al">Motivation</div><div class="av">Reduce waste, give back to community</div></div>
+        </div>
+        <div class="p-quote">"I throw away perfectly good food every night. It's heartbreaking. I just need someone to make it easy."</div>
+      </div>
+    </div>
+    <!-- Journey -->
+    <div class="journey fade-in" style="margin-top:2rem;">
+      <h3>Katie's Closing Rush Journey</h3>
+      <div class="journey-flow">
+        <div class="j-step"><div class="j-node">1</div><div class="j-label">Kitchen closes, surplus identified</div><div class="j-ok">Clear moment to act</div></div>
+        <div class="j-step"><div class="j-node">2</div><div class="j-label">Opens app to post listing</div><div class="j-ok">One-tap smart form</div></div>
+        <div class="j-step"><div class="j-node">3</div><div class="j-label">Fills in food details</div><div class="j-ok">Copy-paste previous listing</div></div>
+        <div class="j-step"><div class="j-node">4</div><div class="j-label">Org notified instantly</div><div class="j-ok">Real-time push notification</div></div>
+        <div class="j-step"><div class="j-node">5</div><div class="j-label">Pickup confirmed</div><div class="j-ok">Uber Eats handles logistics</div></div>
+        <div class="j-step"><div class="j-node">6</div><div class="j-label">Food delivered, zero waste</div><div class="j-ok" style="background:var(--forest-light);color:var(--forest);">😊 Mission done</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── INSIGHTS → DECISIONS ── -->
+<section class="section" id="insights">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="lbl">06 — Design Decisions</span>
+      <h2>Every insight has a solution.</h2>
+    </div>
+    <table class="d-table fade-in">
+      <thead><tr><th>Research Insight</th><th>Design Decision</th><th>Feature</th></tr></thead>
+      <tbody>
+        <tr><td>Donations are highly time-sensitive</td><td>Real-time listing system with instant visibility</td><td>Live food listing feed</td></tr>
+        <tr><td>Donation process feels complex</td><td>Smart dropdowns + copy-paste previous listing</td><td>Quick post flow (&lt;60 sec)</td></tr>
+        <tr><td>Restaurants fear liability</td><td>Good Samaritan info embedded in the posting flow</td><td>Safety guidelines card</td></tr>
+        <tr><td>Surplus patterns are repetitive</td><td>One-tap repost of yesterday's listing</td><td>Copy-paste feature</td></tr>
+        <tr><td>Logistics are a barrier</td><td>Uber Eats API integration for driver dispatch</td><td>Automatic delivery</td></tr>
+        <tr><td>Organizations need real-time updates</td><td>Push notifications + in-app messaging</td><td>Notification system</td></tr>
+      </tbody>
+    </table>
+    <!-- MoSCoW -->
+    <div style="margin-top:3rem;" class="fade-in">
+      <h3 style="margin-bottom:.5rem;">Feature Prioritization — MoSCoW</h3>
+      <p style="margin-bottom:1rem;">Focused MVP on core actions: post, discover, claim, deliver.</p>
+      <div class="moscow-grid">
+        <div class="moscow-col must">
+          <h4 style="padding:.5rem 1rem;">Must Have</h4>
+          <ul>
+            <li>Food listing / post flow</li>
+            <li>Nearby listings map</li>
+            <li>Claim &amp; confirm</li>
+            <li>Copy-paste repost</li>
+            <li>Real-time notifications</li>
+          </ul>
+        </div>
+        <div class="moscow-col should">
+          <h4 style="padding:.5rem 1rem;">Should Have</h4>
+          <ul>
+            <li>Delivery tracking</li>
+            <li>In-app messaging</li>
+            <li>Safety guidelines</li>
+            <li>History / analytics</li>
+          </ul>
+        </div>
+        <div class="moscow-col could">
+          <h4 style="padding:.5rem 1rem;">Could Have</h4>
+          <ul>
+            <li>Impact dashboard</li>
+            <li>Scheduled donations</li>
+            <li>Multi-location orgs</li>
+          </ul>
+        </div>
+        <div class="moscow-col wont">
+          <h4 style="padding:.5rem 1rem;">Won't Have (v1)</h4>
+          <ul>
+            <li>Consumer-facing app</li>
+            <li>Payment processing</li>
+            <li>Restaurant ratings</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── FINAL DESIGN ── -->
+<section class="section section--alt" id="prototype">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="lbl">07 — Final Design</span>
+      <h2>Three features that power the platform.</h2>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:1.5rem;">
+      <div class="flow-card fade-in">
+        <div class="flow-card-top">
+          <div>
+            <div class="flow-badge restaurant">For Restaurants</div>
+            <h3>Smart dropdown posting</h3>
+            <p style="margin:.6rem 0 1rem;max-width:none;">Pre-populated fields and dropdown menus let staff post surplus food in under 60 seconds — even during a chaotic closing rush. One tap to copy yesterday's listing.</p>
+            <ul style="display:flex;flex-direction:column;gap:.4rem;">
+              <li style="font-size:.85rem;color:var(--warm-gray);padding-left:1rem;position:relative;"><span style="position:absolute;left:0;color:var(--forest);">→</span>Dropdown: food type, quantity, best-by time</li>
+              <li style="font-size:.85rem;color:var(--warm-gray);padding-left:1rem;position:relative;"><span style="position:absolute;left:0;color:var(--forest);">→</span>Copy-paste previous listing in one tap</li>
+              <li style="font-size:.85rem;color:var(--warm-gray);padding-left:1rem;position:relative;"><span style="position:absolute;left:0;color:var(--forest);">→</span>Safety guidelines embedded — no extra steps</li>
+            </ul>
+          </div>
+          <div class="ph ph--tall"><span class="ph-icon">📋</span>Restaurant posting screen</div>
+        </div>
+        <div class="flow-card-bottom">
+          <p style="font-size:.8rem;font-style:italic;color:var(--warm-gray);max-width:none;">💡 Insight: Staff are time-constrained and donation feels like extra work. The copy-paste feature alone removed the biggest friction for repeat donors.</p>
+        </div>
+      </div>
+
+      <div class="flow-card fade-in">
+        <div class="flow-card-top">
+          <div class="ph ph--tall"><span class="ph-icon">🗺️</span>Organization discovery map/feed</div>
+          <div>
+            <div class="flow-badge org">For Organizations</div>
+            <h3>Real-time nearby discovery</h3>
+            <p style="margin:.6rem 0 1rem;max-width:none;">Organizations see available donations on a map and feed view with real-time updates. Filter by distance, food type, and quantity to claim the most relevant donations quickly.</p>
+            <ul style="display:flex;flex-direction:column;gap:.4rem;">
+              <li style="font-size:.85rem;color:var(--warm-gray);padding-left:1rem;position:relative;"><span style="position:absolute;left:0;color:var(--forest);">→</span>Live map + list view with filters</li>
+              <li style="font-size:.85rem;color:var(--warm-gray);padding-left:1rem;position:relative;"><span style="position:absolute;left:0;color:var(--forest);">→</span>Push notification when new listing goes live</li>
+              <li style="font-size:.85rem;color:var(--warm-gray);padding-left:1rem;position:relative;"><span style="position:absolute;left:0;color:var(--forest);">→</span>One-tap claim with instant confirmation</li>
+            </ul>
+          </div>
+        </div>
+        <div class="flow-card-bottom">
+          <p style="font-size:.8rem;font-style:italic;color:var(--warm-gray);max-width:none;">💡 Insight: Organizations needed real-time awareness, not email updates that arrive too late to act on.</p>
+        </div>
+      </div>
+
+      <div class="flow-card fade-in">
+        <div class="flow-card-top">
+          <div>
+            <div class="flow-badge restaurant">Restaurant + Org</div>
+            <h3>Pickup status &amp; delivery tracking</h3>
+            <p style="margin:.6rem 0 1rem;max-width:none;">Real-time updates reassure restaurants that food will be collected — without requiring any staff coordination. Uber Eats integration handles driver dispatch and delivery tracking automatically.</p>
+            <ul style="display:flex;flex-direction:column;gap:.4rem;">
+              <li style="font-size:.85rem;color:var(--warm-gray);padding-left:1rem;position:relative;"><span style="position:absolute;left:0;color:var(--forest);">→</span>Live driver location via Uber Direct API</li>
+              <li style="font-size:.85rem;color:var(--warm-gray);padding-left:1rem;position:relative;"><span style="position:absolute;left:0;color:var(--forest);">→</span>ETA shown to both restaurant and organization</li>
+              <li style="font-size:.85rem;color:var(--warm-gray);padding-left:1rem;position:relative;"><span style="position:absolute;left:0;color:var(--forest);">→</span>Zero staff coordination required after posting</li>
+            </ul>
+          </div>
+          <div class="ph ph--tall"><span class="ph-icon">🚚</span>Delivery tracking screen</div>
+        </div>
+        <div class="flow-card-bottom">
+          <p style="font-size:.8rem;font-style:italic;color:var(--warm-gray);max-width:none;">💡 Insight: The moment restaurants had to manage driver coordination, donations stopped. Removing this step was essential.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:2.5rem;text-align:center;background:var(--forest-light);border-radius:var(--rlg);padding:2.5rem;border:1px solid #86efac;" class="fade-in">
+      <h3 style="margin-bottom:.5rem;">Interactive Prototype</h3>
+      <p style="margin:0 auto 1.5rem;">See the full restaurant-to-organization flow in Figma.</p>
+      <a href="#" class="btn btn-primary">View Full Prototype ↗</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── ACCESSIBILITY ── -->
+<section class="section" id="accessibility">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="lbl">08 — Accessibility</span>
+      <h2>Designed for everyone.</h2>
+      <p>Applied WCAG guidelines to ensure the app works for the diverse staff and volunteer base who interact with it.</p>
+    </div>
+    <div class="wcag-grid">
+      <div class="wcag-item fade-in"><span class="wcag-check">🎨</span><h4>Color Contrast</h4><p>All text meets AA contrast ratio. No reliance on color alone to convey meaning.</p></div>
+      <div class="wcag-item fade-in fade-in-delay-1"><span class="wcag-check">✏️</span><h4>Typography</h4><p>Clear hierarchy, minimum 16px body text, generous line height for readability.</p></div>
+      <div class="wcag-item fade-in fade-in-delay-2"><span class="wcag-check">👆</span><h4>Touch Targets</h4><p>All interactive elements minimum 44×44px for comfortable use under time pressure.</p></div>
+      <div class="wcag-item fade-in fade-in-delay-3"><span class="wcag-check">🧭</span><h4>Navigation</h4><p>Minimal steps, clear labels, no dead ends — especially important for time-stressed users.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── TESTING ── -->
+<section class="section section--dark" id="testing">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="lbl">09 — Usability Testing</span>
+      <h2>Two rounds. Real improvements.</h2>
+      <p>R1 on paper prototypes, R2 on mid-fi designs. Iterated to high-fidelity based on findings.</p>
+    </div>
+    <div class="grid-2" style="gap:2.5rem;margin-bottom:3rem;">
+      <div style="background:rgba(255,255,255,.06);border-radius:var(--rlg);padding:1.75rem;border:1px solid rgba(255,255,255,.1);">
+        <h3 style="margin-bottom:1.1rem;font-size:1.1rem;">Round 1 Findings</h3>
+        <ul style="display:flex;flex-direction:column;gap:.65rem;">
+          <li style="display:flex;gap:.7rem;font-size:.875rem;color:#93a99a;"><span style="color:#fda4af;flex-shrink:0;">✗</span>Primary CTA button wasn't prominent enough</li>
+          <li style="display:flex;gap:.7rem;font-size:.875rem;color:#93a99a;"><span style="color:#fda4af;flex-shrink:0;">✗</span>Donation Guide was buried — users couldn't find safety info</li>
+          <li style="display:flex;gap:.7rem;font-size:.875rem;color:#93a99a;"><span style="color:#fda4af;flex-shrink:0;">✗</span>Too many required fields in posting flow</li>
+          <li style="display:flex;gap:.7rem;font-size:.875rem;color:#93a99a;"><span style="color:#fda4af;flex-shrink:0;">✗</span>Copy-paste feature wasn't discoverable</li>
+        </ul>
+      </div>
+      <div style="background:rgba(46,107,62,.2);border-radius:var(--rlg);padding:1.75rem;border:1.5px solid rgba(125,196,148,.3);">
+        <h3 style="margin-bottom:1.1rem;font-size:1.1rem;color:#7dc494;">Round 2 Improvements</h3>
+        <ul style="display:flex;flex-direction:column;gap:.65rem;">
+          <li style="display:flex;gap:.7rem;font-size:.875rem;color:#93a99a;"><span style="color:#7dc494;flex-shrink:0;">✓</span>Made primary CTA prominent — full-width green button</li>
+          <li style="display:flex;gap:.7rem;font-size:.875rem;color:#93a99a;"><span style="color:#7dc494;flex-shrink:0;">✓</span>Surfaced Donation Guide on home screen</li>
+          <li style="display:flex;gap:.7rem;font-size:.875rem;color:#93a99a;"><span style="color:#7dc494;flex-shrink:0;">✓</span>Reduced to 3 required fields — rest optional</li>
+          <li style="display:flex;gap:.7rem;font-size:.875rem;color:#93a99a;"><span style="color:#7dc494;flex-shrink:0;">✓</span>Copy-paste surfaced as hero action on second visit</li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid-4">
+      <div class="metric-card fade-in"><span class="metric-icon">⚡</span><span class="metric-val">&lt;60s</span><div class="metric-lbl">Post time (target)</div><p class="metric-desc">From opening app to listing live</p></div>
+      <div class="metric-card fade-in fade-in-delay-1"><span class="metric-icon">♻️</span><span class="metric-val">1-tap</span><div class="metric-lbl">Repost previous</div><p class="metric-desc">Copy-paste for repeat donors</p></div>
+      <div class="metric-card fade-in fade-in-delay-2"><span class="metric-icon">🚚</span><span class="metric-val">0</span><div class="metric-lbl">Logistics calls needed</div><p class="metric-desc">Uber Eats handles dispatch</p></div>
+      <div class="metric-card fade-in fade-in-delay-3"><span class="metric-icon">📱</span><span class="metric-val">2</span><div class="metric-lbl">Test rounds</div><p class="metric-desc">With meaningful improvements between each</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── REFLECTION ── -->
+<section class="section" id="reflection">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="lbl">10 — Reflection</span>
+      <h2>What this project taught me.</h2>
+    </div>
+    <div class="grid-3" style="margin-bottom:3rem;">
+      <div class="ref-card fade-in"><div class="ref-icon">⏱️</div><h4>Time constraints change everything</h4><p>In time-sensitive scenarios, every extra step is an abandonment risk. Designing for the closing rush meant ruthlessly cutting anything non-essential.</p></div>
+      <div class="ref-card fade-in fade-in-delay-1"><div class="ref-icon">🤝</div><h4>Logistics is a design problem</h4><p>The Uber Eats integration wasn't a tech decision — it was the UX decision that made donation feasible. Removing coordination from the user's responsibility changed everything.</p></div>
+      <div class="ref-card fade-in fade-in-delay-2"><div class="ref-icon">🌱</div><h4>Social impact needs simplicity most</h4><p>Users want to do good. The only thing stopping them is friction. Reducing effort aligns design values with social values — making it effortless to be generous.</p></div>
+      <div class="ref-card fade-in fade-in-delay-3"><div class="ref-icon">📊</div><h4>Test on both sides</h4><p>I focused testing on the restaurant side. With more time, I'd invest equally in testing with organizations — their experience is equally critical to the system working.</p></div>
+      <div class="ref-card fade-in fade-in-delay-4"><div class="ref-icon">🔮</div><h4>What I'd explore next</h4><p>Deeper organization-side research, low-tech fallback for restaurants without smartphones, and impact dashboards showing meals served over time.</p></div>
+      <div class="ref-card fade-in fade-in-delay-4"><div class="ref-icon">💡</div><h4>Patterns over problems</h4><p>The copy-paste feature emerged from noticing that surplus patterns repeat daily. Always look for patterns in user behavior — they're design opportunities in disguise.</p></div>
+    </div>
+    <div style="background:linear-gradient(135deg,#1e2e22,#0d1f12);border-radius:var(--rlg);padding:3rem;text-align:center;">
+      <h2 style="color:#e8ede9;margin-bottom:.6rem;">Explore the full prototype</h2>
+      <p style="color:rgba(255,255,255,.5);max-width:44ch;margin:0 auto 2rem;">See the complete restaurant-to-organization flow — from posting to delivery — in the interactive Figma prototype.</p>
+      <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
+        <a href="#" class="btn btn-primary">View Prototype ↗</a>
+        <a href="index.html" class="btn btn-outline">← All Projects</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">Priya T.</div>
+  <ul class="footer-links">
+    <li><a href="index.html">All Projects</a></li>
+    <li><a href="case-bollystep.html">← BollyStep</a></li>
+    <li><a href="case-mayura.html">Mayura Roots →</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <p>Food4U Case Study · Social Impact · 3-Week Sprint · 2026</p>
+  <p style="margin-top:.3rem;">Designed by Priya T. · UX Designer · General Assembly</p>
 </footer>
+
 <script>
-// Scroll-triggered fade-up animations
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, { threshold: 0.08 });
-document.querySelectorAll('.fade-up').forEach((el, i) => {
-  el.style.transitionDelay = (i * 0.05) + 's';
-  observer.observe(el);
-});
-// Active nav link
-const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-document.querySelectorAll('.nav-links a').forEach(link => {
-  const href = link.getAttribute('href');
-  if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-    link.classList.add('active');
-  } else {
-    link.classList.remove('active');
-  }
-});
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>

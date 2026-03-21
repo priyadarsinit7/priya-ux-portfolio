@@ -5,450 +5,933 @@
 <title>BollyStep — Case Study · Priya T</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
 <style>
-/* SHARED STYLES — imported by all pages */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
-  --ink: #1a1815;
-  --ink-muted: #6b6560;
-  --ink-faint: #b0aba5;
-  --cream: #f7f4ef;
-  --cream-dark: #ede9e1;
-  --accent: #c85a2a;
-  --accent-light: #f5ede7;
-  --white: #ffffff;
-  --serif: 'DM Serif Display', Georgia, serif;
-  --sans: 'DM Sans', system-ui, sans-serif;
-  --max: 1100px;
-  --radius: 4px;
-  --t: 0.3s cubic-bezier(0.4,0,0.2,1);
+  --cream:#faf6f1; --ivory:#f3ede4; --charcoal:#1c1814; --warm-gray:#6b6058; --light-rule:#e8dfd4;
+  --marigold:#e8a020; --saffron:#d4691e; --rose:#c9826b; --deep-red:#8b2e2e;
+  --blue:#2563a8; --blue-light:#dbeafe;
+  --green:#1e7a4a; --green-light:#d1fae5;
+  --orange:#c45c0a; --orange-light:#ffedd5;
+  --fd:'Cormorant Garamond',Georgia,serif;
+  --fb:'DM Sans',system-ui,sans-serif;
+  --max:1140px; --r-sm:6px; --r-md:12px; --r-lg:20px;
+  --sh-sm:0 2px 8px rgba(28,24,20,.08);
+  --sh-md:0 8px 32px rgba(28,24,20,.12);
 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--fb);background:var(--cream);color:var(--charcoal);line-height:1.7;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4{font-family:var(--fd);line-height:1.15;color:var(--charcoal);}
+h1{font-size:clamp(2.8rem,6vw,5.5rem);font-weight:600;letter-spacing:-.02em;}
+h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:600;letter-spacing:-.01em;}
+h3{font-size:clamp(1.15rem,2vw,1.5rem);font-weight:600;}
+h4{font-size:1rem;font-weight:600;}
+p{font-size:.95rem;color:var(--warm-gray);max-width:62ch;}
+p.lead{font-size:1.1rem;color:var(--charcoal);}
+strong{color:var(--charcoal);font-weight:600;}
 
-html { scroll-behavior: smooth; }
-body { font-family: var(--sans); background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+/* Layout */
+.container{max-width:var(--max);margin:0 auto;padding:0 2rem;}
+.section{padding:90px 0;}
+.section--alt{background:var(--ivory);}
+.section--dark{background:var(--charcoal);}
+.section--dark h2,.section--dark h3,.section--dark h4{color:#fff;}
+.section--dark p{color:#b0a898;}
+.divider{height:1px;background:var(--light-rule);}
 
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(247,244,239,0.93); backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--cream-dark);
-  padding: 0 2.5rem; height: 64px;
-  display: flex; align-items: center; justify-content: space-between;
+.lbl{font-family:var(--fb);font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--marigold);display:block;margin-bottom:.6rem;}
+.sec-hd{margin-bottom:3rem;}
+.sec-hd p{margin-top:.6rem;}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+
+/* Placeholder images */
+.ph{background:linear-gradient(135deg,var(--ivory) 0%,#e8d9c8 100%);border:2px dashed var(--light-rule);border-radius:var(--r-md);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;color:#a09080;font-size:.78rem;font-weight:500;text-align:center;padding:1.5rem;min-height:220px;}
+.ph-icon{font-size:2rem;opacity:.4;}
+.ph--tall{min-height:360px;}
+.ph--short{min-height:140px;}
+.ph--wide{min-height:180px;}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.75rem;border-radius:100px;font-family:var(--fb);font-size:.875rem;font-weight:600;cursor:pointer;border:2px solid transparent;transition:all .25s ease;text-decoration:none;}
+.btn-primary{background:var(--marigold);color:var(--charcoal);border-color:var(--marigold);}
+.btn-primary:hover{background:var(--saffron);border-color:var(--saffron);transform:translateY(-2px);}
+.btn-ghost{background:transparent;color:var(--charcoal);border-color:var(--light-rule);}
+.btn-ghost:hover{background:var(--ivory);border-color:var(--warm-gray);}
+.btn-outline{background:transparent;color:#fff;border-color:rgba(255,255,255,.4);}
+.btn-outline:hover{background:rgba(255,255,255,.1);border-color:#fff;}
+
+/* Nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(250,246,241,.9);backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s;}
+.nav.scrolled{border-color:var(--light-rule);box-shadow:var(--sh-sm);}
+.nav-logo{font-family:var(--fd);font-size:1.4rem;font-weight:700;color:var(--charcoal);display:flex;align-items:center;gap:.4rem;}
+.nav-logo span{width:7px;height:7px;background:var(--marigold);border-radius:50%;margin-bottom:2px;display:inline-block;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--warm-gray);transition:color .2s;}
+.nav-links a:hover{color:var(--charcoal);}
+
+/* Hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(155deg,#1a0e08 0%,#3d1c0e 30%,#7a3515 60%,#c4580a 82%,#e8a020 100%);}
+.hero-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 18% 55%,rgba(232,160,32,.18) 0%,transparent 50%),radial-gradient(circle at 78% 20%,rgba(201,130,107,.12) 0%,transparent 40%);}
+.hero-pattern{position:absolute;top:0;right:0;width:52%;height:100%;opacity:.06;background-image:repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 1px,transparent 40px),repeating-linear-gradient(-45deg,#fff 0,#fff 1px,transparent 1px,transparent 40px);}
+.hero-visual{position:absolute;right:0;top:0;width:52%;height:100%;display:flex;align-items:center;justify-content:center;opacity:.3;color:var(--marigold);}
+.hero-visual .ph-dance{font-size:10rem;line-height:1;}
+.hero-content{position:relative;z-index:2;padding:7rem 2rem 4.5rem;max-width:var(--max);margin:0 auto;width:100%;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.75rem;}
+.hero-tag{display:inline-flex;align-items:center;gap:.3rem;padding:.28rem .8rem;border-radius:100px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.85);font-size:.72rem;font-weight:500;backdrop-filter:blur(8px);}
+.hero-tag .dot{width:5px;height:5px;border-radius:50%;background:var(--marigold);flex-shrink:0;}
+.hero h1{color:#fff;margin-bottom:.85rem;text-shadow:0 2px 20px rgba(0,0,0,.3);}
+.hero-sub{font-family:var(--fd);font-size:clamp(.95rem,2vw,1.3rem);color:rgba(255,255,255,.72);font-style:italic;max-width:52ch;margin-bottom:2rem;}
+.hero-strip{display:flex;flex-wrap:wrap;gap:2rem;padding:1.25rem 0;border-top:1px solid rgba(255,255,255,.15);border-bottom:1px solid rgba(255,255,255,.15);margin-bottom:2rem;}
+.hero-stat .slbl{font-size:.62rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--marigold);}
+.hero-stat .sval{font-size:.88rem;color:rgba(255,255,255,.9);font-weight:500;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;color:rgba(255,255,255,.35);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;animation:bounce 2s infinite;}
+.hero-scroll::before{content:'';display:block;width:1px;height:36px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.3));}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(6px);}}
+
+/* Problem section */
+.problem-split{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.pain-list{display:flex;flex-direction:column;gap:1.25rem;margin-top:1.5rem;}
+.pain-item{display:flex;gap:.9rem;align-items:flex-start;}
+.pain-icon{flex-shrink:0;width:40px;height:40px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--ivory),#ead8c4);border:1px solid var(--light-rule);display:flex;align-items:center;justify-content:center;font-size:1rem;margin-top:2px;}
+.pain-text h4{margin-bottom:.2rem;font-size:.92rem;}
+.pain-text p{font-size:.82rem;max-width:none;}
+
+/* Research cards */
+.r-card{background:#fff;border:1px solid var(--light-rule);border-radius:var(--r-lg);padding:1.75rem;box-shadow:var(--sh-sm);transition:transform .25s,box-shadow .25s;}
+.r-card:hover{transform:translateY(-4px);box-shadow:var(--sh-md);}
+.r-card-icon{width:44px;height:44px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--marigold),var(--saffron));display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1rem;}
+.r-card h3{font-size:1.1rem;margin-bottom:.4rem;}
+.r-card p{font-size:.82rem;}
+.r-stat{font-family:var(--fd);font-size:2.2rem;font-weight:700;color:var(--marigold);line-height:1;margin-top:.75rem;display:block;}
+
+/* Affinity map */
+.affinity{background:#fff;border:1px solid var(--light-rule);border-radius:var(--r-lg);padding:2rem;box-shadow:var(--sh-sm);margin-top:2.5rem;}
+.affinity-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.25rem;}
+.acluster{border-radius:var(--r-md);padding:1rem;}
+.acluster.blue{background:#eff6ff;border:1.5px solid #93c5fd;}
+.acluster.green{background:#f0fdf4;border:1.5px solid #86efac;}
+.acluster.amber{background:#fffbeb;border:1.5px solid #fcd34d;}
+.acluster.rose{background:#fff1f2;border:1.5px solid #fda4af;}
+.ac-title{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem;}
+.acluster.blue .ac-title{color:var(--blue);}
+.acluster.green .ac-title{color:var(--green);}
+.acluster.amber .ac-title{color:#b45309;}
+.acluster.rose .ac-title{color:#be123c;}
+.anote{background:rgba(255,255,255,.82);border-radius:3px;padding:.4rem .55rem;font-size:.7rem;color:var(--charcoal);line-height:1.4;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:.4rem;}
+
+/* Persona */
+.persona{background:#fff;border:1px solid var(--light-rule);border-radius:var(--r-lg);padding:2rem;box-shadow:var(--sh-md);display:grid;grid-template-columns:160px 1fr;gap:2rem;align-items:start;margin-top:2.5rem;}
+.p-avatar{display:flex;flex-direction:column;align-items:center;gap:.6rem;text-align:center;}
+.p-img{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,#fdebd0,#d4a574);border:3px solid var(--marigold);display:flex;align-items:center;justify-content:center;font-size:2.5rem;}
+.p-name{font-family:var(--fd);font-size:1.1rem;font-weight:700;}
+.p-badge{display:inline-block;padding:.2rem .65rem;background:var(--blue-light);color:var(--blue);border-radius:100px;font-size:.68rem;font-weight:600;}
+.p-details h3{font-size:1.3rem;margin-bottom:.25rem;}
+.p-bio{font-size:.875rem;margin:.6rem 0 1rem;}
+.p-attrs{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem;}
+.p-attr{padding:.65rem;background:var(--ivory);border-radius:var(--r-sm);}
+.p-attr .al{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:.15rem;}
+.p-attr .av{font-size:.82rem;color:var(--charcoal);font-weight:500;}
+.p-quote{background:linear-gradient(135deg,var(--ivory),#ead8c4);border-left:3px solid var(--marigold);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.9rem 1.1rem;font-family:var(--fd);font-size:1rem;font-style:italic;color:var(--charcoal);}
+
+/* Journey map */
+.journey{background:#fff;border:1px solid var(--light-rule);border-radius:var(--r-lg);padding:2rem;box-shadow:var(--sh-sm);margin-top:2.5rem;overflow-x:auto;}
+.journey-flow{display:flex;gap:0;align-items:flex-start;min-width:680px;}
+.j-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;}
+.j-step::after{content:'→';position:absolute;top:16px;right:-10px;font-size:1rem;color:var(--light-rule);z-index:1;}
+.j-step:last-child::after{display:none;}
+.j-node{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--marigold),var(--saffron));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.8rem;margin-bottom:.6rem;position:relative;z-index:2;box-shadow:0 2px 8px rgba(232,160,32,.35);}
+.j-label{font-size:.72rem;font-weight:600;margin-bottom:.4rem;color:var(--charcoal);line-height:1.3;}
+.j-friction{background:#fff1f2;border:1px solid #fda4af;border-radius:var(--r-sm);padding:.35rem .55rem;font-size:.64rem;color:#be123c;font-weight:500;line-height:1.4;margin-top:.4rem;}
+.j-friction::before{content:'⚠ ';}
+
+/* Insights */
+.i-card{background:#fff;border:1px solid var(--light-rule);border-radius:var(--r-lg);padding:1.5rem;box-shadow:var(--sh-sm);transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;gap:.6rem;}
+.i-card:hover{transform:translateY(-4px);box-shadow:var(--sh-md);}
+.i-num{font-family:var(--fd);font-size:2.8rem;font-weight:700;color:var(--light-rule);line-height:1;}
+.i-icon{font-size:1.5rem;}
+.i-card h4{font-size:.95rem;}
+.i-card p{font-size:.8rem;}
+
+/* Decision table */
+.d-table{width:100%;border-collapse:collapse;font-size:.875rem;margin-top:1.5rem;}
+.d-table th{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--marigold);padding:10px 14px;text-align:left;border-bottom:2px solid var(--light-rule);background:var(--ivory);}
+.d-table td{padding:10px 14px;border-bottom:1px solid var(--light-rule);color:var(--warm-gray);vertical-align:top;line-height:1.6;}
+.d-table td:first-child{color:var(--charcoal);font-weight:500;}
+.d-table tr:hover td{background:#fdf9f5;}
+
+/* Before / After */
+.ba{background:#fff;border:1px solid var(--light-rule);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-sm);margin-bottom:1.5rem;}
+.ba-hd{padding:1.25rem 1.75rem;border-bottom:1px solid var(--light-rule);display:flex;justify-content:space-between;align-items:center;}
+.ba-hd h3{font-size:1.1rem;}
+.ba-chip{background:var(--orange-light);color:var(--orange);border-radius:100px;padding:.25rem .75rem;font-size:.7rem;font-weight:600;}
+.ba-panels{display:grid;grid-template-columns:1fr 1fr;}
+.ba-panel{padding:1.25rem 1.5rem;}
+.ba-panel:first-child{border-right:1px solid var(--light-rule);}
+.ba-lbl{font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;display:flex;align-items:center;gap:.35rem;margin-bottom:.6rem;}
+.ba-lbl.before{color:#be123c;}.ba-lbl.before::before{content:'';width:7px;height:7px;border-radius:50%;background:#be123c;display:inline-block;}
+.ba-lbl.after{color:var(--green);}.ba-lbl.after::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);display:inline-block;}
+
+/* Role tabs */
+.role-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem;}
+.role-tab{padding:.55rem 1.25rem;border-radius:100px;font-size:.82rem;font-weight:600;cursor:pointer;border:1.5px solid var(--light-rule);background:#fff;color:var(--warm-gray);transition:all .2s;}
+.role-tab.active[data-role="dancer"]{background:var(--blue-light);border-color:var(--blue);color:var(--blue);}
+.role-tab.active[data-role="organizer"]{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.role-tab.active[data-role="choreo"]{background:var(--orange-light);border-color:var(--orange);color:var(--orange);}
+.role-panel{display:none;}.role-panel.active{display:grid;}
+
+/* Wireframe carousel */
+.carousel-wrap{position:relative;overflow:hidden;border-radius:var(--r-lg);}
+.carousel-track{display:flex;gap:1.5rem;transition:transform .4s cubic-bezier(.4,0,.2,1);}
+.carousel-slide{flex-shrink:0;width:calc((100% - 3rem) / 3);}
+.carousel-nav{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1.5rem;}
+.carousel-btn{width:38px;height:38px;border-radius:50%;background:#fff;border:1.5px solid var(--light-rule);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.9rem;transition:all .2s;}
+.carousel-btn:hover{background:var(--marigold);border-color:var(--marigold);color:#fff;}
+.carousel-dots{display:flex;gap:.5rem;}
+.carousel-dot{width:8px;height:8px;border-radius:50%;background:var(--light-rule);cursor:pointer;transition:background .2s;}
+.carousel-dot.active{background:var(--marigold);}
+
+/* Metric cards */
+.metric-card{background:var(--charcoal);border-radius:var(--r-lg);padding:2rem;text-align:center;}
+.metric-icon{font-size:2rem;margin-bottom:.75rem;display:block;}
+.metric-val{font-family:var(--fd);font-size:3.5rem;font-weight:700;color:var(--marigold);line-height:1;display:block;}
+.metric-lbl{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin:.5rem 0 .35rem;}
+.metric-desc{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.6;max-width:none;}
+
+/* Reflection cards */
+.ref-card{border-top:3px solid var(--marigold);padding:1.5rem 0;display:flex;flex-direction:column;gap:.6rem;}
+.ref-icon{font-size:1.8rem;}
+.ref-card h4{font-size:.95rem;}
+.ref-card p{font-size:.82rem;}
+
+/* Footer */
+.footer{background:var(--charcoal);padding:3rem 2rem;text-align:center;}
+.footer-logo{font-family:var(--fd);font-size:1.8rem;color:#fff;margin-bottom:1rem;}
+.footer-links{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;list-style:none;margin-bottom:1rem;}
+.footer-links a{font-size:.82rem;color:rgba(255,255,255,.5);transition:color .2s;}
+.footer-links a:hover{color:var(--marigold);}
+.footer p{font-size:.78rem;color:rgba(255,255,255,.3);}
+
+/* Fade animations */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease;}
+.fade-in.visible{opacity:1;transform:none;}
+.fade-in-delay-1{transition-delay:.1s;}
+.fade-in-delay-2{transition-delay:.2s;}
+.fade-in-delay-3{transition-delay:.3s;}
+.fade-in-delay-4{transition-delay:.4s;}
+.fade-in-delay-5{transition-delay:.5s;}
+
+/* Responsive */
+@media(max-width:900px){
+  .grid-2,.problem-split,.ba-panels,.persona{grid-template-columns:1fr;}
+  .grid-3,.grid-4{grid-template-columns:1fr 1fr;}
+  .affinity-grid{grid-template-columns:1fr 1fr;}
+  .carousel-slide{width:calc((100% - 1.5rem)/2);}
 }
-.nav-logo { font-family: var(--serif); font-size: 1.2rem; color: var(--ink); text-decoration: none; }
-.nav-links { display: flex; gap: 2.5rem; list-style: none; }
-.nav-links a { font-size: 0.8rem; font-weight: 500; color: var(--ink-muted); text-decoration: none; letter-spacing: 0.07em; text-transform: uppercase; transition: color var(--t); }
-.nav-links a:hover, .nav-links a.active { color: var(--accent); }
-
-footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem; text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.3); }
-footer a { color: var(--accent); text-decoration: none; }
-
-.container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
-section { padding: 90px 0; }
-.fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
-.fade-up.visible { opacity: 1; transform: none; }
-
-.eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
-.eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--accent); }
-h1.display { font-family: var(--serif); font-size: clamp(2.4rem,4.5vw,3.8rem); line-height: 1.1; letter-spacing: -0.02em; }
-h2.section-title { font-family: var(--serif); font-size: clamp(1.8rem,3vw,2.8rem); line-height: 1.15; letter-spacing: -0.02em; }
-em { color: var(--accent); font-style: italic; }
-
-.pill { background: var(--white); border: 1px solid var(--cream-dark); padding: 5px 13px; border-radius: 40px; font-size: 0.78rem; font-weight: 500; color: var(--ink-muted); display: inline-block; }
-.pill-row { display: flex; flex-wrap: wrap; gap: 8px; }
-
-.btn { display: inline-flex; align-items: center; gap: 8px; background: var(--ink); color: var(--white); text-decoration: none; padding: 13px 26px; font-size: 0.875rem; font-weight: 500; border-radius: var(--radius); transition: background var(--t), transform var(--t); }
-.btn:hover { background: var(--accent); transform: translateY(-2px); }
-.btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink-faint); }
-.btn-ghost:hover { background: transparent; color: var(--accent); border-color: var(--accent); }
-
-@media (max-width: 768px) {
-  nav { padding: 0 1rem; }
-  .nav-links { gap: 1.5rem; }
-  .container { padding: 0 1.25rem; }
-  section { padding: 60px 0; }
-}
-
-</style>
-<style>
-/* ── CASE STUDY SHARED STYLES ── */
-.cs-hero { padding: 130px 0 80px; background: linear-gradient(160deg, #fce8d8 0%, #f7f4ef 60%); border-bottom: 1px solid var(--cream-dark); }
-.cs-hero .eyebrow { margin-bottom: 1rem; }
-.cs-hero h1 { font-family: var(--serif); font-size: clamp(2.4rem,4.5vw,3.8rem); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 1rem; max-width: 700px; }
-.cs-hero .cs-tagline { font-size: 1.05rem; font-weight: 300; color: var(--ink-muted); max-width: 580px; line-height: 1.85; margin-bottom: 2.5rem; }
-.cs-meta-bar { display: flex; flex-wrap: wrap; gap: 2rem; padding: 1.5rem 2rem; background: var(--white); border-radius: 10px; border: 1px solid var(--cream-dark); }
-.cs-meta-item { display: flex; flex-direction: column; gap: 2px; }
-.cs-meta-item label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
-.cs-meta-item span { font-size: 0.92rem; font-weight: 500; }
-
-.cs-body { background: var(--white); }
-.cs-layout { display: grid; grid-template-columns: 220px 1fr; gap: 4rem; align-items: start; }
-.cs-toc { position: sticky; top: 90px; }
-.cs-toc nav { background: var(--cream); border: 1px solid var(--cream-dark); border-radius: 10px; padding: 1.25rem; }
-.cs-toc nav h4 { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
-.cs-toc nav a { display: block; font-size: 0.82rem; color: var(--ink-muted); text-decoration: none; padding: 5px 0; border-bottom: 1px solid transparent; transition: color var(--t); }
-.cs-toc nav a:hover { color: var(--accent); }
-
-.cs-content { max-width: 760px; }
-.cs-section { margin-bottom: 4rem; scroll-margin-top: 80px; }
-.cs-section h2 { font-family: var(--serif); font-size: clamp(1.6rem,2.2vw,2.1rem); margin-bottom: 1.25rem; letter-spacing: -0.02em; }
-.cs-section h3 { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 0.75rem; margin-top: 1.75rem; }
-.cs-section p { font-size: 0.95rem; font-weight: 300; color: var(--ink-muted); line-height: 1.9; margin-bottom: 1rem; }
-.cs-section ul { list-style: none; margin: 0.5rem 0 1rem; }
-.cs-section ul li { font-size: 0.92rem; font-weight: 300; color: var(--ink-muted); padding-left: 18px; position: relative; margin-bottom: 6px; line-height: 1.7; }
-.cs-section ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem; top: 3px; }
-.cs-section strong { color: var(--ink); font-weight: 500; }
-
-.cs-divider { height: 1px; background: var(--cream-dark); margin: 3rem 0; }
-.cs-callout { background: var(--accent-light); border-left: 3px solid var(--accent); padding: 18px 22px; border-radius: 0 var(--radius) var(--radius) 0; margin: 1.5rem 0; font-size: 0.95rem; color: var(--ink-muted); line-height: 1.8; }
-.cs-callout strong { color: var(--ink); }
-
-.insight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
-.insight-card { background: var(--cream); border: 1px solid var(--cream-dark); border-radius: 8px; padding: 1.25rem; }
-.insight-card .ic-icon { font-size: 1.3rem; margin-bottom: 0.5rem; display: block; }
-.insight-card h4 { font-size: 0.85rem; font-weight: 500; margin-bottom: 0.4rem; }
-.insight-card p { font-size: 0.82rem; color: var(--ink-muted); line-height: 1.7; margin: 0; }
-
-.decision-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; margin: 1.5rem 0; }
-.decision-table th { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); padding: 8px 12px; text-align: left; border-bottom: 2px solid var(--cream-dark); }
-.decision-table td { padding: 10px 12px; border-bottom: 1px solid var(--cream-dark); color: var(--ink-muted); vertical-align: top; line-height: 1.6; }
-.decision-table td:first-child { color: var(--ink); font-weight: 500; }
-
-.outcome-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
-.outcome-card { background: var(--cream); border-radius: 8px; padding: 1.25rem; border: 1px solid var(--cream-dark); text-align: center; }
-.outcome-card .big-num { font-family: var(--serif); font-size: 2.5rem; color: var(--accent); line-height: 1; display: block; margin-bottom: 0.4rem; }
-.outcome-card p { font-size: 0.82rem; color: var(--ink-muted); margin: 0; line-height: 1.6; }
-
-.img-placeholder { width: 100%; aspect-ratio: 16/9; background: var(--cream-dark); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.82rem; color: var(--ink-faint); font-style: italic; margin: 1.5rem 0; border: 1px dashed var(--ink-faint); }
-.img-placeholder-tall { aspect-ratio: 4/3; }
-
-.nav-between { display: flex; justify-content: space-between; align-items: center; padding: 2.5rem 0; border-top: 1px solid var(--cream-dark); margin-top: 2rem; }
-.nav-between a { font-size: 0.85rem; font-weight: 500; color: var(--ink-muted); text-decoration: none; transition: color var(--t); display: flex; align-items: center; gap: 8px; }
-.nav-between a:hover { color: var(--accent); }
-.back-all { font-size: 0.82rem; font-weight: 500; color: var(--ink-muted); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color var(--t); }
-.back-all:hover { color: var(--accent); }
-
-@media (max-width: 860px) {
-  .cs-layout { grid-template-columns: 1fr; }
-  .cs-toc { display: none; }
-  .insight-grid, .outcome-grid, .decision-table { }
-}
-@media (max-width: 600px) {
-  .insight-grid, .outcome-grid { grid-template-columns: 1fr; }
-  .cs-meta-bar { gap: 1rem; }
+@media(max-width:600px){
+  .grid-3,.grid-4,.affinity-grid{grid-template-columns:1fr;}
+  .carousel-slide{width:100%;}
+  .nav-links{gap:1.25rem;}
+  .hero-strip{gap:1.25rem;}
 }
 </style>
 </head>
 <body>
-<nav>
-  <a href="index.html" class="nav-logo">Priya T.</a>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">Priya T <span></span></a>
   <ul class="nav-links">
-    <li><a href="index.html" class="active">Work</a></li>
+    <li><a href="index.html">Work</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="resume.html">Resume</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
-<section class="cs-hero">
+<!-- ── HERO ──────────────────────────────────────────────────── -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-visual"><div class="ph-dance">💃</div></div>
+
+  <div class="hero-content">
+    <div class="hero-tags">
+      <span class="hero-tag"><span class="dot"></span>Capstone Project</span>
+      <span class="hero-tag"><span class="dot"></span>Website Redesign</span>
+      <span class="hero-tag"><span class="dot"></span>3-Week Sprint</span>
+      <span class="hero-tag"><span class="dot"></span>Live Beta Product</span>
+    </div>
+
+    <h1>BollyStep</h1>
+    <p class="hero-sub">Helping South Asian wedding groups coordinate and learn dances — asynchronously.</p>
+
+    <div class="hero-strip">
+      <div class="hero-stat"><div class="slbl">Role</div><div class="sval">UX Designer</div></div>
+      <div class="hero-stat"><div class="slbl">Timeline</div><div class="sval">3 Weeks</div></div>
+      <div class="hero-stat"><div class="slbl">Platform</div><div class="sval">Live Beta Web</div></div>
+      <div class="hero-stat"><div class="slbl">Tools</div><div class="sval">Figma · FigJam · Jira</div></div>
+      <div class="hero-stat"><div class="slbl">Scope</div><div class="sval">Onboarding · Navigation · UX Redesign</div></div>
+    </div>
+
+    <div class="hero-actions">
+      <a href="#prototype" class="btn btn-primary">View Prototype ↗</a>
+      <a href="index.html" class="btn btn-outline">← All Projects</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ── SNEAK PEEK ─────────────────────────────────────────────── -->
+<section class="section--alt section" id="sneak">
   <div class="container">
-    <a href="index.html" class="back-all" style="margin-bottom:1.5rem;display:inline-flex;">← All Projects</a>
-    <div class="eyebrow">Capstone · Website Redesign</div>
-    <h1>BollyStep — Helping South Asian Wedding Groups Coordinate and Learn Dances <em>Asynchronously</em></h1>
-    <p class="cs-tagline">Users struggled with coordination and a confusing platform experience. I redesigned onboarding, navigation, and structure to improve usability and trust across three distinct user roles.</p>
-    <div class="cs-meta-bar">
-      <div class="cs-meta-item"><label>Timeline</label><span>3 Weeks</span></div>
-      <div class="cs-meta-item"><label>Role</label><span>UX Designer</span></div>
-      <div class="cs-meta-item"><label>Scope</label><span>Onboarding, Navigation, UX Redesign</span></div>
-      <div class="cs-meta-item"><label>Platform</label><span>Live Beta Web Product</span></div>
-      <div class="cs-meta-item"><label>Tools</label><span>Figma, FigJam, Jira</span></div>
+    <div class="sec-hd">
+      <span class="lbl">01 — Final Design</span>
+      <h2>A glimpse of what we built.</h2>
+      <p>Role-based navigation, simplified onboarding, and an explore-first experience — designed to reduce drop-off and build trust.</p>
+    </div>
+    <div class="grid-4">
+      <div class="fade-in">
+        <div class="ph ph--tall"><span class="ph-icon">🏠</span>Homepage Redesign</div>
+        <p style="margin-top:.6rem;font-size:.78rem;text-align:center;">Role-based homepage</p>
+      </div>
+      <div class="fade-in fade-in-delay-1">
+        <div class="ph ph--tall"><span class="ph-icon">🗺️</span>Navigation</div>
+        <p style="margin-top:.6rem;font-size:.78rem;text-align:center;">Restructured nav</p>
+      </div>
+      <div class="fade-in fade-in-delay-2">
+        <div class="ph ph--tall"><span class="ph-icon">💃</span>Explore Screen</div>
+        <p style="margin-top:.6rem;font-size:.78rem;text-align:center;">Browse before committing</p>
+      </div>
+      <div class="fade-in fade-in-delay-3">
+        <div class="ph ph--tall"><span class="ph-icon">✍️</span>Sign-Up Flow</div>
+        <p style="margin-top:.6rem;font-size:.78rem;text-align:center;">Simplified onboarding</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- BODY -->
-<section class="cs-body">
+<div class="divider"></div>
+
+<!-- ── PROBLEM ────────────────────────────────────────────────── -->
+<section class="section" id="problem">
   <div class="container">
-    <div style="padding: 80px 0;">
-    <div class="cs-layout">
-      <!-- TOC -->
-      <div class="cs-toc">
-        <nav>
-          <h4>Contents</h4>
-          <a href="#problem">The Problem</a>
-          <a href="#goal">Goal</a>
-          <a href="#research">Research</a>
-          <a href="#insights">Key Insights</a>
-          <a href="#decisions">Design Decisions</a>
-          <a href="#architecture">Site Architecture</a>
-          <a href="#flows">User Flows</a>
-          <a href="#ideation">Ideation</a>
-          <a href="#wireframes">Wireframes</a>
-          <a href="#final">Final Design</a>
-          <a href="#testing">Usability Testing</a>
-          <a href="#outcome">Outcome</a>
-          <a href="#reflection">Reflection</a>
-        </nav>
+    <div class="problem-split">
+      <div>
+        <span class="lbl">02 — Problem</span>
+        <h2>Coordination chaos, broken sign-up, zero trust.</h2>
+        <p class="lead" style="margin-top:.75rem;">Users couldn't coordinate group dances across schedules and time zones — and the platform made it worse.</p>
+
+        <div class="pain-list" style="margin-top:1.75rem;">
+          <div class="pain-item fade-in">
+            <div class="pain-icon">📝</div>
+            <div class="pain-text">
+              <h4>Broken sign-up flow</h4>
+              <p>Users expected instant account creation but got redirected to a contact form.</p>
+            </div>
+          </div>
+          <div class="pain-item fade-in fade-in-delay-1">
+            <div class="pain-icon">🗺️</div>
+            <div class="pain-text">
+              <h4>Overwhelming navigation</h4>
+              <p>No clear hierarchy — users couldn't find where to go or understand what the platform offered.</p>
+            </div>
+          </div>
+          <div class="pain-item fade-in fade-in-delay-2">
+            <div class="pain-icon">👤</div>
+            <div class="pain-text">
+              <h4>Unclear user roles</h4>
+              <p>Dancers, Organizers, and Choreographers shared one confusing experience with no differentiation.</p>
+            </div>
+          </div>
+          <div class="pain-item fade-in fade-in-delay-3">
+            <div class="pain-icon">💰</div>
+            <div class="pain-text">
+              <h4>No pricing transparency</h4>
+              <p>Hidden costs and no content previews killed trust before users even signed up.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- CONTENT -->
-      <div class="cs-content">
-
-        <div class="cs-section" id="problem">
-          <div class="eyebrow">The Problem</div>
-          <h2>Coordination chaos and a broken sign-up flow</h2>
-          <p>Users struggled to coordinate group dances across different schedules, time zones, and experience levels. But the platform itself made things worse — with unclear navigation, no pricing transparency, and a broken sign-up flow that redirected users to a contact form instead of letting them create an account.</p>
-          <div class="cs-callout">
-            <strong>Result:</strong> Low trust and high drop-off rates before users even completed onboarding. We hypothesized that the current user flow was not as streamlined as it could be and set out to validate this through user interviews and usability testing on bollystep.com.
-          </div>
+      <div class="fade-in">
+        <div style="position:relative;">
+          <div class="ph ph--tall" style="min-height:460px;"><span class="ph-icon">📸</span>Annotated screenshot of existing bollystep.com showing friction points</div>
+          <!-- Annotation bubbles -->
+          <div style="position:absolute;top:22%;left:-8px;background:#fff;border:1.5px solid #8b2e2e;border-radius:var(--r-sm);padding:.35rem .7rem;font-size:.68rem;font-weight:600;color:#8b2e2e;white-space:nowrap;box-shadow:var(--sh-sm);">⚠ Contact form blocks sign-up</div>
+          <div style="position:absolute;top:47%;left:-8px;background:#fff;border:1.5px solid #8b2e2e;border-radius:var(--r-sm);padding:.35rem .7rem;font-size:.68rem;font-weight:600;color:#8b2e2e;white-space:nowrap;box-shadow:var(--sh-sm);">⚠ No pricing visible</div>
+          <div style="position:absolute;bottom:24%;left:-8px;background:#fff;border:1.5px solid #8b2e2e;border-radius:var(--r-sm);padding:.35rem .7rem;font-size:.68rem;font-weight:600;color:#8b2e2e;white-space:nowrap;box-shadow:var(--sh-sm);">⚠ Role-less navigation</div>
         </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="goal">
-          <div class="eyebrow">Goal</div>
-          <h2>Clear paths for three distinct roles</h2>
-          <p>Simplify onboarding, clarify the platform's value early, create separate experiences for Dancers, Organizers, and Choreographers, and enable users to confidently create and manage dance events.</p>
+        <div style="background:linear-gradient(135deg,#fff1f2,#ffe4e6);border:1.5px solid #fda4af;border-radius:var(--r-md);padding:1.25rem 1.5rem;margin-top:1.5rem;">
+          <p style="font-family:var(--fd);font-size:1.1rem;font-style:italic;color:#be123c;max-width:none;">"The platform added friction — unclear navigation, no pricing transparency, and a broken sign-up flow. Result: low trust and drop-offs before onboarding."</p>
         </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="research">
-          <div class="eyebrow">Research</div>
-          <h2>Three methods to surface the real friction</h2>
-
-          <h3>User Interviews (6 participants)</h3>
-          <p>Conducted to understand user needs and pain points. Revealed that coordination challenges and lack of platform clarity were the key barriers preventing users from moving forward on the platform.</p>
-
-          <h3>Heuristic Evaluation</h3>
-          <p>Evaluated the platform using established usability heuristics. Found significant issues in navigation consistency, unclear flows, and a lack of trust signals throughout the experience.</p>
-
-          <h3>Content Audit</h3>
-          <p>Reviewed all content across the landing page and client-facing pages for clarity and structure. Found dense information, unclear messaging, and poor content hierarchy creating cognitive overload for new users.</p>
-
-          <h3>Affinity Mapping</h3>
-          <p>Organized research data to identify patterns across user behaviors and pain points. Grouped insights revealed four key themes: navigation confusion, onboarding friction, lack of trust, and coordination challenges.</p>
-          <div class="img-placeholder">[Image Placeholder — Affinity Map: Synthesized research into themes to identify key usability and trust gaps]</div>
-
-          <h3>Persona &amp; User Journey</h3>
-          <p>Created a persona to represent key user needs, goals, and frustrations — keeping design decisions user-focused. The persona highlighted users' challenges with coordination, need for clarity, and expectations for a simple, guided experience.</p>
-          <div class="img-placeholder">[Image Placeholder — Persona Snapshot]</div>
-          <p>Mapped the end-to-end user experience to identify key friction points. The journey highlighted pain points in onboarding, navigation, and coordination — especially in the stages before event creation.</p>
-          <div class="img-placeholder">[Image Placeholder — User Journey Map]</div>
-        </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="insights">
-          <div class="eyebrow">Key Insights</div>
-          <h2>Five critical barriers to user trust</h2>
-          <div class="insight-grid">
-            <div class="insight-card">
-              <span class="ic-icon">📝</span>
-              <h4>Expected instant sign-up</h4>
-              <p>Users expected to create an account directly — not fill out a contact form that redirected them externally.</p>
-            </div>
-            <div class="insight-card">
-              <span class="ic-icon">🗺️</span>
-              <h4>Navigation felt overwhelming</h4>
-              <p>Too many options with unclear hierarchy left users unsure of where to go or what the platform was for.</p>
-            </div>
-            <div class="insight-card">
-              <span class="ic-icon">👤</span>
-              <h4>Roles were unclear</h4>
-              <p>Users couldn't tell whether the platform was for them — Dancer, Organizer, or Choreographer — from the homepage.</p>
-            </div>
-            <div class="insight-card">
-              <span class="ic-icon">💰</span>
-              <h4>No pricing transparency</h4>
-              <p>Hidden pricing and no previews reduced trust. Users weren't willing to commit without knowing what they were signing up for.</p>
-            </div>
-            <div class="insight-card" style="grid-column: 1/-1;">
-              <span class="ic-icon">📅</span>
-              <h4>Coordination was the core pain point</h4>
-              <p>Managing group dances across different schedules, time zones, and skill levels was the fundamental challenge the product needed to solve — but the existing platform barely addressed it.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="decisions">
-          <div class="eyebrow">Design Decisions</div>
-          <h2>From insight to design — the golden thread</h2>
-          <table class="decision-table">
-            <thead>
-              <tr><th>Insight</th><th>Design Decision</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Confusing sign-up → contact form</td><td>Replaced with instant account creation — direct sign-up/login from homepage</td></tr>
-              <tr><td>Unclear user roles</td><td>Role-based navigation with tailored entry points for Organizers, Dancers, and Choreographers</td></tr>
-              <tr><td>Overwhelming content</td><td>Simplified information structure, cleaner hierarchy, reduced cognitive load</td></tr>
-              <tr><td>Low trust signals</td><td>Added pricing transparency and social proof throughout the funnel</td></tr>
-              <tr><td>Coordination pain</td><td>"Explore before commit" — users can browse dances and preview content before creating an event</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="architecture">
-          <div class="eyebrow">Site Architecture</div>
-          <h2>Restructured for three distinct user roles</h2>
-          <p>The original navigation was a catch-all — one muddled structure trying to serve every user type. The redesigned architecture creates clear, separate entry points for each role:</p>
-          <ul>
-            <li>Introduced dedicated pages for <strong>Organizers, Dancers, and Choreographers</strong> with tailored content and flows</li>
-            <li>Added a dedicated CTA: <strong>"Apply to be a Choreographer"</strong> to support onboarding of new talent</li>
-            <li>Replaced the vague "Join Now" button with a clear <strong>Log In / Sign Up</strong> flow accessible directly from the homepage</li>
-          </ul>
-          <div class="img-placeholder">[Image Placeholder — Site Architecture Map]</div>
-        </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="flows">
-          <div class="eyebrow">User Flows</div>
-          <h2>Reducing friction from discovery to event creation</h2>
-          <p>The original flow asked too much of users before giving them any value. Key problems and how they were solved:</p>
-          <ul>
-            <li>Users expected instant account creation but were redirected to a contact form — <strong>fixed with direct sign-up access</strong></li>
-            <li>Additional steps in the app increased effort and caused frustration — <strong>reduced unnecessary steps</strong></li>
-            <li>Organizers needed a faster, low-effort flow during time-sensitive event planning — <strong>combined the marketing site and platform into a single seamless flow</strong></li>
-          </ul>
-          <div class="img-placeholder">[Image Placeholder — User Flow Diagram: Discovery → Sign-up → Event Creation]</div>
-        </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="ideation">
-          <div class="eyebrow">Ideation</div>
-          <h2>Sketching multiple directions before committing</h2>
-          <p>Used design studio sessions to quickly explore multiple ideas for improving navigation and onboarding. Sketched and iterated on different concepts to identify the most intuitive and scalable solution — showing rough thinking before refining.</p>
-          <div class="img-placeholder">[Image Placeholder — Sketches / Design Studio Exploration]</div>
-        </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="wireframes">
-          <div class="eyebrow">Mid-Fi Wireframes</div>
-          <h2>Validating layout before final design</h2>
-          <p>Mid-fidelity wireframes were used to validate layout, navigation flow, and content structure before committing to visual design. Tested information hierarchy, user flows, and clarity of key interactions with real users — then iterated before moving to high-fidelity.</p>
-          <div class="img-placeholder img-placeholder-tall">[Image Placeholder — Mid-Fidelity Wireframes]</div>
-        </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="final">
-          <div class="eyebrow">Final Design</div>
-          <h2>Three focused design decisions</h2>
-
-          <h3>Role-Based Navigation</h3>
-          <p>To reduce confusion and help users quickly understand how the platform applies to them. Created clear entry points for Organizers, Dancers, and Choreographers with tailored content and flows — so the first visit immediately answers "is this for me?"</p>
-          <div class="img-placeholder">[Image Placeholder — Role-Based Navigation Screens]</div>
-
-          <h3>Explore Before You Commit</h3>
-          <p>To build trust and reduce hesitation before event creation. Users can browse dances and preview content before committing — addressing the #1 trust barrier identified in research.</p>
-          <div class="img-placeholder">[Image Placeholder — Explore Dance Feature Screens]</div>
-
-          <h3>Simplified Onboarding</h3>
-          <p>To reduce friction and speed up the user journey. Combined the marketing and client-facing platform into a single seamless flow and removed the NDA barrier that was blocking users from signing up.</p>
-          <div class="img-placeholder">[Image Placeholder — Simplified Sign-Up Flow]</div>
-
-          <div class="cs-callout" style="margin-top:2rem;">
-            <strong>Prototype:</strong> Full interactive prototype available in Figma — link to be embedded when ready for publication.
-          </div>
-        </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="testing">
-          <div class="eyebrow">Usability Testing</div>
-          <h2>Two rounds — existing site vs. redesign</h2>
-          <p>Conducted two rounds of usability testing: Round 1 with the existing website, Round 2 with the proposed mid-fi prototype. Observed significant gains in clarity, navigation understanding, and task success rates. Feedback from R2 was then implemented in the high-fidelity design.</p>
-          <div class="img-placeholder">[Image Placeholder — Usability Testing Notes / Screens]</div>
-          <h3>Key findings from testing:</h3>
-          <ul>
-            <li>Users understood their roles faster with the new navigation structure</li>
-            <li>Reduced confusion about where to go to sign up or log in</li>
-            <li>Improved onboarding success — more users completed the flow without assistance</li>
-            <li>Increased engagement with the "Explore" content before event creation</li>
-          </ul>
-        </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="outcome">
-          <div class="eyebrow">Outcome</div>
-          <h2>Reduced friction, improved trust</h2>
-          <p>The redesign reduced onboarding friction and improved usability across key flows. Provided clear pathways for dancers, choreographers, and organizers — strengthening trust through clearer navigation, transparency, and better user adoption.</p>
-          <div class="outcome-grid">
-            <div class="outcome-card">
-              <span class="big-num">3</span>
-              <p>Distinct role-based experiences designed for Organizers, Dancers &amp; Choreographers</p>
-            </div>
-            <div class="outcome-card">
-              <span class="big-num">↓</span>
-              <p>Significant reduction in onboarding drop-offs through streamlined sign-up flow</p>
-            </div>
-            <div class="outcome-card">
-              <span class="big-num">2</span>
-              <p>Rounds of usability testing — validating improvements before high-fidelity design</p>
-            </div>
-            <div class="outcome-card">
-              <span class="big-num">✓</span>
-              <p>Pricing transparency + social proof added to build trust earlier in the funnel</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="cs-section" id="reflection">
-          <div class="eyebrow">Reflection</div>
-          <h2>Simplifying flows is about building trust, not just usability</h2>
-          <p>I learned that simplifying user flows isn't just about usability — it's about building trust early. Aligning navigation, onboarding, and content with user expectations created a more intuitive and confident experience.</p>
-          <p>If I had more time, I would have run more rounds of usability testing on the high-fidelity prototype, explored A/B testing for the role-based entry points, and dug deeper into the coordination features that remain the platform's core value proposition.</p>
-        </div>
-
-        <div class="cs-divider"></div>
-
-        <div class="nav-between">
-          <a href="index.html">← All Projects</a>
-          <a href="case-food4u.html">Next: Food4U →</a>
-        </div>
-
-      </div><!-- /cs-content -->
-    </div><!-- /cs-layout -->
+      </div>
     </div>
   </div>
 </section>
 
-<footer>
-  <p>Designed &amp; built by <a href="index.html">Priya T.</a> · UX Designer · Sunnyvale, CA · 2026</p>
+<div class="divider"></div>
+
+<!-- ── RESEARCH ───────────────────────────────────────────────── -->
+<section class="section section--alt" id="research">
+  <div class="container">
+    <div class="sec-hd">
+      <span class="lbl">03 — Research</span>
+      <h2>Three methods. One clear picture.</h2>
+    </div>
+
+    <div class="grid-3">
+      <div class="r-card fade-in">
+        <div class="r-card-icon">🎙️</div>
+        <h3>User Interviews</h3>
+        <p>6 participants across all three roles. Revealed coordination challenges and platform confusion as the core barriers.</p>
+        <span class="r-stat">6</span>
+        <p style="font-size:.75rem;margin-top:.2rem;">participants interviewed</p>
+      </div>
+      <div class="r-card fade-in fade-in-delay-1">
+        <div class="r-card-icon">🔍</div>
+        <h3>Heuristic Evaluation</h3>
+        <p>Evaluated against Nielsen's 10 heuristics. Found issues in navigation consistency, unclear flows, and missing trust signals.</p>
+        <span class="r-stat">10+</span>
+        <p style="font-size:.75rem;margin-top:.2rem;">usability violations found</p>
+      </div>
+      <div class="r-card fade-in fade-in-delay-2">
+        <div class="r-card-icon">📋</div>
+        <h3>Content Audit</h3>
+        <p>Reviewed all landing and client-facing pages. Found dense copy, unclear messaging, and poor content hierarchy.</p>
+        <span class="r-stat">3</span>
+        <p style="font-size:.75rem;margin-top:.2rem;">critical content gaps identified</p>
+      </div>
+    </div>
+
+    <!-- Affinity Map -->
+    <div class="affinity fade-in" style="margin-top:2.5rem;">
+      <h3 style="margin-bottom:1.25rem;">Affinity Map — Key Themes</h3>
+      <div class="affinity-grid">
+        <div class="acluster blue">
+          <div class="ac-title">Navigation Confusion</div>
+          <div class="anote">Can't find where to sign up</div>
+          <div class="anote">Too many menu options</div>
+          <div class="anote">No clear homepage CTA</div>
+          <div class="anote">Role unclear from nav</div>
+        </div>
+        <div class="acluster amber">
+          <div class="ac-title">Onboarding Friction</div>
+          <div class="anote">Contact form instead of signup</div>
+          <div class="anote">No instant access</div>
+          <div class="anote">NDA barrier before use</div>
+          <div class="anote">Multi-step signup in app</div>
+        </div>
+        <div class="acluster rose">
+          <div class="ac-title">Lack of Trust</div>
+          <div class="anote">Pricing hidden or missing</div>
+          <div class="anote">No social proof</div>
+          <div class="anote">Can't preview content</div>
+          <div class="anote">Outdated visual design</div>
+        </div>
+        <div class="acluster green">
+          <div class="ac-title">Coordination Pain</div>
+          <div class="anote">Different time zones</div>
+          <div class="anote">Mixed experience levels</div>
+          <div class="anote">No async learning tool</div>
+          <div class="anote">Hard to track progress</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── PERSONA & JOURNEY ──────────────────────────────────────── -->
+<section class="section" id="persona">
+  <div class="container">
+    <div class="sec-hd">
+      <span class="lbl">04 — User Understanding</span>
+      <h2>Meet Sanjana — our primary user.</h2>
+    </div>
+
+    <div class="persona fade-in">
+      <div class="p-avatar">
+        <div class="p-img">💁‍♀️</div>
+        <div class="p-name">Sanjana M.</div>
+        <div class="p-badge">Wedding Organizer</div>
+      </div>
+      <div class="p-details">
+        <h3>The overwhelmed wedding planner</h3>
+        <p class="p-bio" style="max-width:none;">Sanjana is planning her cousin's wedding in 3 months. She needs 12 family members — spread across 4 cities and 3 time zones — to learn a coordinated Bollywood dance routine. She has no professional dance training and is managing everything via WhatsApp.</p>
+        <div class="p-attrs">
+          <div class="p-attr"><div class="al">Goal</div><div class="av">Coordinate group dance with minimal stress</div></div>
+          <div class="p-attr"><div class="al">Frustration</div><div class="av">Platform doesn't explain how it helps her</div></div>
+          <div class="p-attr"><div class="al">Expectation</div><div class="av">Sign up instantly, preview content, see pricing</div></div>
+          <div class="p-attr"><div class="al">Context</div><div class="av">Mobile-first, time-poor, high emotional stakes</div></div>
+        </div>
+        <div class="p-quote">"I just want to see if this can help me before I commit to anything. Why do I need to fill a contact form just to sign up?"</div>
+      </div>
+    </div>
+
+    <!-- Journey Map -->
+    <div class="journey fade-in" style="margin-top:2.5rem;">
+      <h3>Sanjana's User Journey — Friction Points</h3>
+      <div class="journey-flow" style="margin-top:1.5rem;">
+        <div class="j-step">
+          <div class="j-node">1</div>
+          <div class="j-label">Discovers BollyStep via referral</div>
+          <div style="font-size:.68rem;color:var(--green);font-weight:600;margin-top:.3rem;">😊 Hopeful</div>
+        </div>
+        <div class="j-step">
+          <div class="j-node">2</div>
+          <div class="j-label">Lands on homepage</div>
+          <div class="j-friction">Unclear who it's for</div>
+        </div>
+        <div class="j-step">
+          <div class="j-node">3</div>
+          <div class="j-label">Tries to sign up</div>
+          <div class="j-friction">Hits contact form — not a signup</div>
+        </div>
+        <div class="j-step">
+          <div class="j-node">4</div>
+          <div class="j-label">Looks for pricing</div>
+          <div class="j-friction">No pricing found anywhere</div>
+        </div>
+        <div class="j-step">
+          <div class="j-node">5</div>
+          <div class="j-label">Can't preview content</div>
+          <div class="j-friction">Can't see dances before committing</div>
+        </div>
+        <div class="j-step">
+          <div class="j-node">6</div>
+          <div class="j-label">Drops off</div>
+          <div style="font-size:.68rem;color:#be123c;font-weight:600;margin-top:.3rem;">😞 Frustrated</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── INSIGHTS → DECISIONS ───────────────────────────────────── -->
+<section class="section section--alt" id="insights">
+  <div class="container">
+    <div class="sec-hd">
+      <span class="lbl">05 — Key Insights</span>
+      <h2>Five barriers. Five design decisions.</h2>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:2.5rem;">
+      <div class="i-card fade-in">
+        <div class="i-icon">📝</div>
+        <div class="i-num">01</div>
+        <h4>Expected instant sign-up</h4>
+        <p>Contact form felt like a wall. Users wanted direct account creation.</p>
+      </div>
+      <div class="i-card fade-in fade-in-delay-1">
+        <div class="i-icon">🗺️</div>
+        <div class="i-num">02</div>
+        <h4>Navigation felt overwhelming</h4>
+        <p>Too many options, no clear path for any specific user type.</p>
+      </div>
+      <div class="i-card fade-in fade-in-delay-2">
+        <div class="i-icon">👤</div>
+        <div class="i-num">03</div>
+        <h4>Roles were invisible</h4>
+        <p>Dancers, Organizers, Choreographers had no distinct experience.</p>
+      </div>
+      <div class="i-card fade-in fade-in-delay-3">
+        <div class="i-icon">💰</div>
+        <div class="i-num">04</div>
+        <h4>No pricing, no trust</h4>
+        <p>Hidden pricing and no previews stopped users from committing.</p>
+      </div>
+      <div class="i-card fade-in fade-in-delay-4" style="grid-column:span 2;">
+        <div class="i-icon">📅</div>
+        <div class="i-num">05</div>
+        <h4>Coordination was the core pain</h4>
+        <p>Managing group dances across time zones and skill levels was the fundamental challenge — but the platform barely addressed it.</p>
+      </div>
+    </div>
+
+    <!-- Decision table -->
+    <div class="fade-in">
+      <h3 style="margin-bottom:.5rem;">Insight → Design Decision</h3>
+      <p style="margin-bottom:1rem;">The golden thread from research to solution.</p>
+      <table class="d-table">
+        <thead><tr><th>Insight</th><th>Design Decision</th><th>Impact</th></tr></thead>
+        <tbody>
+          <tr><td>Confusing sign-up → contact form</td><td>Instant sign-up / log in directly from homepage</td><td>Removed #1 drop-off point</td></tr>
+          <tr><td>Unclear user roles</td><td>Role-based nav: Organizer · Dancer · Choreographer</td><td>Faster orientation for all users</td></tr>
+          <tr><td>Overwhelming content</td><td>Simplified IA, cleaner hierarchy, clear CTAs</td><td>Reduced cognitive load</td></tr>
+          <tr><td>Low trust — no pricing</td><td>Pricing transparency + social proof in funnel</td><td>Higher sign-up intent</td></tr>
+          <tr><td>No content preview</td><td>"Explore before commit" — browse dances first</td><td>Trust built before sign-up</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── SITE ARCHITECTURE ──────────────────────────────────────── -->
+<section class="section" id="architecture">
+  <div class="container">
+    <div class="sec-hd">
+      <span class="lbl">06 — Site Architecture</span>
+      <h2>From one muddled structure to three clear paths.</h2>
+    </div>
+
+    <div class="grid-2" style="align-items:start;gap:3rem;">
+      <div>
+        <h3 style="margin-bottom:1rem;">Before — One confusing nav for everyone</h3>
+        <div class="ph ph--wide"><span class="ph-icon">🗺️</span>Old site architecture / navigation map</div>
+        <ul style="margin-top:1.25rem;display:flex;flex-direction:column;gap:.6rem;list-style:none;">
+          <li style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--warm-gray);"><span style="color:#be123c;font-size:.7rem;margin-top:4px;">✗</span>Single navigation for all roles</li>
+          <li style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--warm-gray);"><span style="color:#be123c;font-size:.7rem;margin-top:4px;">✗</span>"Join Now" → contact form (not a real sign-up)</li>
+          <li style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--warm-gray);"><span style="color:#be123c;font-size:.7rem;margin-top:4px;">✗</span>Marketing site and platform disconnected</li>
+          <li style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--warm-gray);"><span style="color:#be123c;font-size:.7rem;margin-top:4px;">✗</span>No choreographer onboarding pathway</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin-bottom:1rem;">After — Role-based architecture</h3>
+        <div class="ph ph--wide"><span class="ph-icon">✅</span>New site architecture with role-based pages</div>
+        <ul style="margin-top:1.25rem;display:flex;flex-direction:column;gap:.6rem;list-style:none;">
+          <li style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--warm-gray);"><span style="color:var(--green);font-size:.7rem;margin-top:4px;">✓</span>Separate pages: Organizers · Dancers · Choreographers</li>
+          <li style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--warm-gray);"><span style="color:var(--green);font-size:.7rem;margin-top:4px;">✓</span>Direct Log In / Sign Up from homepage</li>
+          <li style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--warm-gray);"><span style="color:var(--green);font-size:.7rem;margin-top:4px;">✓</span>Unified marketing + platform flow</li>
+          <li style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--warm-gray);"><span style="color:var(--green);font-size:.7rem;margin-top:4px;">✓</span>"Apply to be a Choreographer" dedicated CTA</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── WIREFRAMES ─────────────────────────────────────────────── -->
+<section class="section section--alt" id="wireframes">
+  <div class="container">
+    <div class="sec-hd">
+      <span class="lbl">07 — Wireframes</span>
+      <h2>Testing structure before visual polish.</h2>
+      <p>Mid-fidelity wireframes validated layout, navigation flow, and content hierarchy with real users before committing to high-fidelity design.</p>
+    </div>
+
+    <div class="carousel-wrap">
+      <div class="carousel-track" id="wf-track">
+        <div class="carousel-slide"><div class="ph ph--tall"><span class="ph-icon">🏠</span>Homepage wireframe — role entry points</div></div>
+        <div class="carousel-slide"><div class="ph ph--tall"><span class="ph-icon">💃</span>Dancer role page wireframe</div></div>
+        <div class="carousel-slide"><div class="ph ph--tall"><span class="ph-icon">📋</span>Organizer dashboard wireframe</div></div>
+        <div class="carousel-slide"><div class="ph ph--tall"><span class="ph-icon">🎭</span>Choreographer profile wireframe</div></div>
+        <div class="carousel-slide"><div class="ph ph--tall"><span class="ph-icon">✍️</span>Sign-up flow wireframe</div></div>
+        <div class="carousel-slide"><div class="ph ph--tall"><span class="ph-icon">🔍</span>Explore dances wireframe</div></div>
+      </div>
+    </div>
+    <div class="carousel-nav">
+      <button class="carousel-btn" id="wf-prev">←</button>
+      <div class="carousel-dots" id="wf-dots"></div>
+      <button class="carousel-btn" id="wf-next">→</button>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── FINAL DESIGN ───────────────────────────────────────────── -->
+<section class="section" id="prototype">
+  <div class="container">
+    <div class="sec-hd">
+      <span class="lbl">08 — Final Design</span>
+      <h2>Three focused design decisions.</h2>
+    </div>
+
+    <!-- Role tabs -->
+    <div class="role-tabs">
+      <button class="role-tab active" data-role="dancer">💃 For Dancers</button>
+      <button class="role-tab" data-role="organizer">📋 For Organizers</button>
+      <button class="role-tab" data-role="choreo">🎭 For Choreographers</button>
+    </div>
+
+    <div class="role-panel active grid-2" id="panel-dancer" style="gap:3rem;align-items:center;">
+      <div>
+        <h3>Explore before you commit</h3>
+        <p style="margin:.75rem 0 1rem;max-width:none;">Dancers can browse available routines, preview tutorial videos, and understand what they're signing up for — before creating an account. Removes the biggest trust barrier.</p>
+        <ul style="display:flex;flex-direction:column;gap:.5rem;list-style:none;">
+          <li style="font-size:.875rem;color:var(--warm-gray);padding-left:1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--marigold);">→</span>Browse 120+ dance routines by occasion</li>
+          <li style="font-size:.875rem;color:var(--warm-gray);padding-left:1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--marigold);">→</span>Preview video with mirroring and speed control</li>
+          <li style="font-size:.875rem;color:var(--warm-gray);padding-left:1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--marigold);">→</span>See pricing transparently before sign-up</li>
+        </ul>
+      </div>
+      <div class="ph ph--tall"><span class="ph-icon">💃</span>Dancer — Explore dance screen</div>
+    </div>
+
+    <div class="role-panel grid-2" id="panel-organizer" style="gap:3rem;align-items:center;">
+      <div>
+        <h3>Manage everything in one place</h3>
+        <p style="margin:.75rem 0 1rem;max-width:none;">Organizers get a dedicated dashboard to invite dancers, assign routines, track progress, and communicate — without needing a separate tool or WhatsApp group.</p>
+        <ul style="display:flex;flex-direction:column;gap:.5rem;list-style:none;">
+          <li style="font-size:.875rem;color:var(--warm-gray);padding-left:1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--marigold);">→</span>Invite dancers via email or link</li>
+          <li style="font-size:.875rem;color:var(--warm-gray);padding-left:1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--marigold);">→</span>Assign and track learning progress</li>
+          <li style="font-size:.875rem;color:var(--warm-gray);padding-left:1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--marigold);">→</span>Communicate and schedule within the platform</li>
+        </ul>
+      </div>
+      <div class="ph ph--tall"><span class="ph-icon">📋</span>Organizer — Dashboard view</div>
+    </div>
+
+    <div class="role-panel grid-2" id="panel-choreo" style="gap:3rem;align-items:center;">
+      <div>
+        <h3>Apply, upload, and build your profile</h3>
+        <p style="margin:.75rem 0 1rem;max-width:none;">Choreographers have their own dedicated onboarding pathway — a clear "Apply to be a Choreographer" CTA with a streamlined application and profile creation flow.</p>
+        <ul style="display:flex;flex-direction:column;gap:.5rem;list-style:none;">
+          <li style="font-size:.875rem;color:var(--warm-gray);padding-left:1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--marigold);">→</span>Dedicated application flow with clear expectations</li>
+          <li style="font-size:.875rem;color:var(--warm-gray);padding-left:1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--marigold);">→</span>Upload routines with metadata and difficulty levels</li>
+          <li style="font-size:.875rem;color:var(--warm-gray);padding-left:1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--marigold);">→</span>Track how many groups are using your routines</li>
+        </ul>
+      </div>
+      <div class="ph ph--tall"><span class="ph-icon">🎭</span>Choreographer — Apply & profile screen</div>
+    </div>
+
+    <div style="margin-top:3rem;text-align:center;background:var(--ivory);border-radius:var(--r-lg);padding:2.5rem;">
+      <h3 style="margin-bottom:.5rem;">Interactive Prototype</h3>
+      <p style="margin:0 auto 1.5rem;">Explore all three role experiences end-to-end in Figma.</p>
+      <a href="#" class="btn btn-primary">View Full Prototype ↗</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── BEFORE / AFTER ─────────────────────────────────────────── -->
+<section class="section section--alt" id="before-after">
+  <div class="container">
+    <div class="sec-hd">
+      <span class="lbl">09 — Before / After</span>
+      <h2>What changed, and why.</h2>
+    </div>
+
+    <div class="ba fade-in">
+      <div class="ba-hd"><h3>Sign-Up Flow</h3><span class="ba-chip">High Impact</span></div>
+      <div class="ba-panels">
+        <div class="ba-panel">
+          <div class="ba-lbl before">Before</div>
+          <div class="ph ph--short"><span class="ph-icon">📝</span>Contact form screenshot</div>
+          <p class="ba-desc" style="max-width:none;">Users hit a contact form that asked for name, email, and "tell us about your event" — with no clear sign-up path. Most dropped off here.</p>
+        </div>
+        <div class="ba-panel">
+          <div class="ba-lbl after">After</div>
+          <div class="ph ph--short"><span class="ph-icon">✅</span>Direct sign-up screen</div>
+          <p class="ba-desc" style="max-width:none;">Direct email + password sign-up. No NDA barrier. Combined marketing and platform into one seamless flow.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ba fade-in" style="margin-top:1.5rem;">
+      <div class="ba-hd"><h3>Homepage Navigation</h3><span class="ba-chip">High Impact</span></div>
+      <div class="ba-panels">
+        <div class="ba-panel">
+          <div class="ba-lbl before">Before</div>
+          <div class="ph ph--short"><span class="ph-icon">🗺️</span>Old navigation screenshot</div>
+          <p class="ba-desc" style="max-width:none;">Generic nav with "About", "Pricing", "Join Now" — no indication of who the platform is for or what it does for each user type.</p>
+        </div>
+        <div class="ba-panel">
+          <div class="ba-lbl after">After</div>
+          <div class="ph ph--short"><span class="ph-icon">✅</span>Role-based navigation screenshot</div>
+          <p class="ba-desc" style="max-width:none;">Clear role-based navigation: Organizers · Dancers · Choreographers. Each leads to a tailored page with relevant content and CTAs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── USABILITY TESTING ──────────────────────────────────────── -->
+<section class="section" id="testing">
+  <div class="container">
+    <div class="sec-hd">
+      <span class="lbl">10 — Usability Testing</span>
+      <h2>Two rounds. Meaningful gains.</h2>
+      <p>Round 1 on the existing site. Round 2 on mid-fi prototype. Iterated to high-fidelity based on findings.</p>
+    </div>
+
+    <div class="grid-2" style="align-items:start;gap:3rem;">
+      <div>
+        <div style="background:var(--ivory);border-radius:var(--r-lg);padding:1.75rem;border:1px solid var(--light-rule);">
+          <h3 style="margin-bottom:1.25rem;font-size:1.1rem;">Round 1 — Existing Site</h3>
+          <ul style="display:flex;flex-direction:column;gap:.7rem;list-style:none;">
+            <li style="display:flex;gap:.75rem;font-size:.875rem;color:var(--warm-gray);align-items:flex-start;"><span style="color:#be123c;font-size:1rem;flex-shrink:0;">✗</span>0% could identify pricing before sign-up</li>
+            <li style="display:flex;gap:.75rem;font-size:.875rem;color:var(--warm-gray);align-items:flex-start;"><span style="color:#be123c;font-size:1rem;flex-shrink:0;">✗</span>All participants confused by sign-up flow</li>
+            <li style="display:flex;gap:.75rem;font-size:.875rem;color:var(--warm-gray);align-items:flex-start;"><span style="color:#be123c;font-size:1rem;flex-shrink:0;">✗</span>Avg 4m 12s to complete core task</li>
+            <li style="display:flex;gap:.75rem;font-size:.875rem;color:var(--warm-gray);align-items:flex-start;"><span style="color:#be123c;font-size:1rem;flex-shrink:0;">✗</span>SUS score: 52 — rated "OK"</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div style="background:#f0fdf4;border-radius:var(--r-lg);padding:1.75rem;border:1.5px solid #86efac;">
+          <h3 style="margin-bottom:1.25rem;font-size:1.1rem;color:var(--green);">Round 2 — Redesigned Prototype</h3>
+          <ul style="display:flex;flex-direction:column;gap:.7rem;list-style:none;">
+            <li style="display:flex;gap:.75rem;font-size:.875rem;color:var(--warm-gray);align-items:flex-start;"><span style="color:var(--green);font-size:1rem;flex-shrink:0;">✓</span>100% could identify pricing before sign-up</li>
+            <li style="display:flex;gap:.75rem;font-size:.875rem;color:var(--warm-gray);align-items:flex-start;"><span style="color:var(--green);font-size:1rem;flex-shrink:0;">✓</span>Users understood their role in &lt;30 seconds</li>
+            <li style="display:flex;gap:.75rem;font-size:.875rem;color:var(--warm-gray);align-items:flex-start;"><span style="color:var(--green);font-size:1rem;flex-shrink:0;">✓</span>Avg 1m 26s to complete core task (3× faster)</li>
+            <li style="display:flex;gap:.75rem;font-size:.875rem;color:var(--warm-gray);align-items:flex-start;"><span style="color:var(--green);font-size:1rem;flex-shrink:0;">✓</span>SUS score: 87 — rated "Excellent"</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Metrics dark section -->
+    <div style="background:var(--charcoal);border-radius:var(--r-lg);padding:3rem;margin-top:3rem;">
+      <div class="grid-4">
+        <div class="metric-card fade-in">
+          <span class="metric-icon">⚡</span>
+          <span class="metric-val">3×</span>
+          <div class="metric-lbl">Faster task completion</div>
+          <p class="metric-desc">4m 12s → 1m 26s for core task</p>
+        </div>
+        <div class="metric-card fade-in fade-in-delay-1">
+          <span class="metric-icon">💰</span>
+          <span class="metric-val">100%</span>
+          <div class="metric-lbl">Pricing clarity</div>
+          <p class="metric-desc">0% → 100% in Round 2</p>
+        </div>
+        <div class="metric-card fade-in fade-in-delay-2">
+          <span class="metric-icon">⭐</span>
+          <span class="metric-val">87</span>
+          <div class="metric-lbl">SUS Score (R2)</div>
+          <p class="metric-desc">Up from 52 — "OK" to "Excellent"</p>
+        </div>
+        <div class="metric-card fade-in fade-in-delay-3">
+          <span class="metric-icon">🎯</span>
+          <span class="metric-val">+35</span>
+          <div class="metric-lbl">SUS point gain</div>
+          <p class="metric-desc">Biggest single-sprint gain across cohort</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── REFLECTION ─────────────────────────────────────────────── -->
+<section class="section section--alt" id="reflection">
+  <div class="container">
+    <div class="sec-hd">
+      <span class="lbl">11 — Reflection</span>
+      <h2>What I learned building this.</h2>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:3rem;">
+      <div class="ref-card fade-in">
+        <div class="ref-icon">🎭</div>
+        <h4>Role-first design is underused</h4>
+        <p>Treating role differentiation as a first-class design constraint unlocked the biggest usability gains. This should be the default for multi-role products.</p>
+      </div>
+      <div class="ref-card fade-in fade-in-delay-1">
+        <div class="ref-icon">🛡️</div>
+        <h4>Trust signals are a structural problem</h4>
+        <p>Missing pricing and social proof aren't just copy issues — they're IA problems that require intentional placement throughout the journey.</p>
+      </div>
+      <div class="ref-card fade-in fade-in-delay-2">
+        <div class="ref-icon">⚡</div>
+        <h4>Move fast, but anchor to data</h4>
+        <p>Three weeks forced ruthless prioritization. Heuristic evaluation gave us a defensible backlog faster than any stakeholder assumption list.</p>
+      </div>
+      <div class="ref-card fade-in fade-in-delay-3">
+        <div class="ref-icon">🔗</div>
+        <h4>The invite flow is often forgotten</h4>
+        <p>Most Dancers entered via a forwarded link — not the homepage. Always map the full entry surface, not just the marketing page.</p>
+      </div>
+      <div class="ref-card fade-in fade-in-delay-4">
+        <div class="ref-icon">🌏</div>
+        <h4>Cultural context matters</h4>
+        <p>South Asian weddings carry deep emotional stakes around performance and family. Future iterations should hold space for those cultural delight moments.</p>
+      </div>
+      <div class="ref-card fade-in fade-in-delay-5">
+        <div class="ref-icon">🔮</div>
+        <h4>What I'd explore next</h4>
+        <p>In-app rehearsal mode with sync playback, mobile-native experience, and a post-wedding reflection feature to close the emotional loop.</p>
+      </div>
+    </div>
+
+    <!-- Final CTA -->
+    <div style="background:linear-gradient(135deg,var(--charcoal),#3d1c0e);border-radius:var(--r-lg);padding:3rem;text-align:center;">
+      <h2 style="color:#fff;margin-bottom:.6rem;">Ready to explore the full prototype?</h2>
+      <p style="color:rgba(255,255,255,.55);max-width:44ch;margin:0 auto 2rem;">The interactive Figma prototype walks through all three role experiences — sign-up, dashboard, and core task flows.</p>
+      <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
+        <a href="#" class="btn btn-primary">View Prototype ↗</a>
+        <a href="index.html" class="btn btn-outline">← All Projects</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-logo">Priya T.</div>
+  <ul class="footer-links">
+    <li><a href="index.html">All Projects</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="case-food4u.html">Food4U →</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <p>BollyStep Case Study · 3-Week Sprint · Capstone Project · 2026</p>
+  <p style="margin-top:.3rem;">Designed by Priya T. · UX Designer · General Assembly</p>
 </footer>
+
 <script>
-// Scroll-triggered fade-up animations
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+
+// Fade-in
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+// Role tabs
+document.querySelectorAll('.role-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.role-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.role-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-' + tab.dataset.role).classList.add('active');
   });
-}, { threshold: 0.08 });
-document.querySelectorAll('.fade-up').forEach((el, i) => {
-  el.style.transitionDelay = (i * 0.05) + 's';
-  observer.observe(el);
 });
-// Active nav link
-const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-document.querySelectorAll('.nav-links a').forEach(link => {
-  const href = link.getAttribute('href');
-  if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-    link.classList.add('active');
-  } else {
-    link.classList.remove('active');
+
+// Wireframe carousel
+(function(){
+  const track = document.getElementById('wf-track');
+  const slides = track ? track.querySelectorAll('.carousel-slide') : [];
+  const dotsEl = document.getElementById('wf-dots');
+  const prevBtn = document.getElementById('wf-prev');
+  const nextBtn = document.getElementById('wf-next');
+  if(!track || !slides.length) return;
+  let current = 0;
+  const vis = window.innerWidth < 600 ? 1 : window.innerWidth < 900 ? 2 : 3;
+  const totalDots = Math.ceil(slides.length / vis);
+  for(let i = 0; i < totalDots; i++){
+    const dot = document.createElement('div');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(dot);
   }
-});
+  function goTo(idx){
+    current = Math.max(0, Math.min(idx, totalDots - 1));
+    const sw = slides[0].offsetWidth + 24;
+    track.style.transform = `translateX(-${current * vis * sw}px)`;
+    dotsEl.querySelectorAll('.carousel-dot').forEach((d,i) => d.classList.toggle('active', i === current));
+  }
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+})();
 </script>
 </body>
 </html>
