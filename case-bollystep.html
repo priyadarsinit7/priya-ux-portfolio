@@ -185,10 +185,19 @@ strong{color:var(--charcoal);font-weight:600;}
 .role-tab.active[data-role="dancer"]{background:var(--blue-light);border-color:var(--blue);color:var(--blue);}
 .role-tab.active[data-role="organizer"]{background:var(--green-light);border-color:var(--green);color:var(--green);}
 .role-tab.active[data-role="choreo"]{background:var(--orange-light);border-color:var(--orange);color:var(--orange);}
-.role-panel{display:none;}.role-panel.active{display:grid;}
+.role-panel{display:none;overflow-y:auto;max-height:600px;border-radius:var(--r-lg);padding:2rem;}
+.role-panel::-webkit-scrollbar{width:6px;}
+.role-panel::-webkit-scrollbar-track{background:var(--ivory);border-radius:3px;}
+.role-panel::-webkit-scrollbar-thumb{background:var(--marigold);border-radius:3px;}
+.role-panel::-webkit-scrollbar-thumb:hover{background:var(--saffron);}
+.role-panel.active{display:grid;}
 
 /* Wireframe carousel */
-.carousel-wrap{position:relative;overflow:hidden;border-radius:var(--r-lg);}
+.carousel-wrap{position:relative;overflow-x:auto;overflow-y:hidden;border-radius:var(--r-lg);padding-bottom:0.5rem;}
+.carousel-wrap::-webkit-scrollbar{height:6px;}
+.carousel-wrap::-webkit-scrollbar-track{background:var(--ivory);border-radius:3px;}
+.carousel-wrap::-webkit-scrollbar-thumb{background:var(--marigold);border-radius:3px;}
+.carousel-wrap::-webkit-scrollbar-thumb:hover{background:var(--saffron);}
 .carousel-track{display:flex;gap:1.5rem;transition:transform .4s cubic-bezier(.4,0,.2,1);}
 .carousel-slide{flex-shrink:0;width:calc((100% - 3rem) / 3);}
 .carousel-nav{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1.5rem;}
@@ -277,12 +286,12 @@ strong{color:var(--charcoal);font-weight:600;}
       <div class="hero-stat"><div class="slbl">Role</div><div class="sval">UX Designer</div></div>
       <div class="hero-stat"><div class="slbl">Timeline</div><div class="sval">3 Weeks</div></div>
       <div class="hero-stat"><div class="slbl">Platform</div><div class="sval">Live Beta Web</div></div>
-      <div class="hero-stat"><div class="slbl">Tools</div><div class="sval">Figma · FigJam · Jira</div></div>
+      <div class="hero-stat"><div class="slbl">Tools</div><div class="sval">Figma · FigJam · Notion</div></div>
       <div class="hero-stat"><div class="slbl">Scope</div><div class="sval">Onboarding · Navigation · UX Redesign</div></div>
     </div>
 
     <div class="hero-actions">
-      <a href="#prototype" class="btn btn-primary">View Prototype ↗</a>
+      <a href="https://www.figma.com/proto/9Hsn3A5eJ7N5shMZBcPzJf/BollyStepxGA-Deliverable?node-id=1635-10473&t=o3dDOLRvtyEl5bbQ-0&scaling=scale-down&content-scaling=fixed&page-id=154%3A54049&starting-point-node-id=1635%3A10473&show-proto-sidebar=1" target="_blank" class="btn btn-primary">View Prototype ↗</a>
       <a href="index.html" class="btn btn-outline">← All Projects</a>
     </div>
   </div>
@@ -297,22 +306,14 @@ strong{color:var(--charcoal);font-weight:600;}
       <h2>A glimpse of what we built.</h2>
       <p>Role-based navigation, simplified onboarding, and an explore-first experience — designed to reduce drop-off and build trust.</p>
     </div>
-    <div class="grid-4">
+    <div class="grid-2" style="max-width:800px;margin:0 auto;gap:2rem;">
       <div class="fade-in">
-        <div class="ph ph--tall"><span class="ph-icon">🏠</span>Homepage Redesign</div>
-        <p style="margin-top:.6rem;font-size:.78rem;text-align:center;">Role-based homepage</p>
+        <img src="images/bollystep/P4 Sneak 1.png" alt="P4 Sneak Preview 1" style="width:100%;height:auto;border-radius:var(--r-md);border:1px solid var(--light-rule);"/>
+        <p style="margin-top:.6rem;font-size:.78rem;text-align:center;">Design exploration 01</p>
       </div>
       <div class="fade-in fade-in-delay-1">
-        <div class="ph ph--tall"><span class="ph-icon">🗺️</span>Navigation</div>
-        <p style="margin-top:.6rem;font-size:.78rem;text-align:center;">Restructured nav</p>
-      </div>
-      <div class="fade-in fade-in-delay-2">
-        <div class="ph ph--tall"><span class="ph-icon">💃</span>Explore Screen</div>
-        <p style="margin-top:.6rem;font-size:.78rem;text-align:center;">Browse before committing</p>
-      </div>
-      <div class="fade-in fade-in-delay-3">
-        <div class="ph ph--tall"><span class="ph-icon">✍️</span>Sign-Up Flow</div>
-        <p style="margin-top:.6rem;font-size:.78rem;text-align:center;">Simplified onboarding</p>
+        <img src="images/bollystep/Sneak peak 2.png" alt="Sneak Peak Preview 2" style="width:100%;height:auto;border-radius:var(--r-md);border:1px solid var(--light-rule);"/>
+        <p style="margin-top:.6rem;font-size:.78rem;text-align:center;">Design exploration 02</p>
       </div>
     </div>
   </div>
@@ -362,14 +363,7 @@ strong{color:var(--charcoal);font-weight:600;}
       </div>
 
       <div class="fade-in">
-        <div style="position:relative;">
-          <div class="ph ph--tall" style="min-height:460px;"><span class="ph-icon">📸</span>Annotated screenshot of existing bollystep.com showing friction points</div>
-          <!-- Annotation bubbles -->
-          <div style="position:absolute;top:22%;left:-8px;background:#fff;border:1.5px solid #8b2e2e;border-radius:var(--r-sm);padding:.35rem .7rem;font-size:.68rem;font-weight:600;color:#8b2e2e;white-space:nowrap;box-shadow:var(--sh-sm);">⚠ Contact form blocks sign-up</div>
-          <div style="position:absolute;top:47%;left:-8px;background:#fff;border:1.5px solid #8b2e2e;border-radius:var(--r-sm);padding:.35rem .7rem;font-size:.68rem;font-weight:600;color:#8b2e2e;white-space:nowrap;box-shadow:var(--sh-sm);">⚠ No pricing visible</div>
-          <div style="position:absolute;bottom:24%;left:-8px;background:#fff;border:1.5px solid #8b2e2e;border-radius:var(--r-sm);padding:.35rem .7rem;font-size:.68rem;font-weight:600;color:#8b2e2e;white-space:nowrap;box-shadow:var(--sh-sm);">⚠ Role-less navigation</div>
-        </div>
-        <div style="background:linear-gradient(135deg,#fff1f2,#ffe4e6);border:1.5px solid #fda4af;border-radius:var(--r-md);padding:1.25rem 1.5rem;margin-top:1.5rem;">
+        <div style="background:linear-gradient(135deg,#fff1f2,#ffe4e6);border:1.5px solid #fda4af;border-radius:var(--r-md);padding:1.25rem 1.5rem;">
           <p style="font-family:var(--fd);font-size:1.1rem;font-style:italic;color:#be123c;max-width:none;">"The platform added friction — unclear navigation, no pricing transparency, and a broken sign-up flow. Result: low trust and drop-offs before onboarding."</p>
         </div>
       </div>
@@ -398,6 +392,7 @@ strong{color:var(--charcoal);font-weight:600;}
       <div class="r-card fade-in fade-in-delay-1">
         <div class="r-card-icon">🔍</div>
         <h3>Heuristic Evaluation</h3>
+        <img src="images/bollystep/Heru Eval.png" alt="Heuristic Evaluation findings" style="width:100%;border-radius:var(--r-md);border:1px solid var(--light-rule);margin:1rem 0;"/>
         <p>Evaluated against Nielsen's 10 heuristics. Found issues in navigation consistency, unclear flows, and missing trust signals.</p>
         <span class="r-stat">10+</span>
         <p style="font-size:.75rem;margin-top:.2rem;">usability violations found</p>
@@ -405,6 +400,7 @@ strong{color:var(--charcoal);font-weight:600;}
       <div class="r-card fade-in fade-in-delay-2">
         <div class="r-card-icon">📋</div>
         <h3>Content Audit</h3>
+        <img src="images/bollystep/Content audit.png" alt="Content audit findings" style="width:100%;border-radius:var(--r-md);border:1px solid var(--light-rule);margin:1rem 0;"/>
         <p>Reviewed all landing and client-facing pages. Found dense copy, unclear messaging, and poor content hierarchy.</p>
         <span class="r-stat">3</span>
         <p style="font-size:.75rem;margin-top:.2rem;">critical content gaps identified</p>
@@ -414,6 +410,7 @@ strong{color:var(--charcoal);font-weight:600;}
     <!-- Affinity Map -->
     <div class="affinity fade-in" style="margin-top:2.5rem;">
       <h3 style="margin-bottom:1.25rem;">Affinity Map — Key Themes</h3>
+      <img src="images/bollystep/affinity map.png" alt="Affinity map showing key themes from research" style="width:100%;border-radius:var(--r-md);border:1px solid var(--light-rule);margin-bottom:1.5rem;"/>
       <div class="affinity-grid">
         <div class="acluster blue">
           <div class="ac-title">Navigation Confusion</div>
@@ -460,11 +457,12 @@ strong{color:var(--charcoal);font-weight:600;}
 
     <div class="persona fade-in">
       <div class="p-avatar">
-        <div class="p-img">💁‍♀️</div>
-        <div class="p-name">Sanjana M.</div>
+        <div class="p-name">Sanjana</div>
         <div class="p-badge">Wedding Organizer</div>
+        <button style="margin-top:0.5rem;padding:0.5rem 1rem;background:var(--marigold);color:white;border:none;border-radius:var(--r-md);cursor:pointer;font-size:0.8rem;transition:background 0.2s;" onclick="document.getElementById('personaModal').style.display='flex';">View Full Persona →</button>
       </div>
       <div class="p-details">
+        <img src="images/bollystep/Spotli perso.png" alt="Sanjana - Persona Spotlight" style="width:100%;border-radius:var(--r-md);border:1px solid var(--light-rule);margin-bottom:1.5rem;"/>
         <h3>The overwhelmed wedding planner</h3>
         <p class="p-bio" style="max-width:none;">Sanjana is planning her cousin's wedding in 3 months. She needs 12 family members — spread across 4 cities and 3 time zones — to learn a coordinated Bollywood dance routine. She has no professional dance training and is managing everything via WhatsApp.</p>
         <div class="p-attrs">
@@ -480,38 +478,8 @@ strong{color:var(--charcoal);font-weight:600;}
     <!-- Journey Map -->
     <div class="journey fade-in" style="margin-top:2.5rem;">
       <h3>Sanjana's User Journey — Friction Points</h3>
-      <div class="journey-flow" style="margin-top:1.5rem;">
-        <div class="j-step">
-          <div class="j-node">1</div>
-          <div class="j-label">Discovers BollyStep via referral</div>
-          <div style="font-size:.68rem;color:var(--green);font-weight:600;margin-top:.3rem;">😊 Hopeful</div>
-        </div>
-        <div class="j-step">
-          <div class="j-node">2</div>
-          <div class="j-label">Lands on homepage</div>
-          <div class="j-friction">Unclear who it's for</div>
-        </div>
-        <div class="j-step">
-          <div class="j-node">3</div>
-          <div class="j-label">Tries to sign up</div>
-          <div class="j-friction">Hits contact form — not a signup</div>
-        </div>
-        <div class="j-step">
-          <div class="j-node">4</div>
-          <div class="j-label">Looks for pricing</div>
-          <div class="j-friction">No pricing found anywhere</div>
-        </div>
-        <div class="j-step">
-          <div class="j-node">5</div>
-          <div class="j-label">Can't preview content</div>
-          <div class="j-friction">Can't see dances before committing</div>
-        </div>
-        <div class="j-step">
-          <div class="j-node">6</div>
-          <div class="j-label">Drops off</div>
-          <div style="font-size:.68rem;color:#be123c;font-weight:600;margin-top:.3rem;">😞 Frustrated</div>
-        </div>
-      </div>
+      <img src="images/bollystep/User spotlight.png" alt="User Spotlight - Journey Visualization" style="width:100%;border-radius:var(--r-md);border:1px solid var(--light-rule);margin:1.5rem 0;"/>
+      <button style="margin-top:1.5rem;padding:0.75rem 1.5rem;background:var(--marigold);color:white;border:none;border-radius:var(--r-md);cursor:pointer;font-size:0.95rem;transition:background 0.2s;" onclick="document.getElementById('journeyModal').style.display='flex';">View Full Journey Map →</button>
     </div>
   </div>
 </section>
@@ -590,7 +558,7 @@ strong{color:var(--charcoal);font-weight:600;}
     <div class="grid-2" style="align-items:start;gap:3rem;">
       <div>
         <h3 style="margin-bottom:1rem;">Before — One confusing nav for everyone</h3>
-        <div class="ph ph--wide"><span class="ph-icon">🗺️</span>Old site architecture / navigation map</div>
+        <img src="images/bollystep/SiteArchOld.png" alt="Old site architecture - navigation map" style="width:100%;border-radius:var(--r-md);border:1px solid var(--light-rule);"/>
         <ul style="margin-top:1.25rem;display:flex;flex-direction:column;gap:.6rem;list-style:none;">
           <li style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--warm-gray);"><span style="color:#be123c;font-size:.7rem;margin-top:4px;">✗</span>Single navigation for all roles</li>
           <li style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--warm-gray);"><span style="color:#be123c;font-size:.7rem;margin-top:4px;">✗</span>"Join Now" → contact form (not a real sign-up)</li>
@@ -600,7 +568,7 @@ strong{color:var(--charcoal);font-weight:600;}
       </div>
       <div>
         <h3 style="margin-bottom:1rem;">After — Role-based architecture</h3>
-        <div class="ph ph--wide"><span class="ph-icon">✅</span>New site architecture with role-based pages</div>
+        <img src="images/bollystep/Site Arch.png" alt="New site architecture - role-based design" style="width:100%;border-radius:var(--r-md);border:1px solid var(--light-rule);"/>
         <ul style="margin-top:1.25rem;display:flex;flex-direction:column;gap:.6rem;list-style:none;">
           <li style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--warm-gray);"><span style="color:var(--green);font-size:.7rem;margin-top:4px;">✓</span>Separate pages: Organizers · Dancers · Choreographers</li>
           <li style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--warm-gray);"><span style="color:var(--green);font-size:.7rem;margin-top:4px;">✓</span>Direct Log In / Sign Up from homepage</li>
@@ -625,12 +593,11 @@ strong{color:var(--charcoal);font-weight:600;}
 
     <div class="carousel-wrap">
       <div class="carousel-track" id="wf-track">
-        <div class="carousel-slide"><div class="ph ph--tall"><span class="ph-icon">🏠</span>Homepage wireframe — role entry points</div></div>
-        <div class="carousel-slide"><div class="ph ph--tall"><span class="ph-icon">💃</span>Dancer role page wireframe</div></div>
-        <div class="carousel-slide"><div class="ph ph--tall"><span class="ph-icon">📋</span>Organizer dashboard wireframe</div></div>
-        <div class="carousel-slide"><div class="ph ph--tall"><span class="ph-icon">🎭</span>Choreographer profile wireframe</div></div>
-        <div class="carousel-slide"><div class="ph ph--tall"><span class="ph-icon">✍️</span>Sign-up flow wireframe</div></div>
-        <div class="carousel-slide"><div class="ph ph--tall"><span class="ph-icon">🔍</span>Explore dances wireframe</div></div>
+        <div class="carousel-slide"><img src="images/bollystep/midd fi.png" alt="Homepage wireframe - role entry points" style="width:100%;height:auto;border-radius:var(--r-md);"/></div>
+        <div class="carousel-slide"><img src="images/bollystep/dancers mid fi.png" alt="Dancer role page wireframe" style="width:100%;height:auto;border-radius:var(--r-md);"/></div>
+        <div class="carousel-slide"><img src="images/bollystep/organizers mid fi.png" alt="Organizer dashboard wireframe" style="width:100%;height:auto;border-radius:var(--r-md);"/></div>
+        <div class="carousel-slide"><img src="images/bollystep/choreograopher mid fi.png" alt="Choreographer profile wireframe" style="width:100%;height:auto;border-radius:var(--r-md);"/></div>
+        <div class="carousel-slide"><img src="images/bollystep/mid fi 3.png" alt="Sign-up flow wireframe" style="width:100%;height:auto;border-radius:var(--r-md);"/></div>
       </div>
     </div>
     <div class="carousel-nav">
@@ -668,7 +635,7 @@ strong{color:var(--charcoal);font-weight:600;}
           <li style="font-size:.875rem;color:var(--warm-gray);padding-left:1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--marigold);">→</span>See pricing transparently before sign-up</li>
         </ul>
       </div>
-      <div class="ph ph--tall"><span class="ph-icon">💃</span>Dancer — Explore dance screen</div>
+      <img src="images/bollystep/Dancer.png" alt="Dancer - Experience screen" style="width:100%;border-radius:var(--r-md);border:1px solid var(--light-rule);"/>
     </div>
 
     <div class="role-panel grid-2" id="panel-organizer" style="gap:3rem;align-items:center;">
@@ -681,7 +648,7 @@ strong{color:var(--charcoal);font-weight:600;}
           <li style="font-size:.875rem;color:var(--warm-gray);padding-left:1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--marigold);">→</span>Communicate and schedule within the platform</li>
         </ul>
       </div>
-      <div class="ph ph--tall"><span class="ph-icon">📋</span>Organizer — Dashboard view</div>
+      <img src="images/bollystep/Organizer.png" alt="Organizer - Dashboard view" style="width:100%;border-radius:var(--r-md);border:1px solid var(--light-rule);"/>
     </div>
 
     <div class="role-panel grid-2" id="panel-choreo" style="gap:3rem;align-items:center;">
@@ -694,13 +661,13 @@ strong{color:var(--charcoal);font-weight:600;}
           <li style="font-size:.875rem;color:var(--warm-gray);padding-left:1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--marigold);">→</span>Track how many groups are using your routines</li>
         </ul>
       </div>
-      <div class="ph ph--tall"><span class="ph-icon">🎭</span>Choreographer — Apply & profile screen</div>
+      <img src="images/bollystep/choreographers hi fi.png" alt="Choreographer - Apply & profile screen" style="width:100%;border-radius:var(--r-md);border:1px solid var(--light-rule);"/>
     </div>
 
     <div style="margin-top:3rem;text-align:center;background:var(--ivory);border-radius:var(--r-lg);padding:2.5rem;">
       <h3 style="margin-bottom:.5rem;">Interactive Prototype</h3>
       <p style="margin:0 auto 1.5rem;">Explore all three role experiences end-to-end in Figma.</p>
-      <a href="#" class="btn btn-primary">View Full Prototype ↗</a>
+      <a href="https://www.figma.com/proto/9Hsn3A5eJ7N5shMZBcPzJf/BollyStepxGA-Deliverable?node-id=1635-10473&t=o3dDOLRvtyEl5bbQ-0&scaling=scale-down&content-scaling=fixed&page-id=154%3A54049&starting-point-node-id=1635%3A10473&show-proto-sidebar=1" target="_blank" class="btn btn-primary">View Full Prototype ↗</a>
     </div>
   </div>
 </section>
@@ -720,12 +687,12 @@ strong{color:var(--charcoal);font-weight:600;}
       <div class="ba-panels">
         <div class="ba-panel">
           <div class="ba-lbl before">Before</div>
-          <div class="ph ph--short"><span class="ph-icon">📝</span>Contact form screenshot</div>
+          <img src="images/bollystep/Sign up flow before .png" alt="Contact form screenshot" style="width:100%;border-radius:var(--r-md);border:1px solid var(--light-rule);"/>
           <p class="ba-desc" style="max-width:none;">Users hit a contact form that asked for name, email, and "tell us about your event" — with no clear sign-up path. Most dropped off here.</p>
         </div>
         <div class="ba-panel">
           <div class="ba-lbl after">After</div>
-          <div class="ph ph--short"><span class="ph-icon">✅</span>Direct sign-up screen</div>
+          <img src="images/bollystep/Sp 3.png" alt="Direct sign-up screen" style="width:100%;border-radius:var(--r-md);border:1px solid var(--light-rule);"/>
           <p class="ba-desc" style="max-width:none;">Direct email + password sign-up. No NDA barrier. Combined marketing and platform into one seamless flow.</p>
         </div>
       </div>
@@ -736,12 +703,12 @@ strong{color:var(--charcoal);font-weight:600;}
       <div class="ba-panels">
         <div class="ba-panel">
           <div class="ba-lbl before">Before</div>
-          <div class="ph ph--short"><span class="ph-icon">🗺️</span>Old navigation screenshot</div>
+          <img src="images/bollystep/home page nav before.png" alt="Old navigation screenshot" style="width:100%;border-radius:var(--r-md);border:1px solid var(--light-rule);"/>
           <p class="ba-desc" style="max-width:none;">Generic nav with "About", "Pricing", "Join Now" — no indication of who the platform is for or what it does for each user type.</p>
         </div>
         <div class="ba-panel">
           <div class="ba-lbl after">After</div>
-          <div class="ph ph--short"><span class="ph-icon">✅</span>Role-based navigation screenshot</div>
+          <img src="images/bollystep/home page nav after.png" alt="Role-based navigation screenshot" style="width:100%;border-radius:var(--r-md);border:1px solid var(--light-rule);"/>
           <p class="ba-desc" style="max-width:none;">Clear role-based navigation: Organizers · Dancers · Choreographers. Each leads to a tailored page with relevant content and CTAs.</p>
         </div>
       </div>
@@ -785,8 +752,42 @@ strong{color:var(--charcoal);font-weight:600;}
       </div>
     </div>
 
-    <!-- Metrics dark section -->
-    <div style="background:var(--charcoal);border-radius:var(--r-lg);padding:3rem;margin-top:3rem;">
+    <!-- Usability Testing Main Image -->
+    <div class="fade-in" style="margin:3rem 0;">
+      <img src="images/bollystep/usability tes.png" alt="Usability testing results" style="width:100%;border-radius:var(--r-md);border:1px solid var(--light-rule);"/>
+    </div>
+
+    <!-- Supporting Evidence Cards -->
+    <div class="grid-2" style="margin:3rem 0;gap:2rem;">
+      <div class="fade-in" style="background:var(--ivory);border-radius:var(--r-lg);padding:2rem;border:1px solid var(--light-rule);">
+        <h3 style="margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;"><span>🔄</span>User Flow Analysis</h3>
+        <img src="images/bollystep/User flow.png" alt="User flow diagram" style="width:100%;border-radius:var(--r-md);border:1px solid var(--light-rule);margin:1rem 0;"/>
+        <p style="font-size:0.9rem;color:var(--warm-gray);">Mapped all critical decision points and friction opportunities across the three user roles.</p>
+      </div>
+      <div class="fade-in" style="background:var(--ivory);border-radius:var(--r-lg);padding:2rem;border:1px solid var(--light-rule);">
+        <h3 style="margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;"><span>✏️</span>Design Process & Sketches</h3>
+        <img src="images/bollystep/Design stu.png" alt="Design studio and sketches" style="width:100%;border-radius:var(--r-md);border:1px solid var(--light-rule);margin:1rem 0;"/>
+        <div class="grid-2" style="gap:1rem;margin:1rem 0;">
+          <img src="images/bollystep/Design 2.png" alt="Design exploration 2" style="width:100%;border-radius:var(--r-md);border:1px solid var(--light-rule);"/>
+          <img src="images/bollystep/Design 3.png" alt="Design exploration 3" style="width:100%;border-radius:var(--r-md);border:1px solid var(--light-rule);"/>
+        </div>
+        <p style="font-size:0.9rem;color:var(--warm-gray);">Iterative sketching and design exploration showing the evolution from concepts to high-fidelity mockups.</p>
+      </div>
+    </div>
+
+    <!-- Project Outcomes -->
+    <div class="grid-2" style="margin:3rem 0;gap:2rem;">
+      <div class="fade-in" style="background:var(--ivory);border-radius:var(--r-lg);padding:2rem;border:1px solid var(--light-rule);">
+        <h3 style="margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;"><span>📊</span>Key Metrics</h3>
+        <img src="images/bollystep/Metrics.png" alt="Project metrics and outcomes" style="width:100%;border-radius:var(--r-md);border:1px solid var(--light-rule);margin:1rem 0;"/>
+        <p style="font-size:0.9rem;color:var(--warm-gray);">Quantified impact across usability, adoption, and user satisfaction benchmarks.</p>
+      </div>
+      <div class="fade-in" style="background:var(--ivory);border-radius:var(--r-lg);padding:2rem;border:1px solid var(--light-rule);">
+        <h3 style="margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;"><span>🚀</span>Next Steps & Recommendations</h3>
+        <img src="images/bollystep/Next steps.png" alt="Next steps and future roadmap" style="width:100%;border-radius:var(--r-md);border:1px solid var(--light-rule);margin:1rem 0;"/>
+        <p style="font-size:0.9rem;color:var(--warm-gray);">Strategic recommendations for post-launch iterations and feature prioritization.</p>
+      </div>
+    </div>
       <div class="grid-4">
         <div class="metric-card fade-in">
           <span class="metric-icon">⚡</span>
@@ -865,7 +866,7 @@ strong{color:var(--charcoal);font-weight:600;}
       <h2 style="color:#fff;margin-bottom:.6rem;">Ready to explore the full prototype?</h2>
       <p style="color:rgba(255,255,255,.55);max-width:44ch;margin:0 auto 2rem;">The interactive Figma prototype walks through all three role experiences — sign-up, dashboard, and core task flows.</p>
       <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
-        <a href="#" class="btn btn-primary">View Prototype ↗</a>
+        <a href="https://www.figma.com/proto/9Hsn3A5eJ7N5shMZBcPzJf/BollyStepxGA-Deliverable?node-id=1635-10473&t=o3dDOLRvtyEl5bbQ-0&scaling=scale-down&content-scaling=fixed&page-id=154%3A54049&starting-point-node-id=1635%3A10473&show-proto-sidebar=1" target="_blank" class="btn btn-primary">View Prototype ↗</a>
         <a href="index.html" class="btn btn-outline">← All Projects</a>
       </div>
     </div>
@@ -933,5 +934,49 @@ document.querySelectorAll('.role-tab').forEach(tab => {
   nextBtn.addEventListener('click', () => goTo(current + 1));
 })();
 </script>
+
+<!-- ── MODALS ──────────────────────────────────────────────────────── -->
+
+<!-- Persona Modal -->
+<div id="personaModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(28,24,20,0.8);z-index:1000;align-items:center;justify-content:center;padding:2rem;">
+  <div style="background:white;border-radius:20px;max-width:800px;width:100%;max-height:90vh;overflow-y:auto;position:relative;box-shadow:0 20px 60px rgba(28,24,20,0.3);">
+    <button onclick="document.getElementById('personaModal').style.display='none';" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;font-size:1.5rem;cursor:pointer;width:40px;height:40px;display:flex;align-items:center;justify-content:center;">✕</button>
+    <div style="padding:2rem;">
+      <img src="images/bollystep/Detail persona.png" alt="Detailed Persona - Sanjana" style="width:100%;border-radius:var(--r-md);border:1px solid var(--light-rule);margin-bottom:2rem;"/>
+      <h2 style="margin-bottom:1rem;text-align:center;">Sanjana</h2>
+      <p style="font-size:1.1rem;color:var(--marigold);font-weight:600;margin-bottom:2rem;text-align:center;">Wedding Organizer · South Asian Professional</p>
+      <p style="margin-bottom:1.5rem;font-size:0.95rem;text-align:center;">Sanjana is a 28-year-old wedding coordinator managing her cousin's wedding in 3 months. She needs 12 family members spread across 4 cities and 3 time zones to learn a coordinated Bollywood dance routine. She has no professional dance training background but is highly organized and uses WhatsApp as her primary communication medium for managing all wedding details.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Journey Modal -->
+<div id="journeyModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(28,24,20,0.8);z-index:1000;align-items:center;justify-content:center;padding:2rem;">
+  <div style="background:white;border-radius:20px;max-width:800px;width:100%;max-height:90vh;overflow-y:auto;position:relative;box-shadow:0 20px 60px rgba(28,24,20,0.3);">
+    <button onclick="document.getElementById('journeyModal').style.display='none';" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;font-size:1.5rem;cursor:pointer;width:40px;height:40px;display:flex;align-items:center;justify-content:center;">✕</button>
+    <div style="padding:3rem 2rem;">
+      <h2 style="margin-bottom:2rem;">Sanjana's Detailed User Journey Map</h2>
+      <img src="images/bollystep/detailed UJ.png" alt="Detailed User Journey Map" style="width:100%;border-radius:12px;border:1px solid var(--light-rule);margin-bottom:2rem;"/>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+        <div>
+          <h3 style="margin-bottom:1rem;color:var(--marigold);">High-Stress Moments</h3>
+          <ul style="list-style:none;">
+            <li style="margin-bottom:0.8rem;padding-left:1.5rem;position:relative;"><span style="position:absolute;left:0;color:var(--marigold);">●</span>Trying to sign up but hitting contact form</li>
+            <li style="margin-bottom:0.8rem;padding-left:1.5rem;position:relative;"><span style="position:absolute;left:0;color:var(--marigold);">●</span>Searching for pricing information</li>
+            <li style="margin-bottom:0.8rem;padding-left:1.5rem;position:relative;"><span style="position:absolute;left:0;color:var(--marigold);">●</span>Can't preview content before committing</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="margin-bottom:1rem;color:var(--green);">Positive Touchpoints</h3>
+          <ul style="list-style:none;">
+            <li style="margin-bottom:0.8rem;padding-left:1.5rem;position:relative;"><span style="position:absolute;left:0;color:var(--green);">●</span>Friend's recommendation brought hope</li>
+            <li style="margin-bottom:0.8rem;padding-left:1.5rem;position:relative;"><span style="position:absolute;left:0;color:var(--green);">●</span>Clear role-based interface speeds up navigation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
