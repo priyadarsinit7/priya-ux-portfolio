@@ -207,6 +207,14 @@ p.lead{font-size:1.08rem;color:var(--bark);}
 .fade-in.visible{opacity:1;transform:none;}
 .fade-in-delay-1{transition-delay:.1s;}.fade-in-delay-2{transition-delay:.2s;}.fade-in-delay-3{transition-delay:.3s;}.fade-in-delay-4{transition-delay:.4s;}
 
+/* Modal */
+.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;}
+.modal.show{opacity:1;visibility:visible;}
+.modal-content{position:relative;max-width:90vw;max-height:90vh;}
+.modal-content img{max-width:100%;max-height:100%;border-radius:var(--r);}
+.modal-close{position:absolute;top:-40px;right:0;color:#fff;font-size:2rem;cursor:pointer;}
+.modal-caption{position:absolute;bottom:-40px;left:0;color:#fff;font-size:.9rem;max-width:100%;}
+
 @media(max-width:900px){
   .grid-2,.persona{grid-template-columns:1fr;}
   .grid-3{grid-template-columns:1fr 1fr;}
@@ -251,10 +259,10 @@ p.lead{font-size:1.08rem;color:var(--bark);}
       <div class="hero-stat"><div class="slbl">Timeline</div><div class="sval">3 Weeks</div></div>
       <div class="hero-stat"><div class="slbl">Platform</div><div class="sval">Native Mobile App</div></div>
       <div class="hero-stat"><div class="slbl">Scope</div><div class="sval">Research → Design → Testing</div></div>
-      <div class="hero-stat"><div class="slbl">Tools</div><div class="sval">Figma · FigJam</div></div>
+      <div class="hero-stat"><div class="slbl">Tools</div><div class="sval">Figma · FigJam · Notion · Google Workspace</div></div>
     </div>
     <div class="hero-actions">
-      <a href="#prototype" class="btn btn-primary">View Prototype ↗</a>
+      <a href="https://www.figma.com/proto/WEpZqi52dlQflwZP79f1g9/Orange-team---P3_-Prototype?node-id=251-649&p=f&t=uzBHdtomOwCUAvIg-0&scaling=scale-down&content-scaling=fixed&page-id=43%3A6&starting-point-node-id=251%3A649" class="btn btn-primary">View Prototype ↗</a>
       <a href="index.html" class="btn btn-outline">← All Projects</a>
     </div>
   </div>
@@ -269,11 +277,9 @@ p.lead{font-size:1.08rem;color:var(--bark);}
       <h2>A glimpse of the platform.</h2>
       <p>Real-time listings, nearby discovery, and one-tap claim — designed to make food donation effortless during a busy closing rush.</p>
     </div>
-    <div class="grid-4">
-      <div class="fade-in"><img src="images/food4u/Screenshot 2026-03-04 at 8.38.23 AM.png" alt="Home screen - Restaurant dashboard" style="width:100%;border-radius:var(--r);border:1px solid var(--rule);"/><p style="margin-top:.5rem;font-size:.75rem;text-align:center;">Restaurant dashboard</p></div>
-      <div class="fade-in fade-in-delay-1"><img src="images/food4u/Feature.png" alt="Post surplus - Smart dropdown listing" style="width:100%;border-radius:var(--r);border:1px solid var(--rule);"/><p style="margin-top:.5rem;font-size:.75rem;text-align:center;">Smart dropdown listing</p></div>
-      <div class="fade-in fade-in-delay-2"><img src="images/food4u/User journey.png" alt="Nearby map - Discovery feed & map" style="width:100%;border-radius:var(--r);border:1px solid var(--rule);"/><p style="margin-top:.5rem;font-size:.75rem;text-align:center;">Discovery feed & map</p></div>
-      <div class="fade-in fade-in-delay-3"><img src="images/food4u/Mid fi P3.png" alt="Delivery - Claim & tracking" style="width:100%;border-radius:var(--r);border:1px solid var(--rule);"/><p style="margin-top:.5rem;font-size:.75rem;text-align:center;">Claim & tracking</p></div>
+    <div class="grid-2">
+      <div class="fade-in"><img src="images/food4u/sneak peak 1.png" alt="Sneak Peek 1" style="width:100%;border-radius:var(--r);border:1px solid var(--rule);"/><p style="margin-top:.5rem;font-size:.75rem;text-align:center;">Sneak Peek 1</p></div>
+      <div class="fade-in fade-in-delay-1"><img src="images/food4u/sneak peak 2.png" alt="Sneak Peek 2" style="width:100%;border-radius:var(--r);border:1px solid var(--rule);"/><p style="margin-top:.5rem;font-size:.75rem;text-align:center;">Sneak Peek 2</p></div>
     </div>
   </div>
 </section>
@@ -309,6 +315,7 @@ p.lead{font-size:1.08rem;color:var(--bark);}
       </div>
       <div class="fade-in">
         <img src="images/food4u/Screenshot 2026-03-13 at 11.47.07 AM.png" alt="Food waste statistics / secondary research visual" style="width:100%;border-radius:var(--rlg);border:1px solid var(--rule);margin-bottom:1.5rem;"/>
+        <p style="font-size:.88rem;color:var(--bark);margin-bottom:1.5rem;">Wanted to understand the broader context of food waste and donation systems. Revealed the scale of food waste, key safety concerns, and gaps in redistribution processes.</p>
         <!-- HMW -->
         <div class="hmw-banner">
           <div class="hmw-item">
@@ -392,6 +399,10 @@ p.lead{font-size:1.08rem;color:var(--bark);}
         <div class="r-icon">🔍</div>
         <h3>Competitive Analysis</h3>
         <p>Analyzed Goodr, Too Good To Go, and similar platforms. Most lacked real-time coordination, simplicity, and reliable logistics support.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;">
+          <img src="images/food4u/Swot.png" alt="SWOT Analysis" style="width:100%;border-radius:var(--r);border:1px solid var(--rule);"/>
+          <img src="images/food4u/Feature.png" alt="Feature Comparison" style="width:100%;border-radius:var(--r);border:1px solid var(--rule);"/>
+        </div>
         <span class="r-stat">5</span>
         <p style="font-size:.75rem;margin-top:.15rem;">platforms analyzed</p>
       </div>
@@ -399,7 +410,10 @@ p.lead{font-size:1.08rem;color:var(--bark);}
     <!-- Affinity map -->
     <div style="background:#fff;border:1px solid var(--rule);border-radius:var(--rlg);padding:2rem;box-shadow:var(--sh-sm);margin-top:2.5rem;" class="fade-in">
       <h3 style="margin-bottom:1.25rem;">Affinity Map — Key Themes</h3>
-      <img src="images/food4u/Affni Map.png" alt="Affinity map from Food4U research" style="width:100%;border-radius:var(--r);border:1px solid var(--rule);margin-bottom:1.5rem;"/>
+      <div style="position:relative;cursor:pointer;" onclick="openModal('affinity-modal')" onmouseover="showHint(this)" onmouseout="hideHint(this)">
+        <img src="images/food4u/Affni Map.png" alt="Affinity map from Food4U research" style="width:100%;border-radius:var(--r);border:1px solid var(--rule);margin-bottom:1.5rem;"/>
+        <div style="position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.7);color:#fff;padding:.3rem .6rem;border-radius:4px;font-size:.75rem;opacity:0;transition:opacity .3s;" class="hover-hint">⤢ Click to expand</div>
+      </div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;">
         <div style="background:#fff7ed;border:1.5px solid #fed7aa;border-radius:var(--r);padding:1rem;">
           <div style="font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#c2410c;margin-bottom:.6rem;">Time Sensitivity</div>
@@ -455,12 +469,18 @@ p.lead{font-size:1.08rem;color:var(--bark);}
           <div class="p-attr"><div class="al">Motivation</div><div class="av">Reduce waste, give back to community</div></div>
         </div>
         <div class="p-quote">"I throw away perfectly good food every night. It's heartbreaking. I just need someone to make it easy."</div>
+        <div style="margin-top:1.5rem;text-align:center;">
+          <button class="btn btn-primary" onclick="openModal('persona-modal')">View Detailed Persona</button>
+        </div>
       </div>
     </div>
     <!-- Journey -->
     <div class="journey fade-in" style="margin-top:2rem;">
-      <h3>Katie's Closing Rush Journey</h3>
-      <img src="images/food4u/journey SL.png" alt="Katie's user journey map" style="width:100%;border-radius:var(--r);border:1px solid var(--rule);margin-top:1.25rem;"/>
+      <h3>User Journey / Journey Mapping</h3>
+      <img src="images/food4u/Journey SL.png" alt="Katie's user journey map" style="width:100%;border-radius:var(--r);border:1px solid var(--rule);margin-top:1.25rem;"/>
+      <div style="text-align:center;margin-top:1.5rem;">
+        <button class="btn btn-primary" onclick="openModal('journey-modal')">View Detailed User Journey</button>
+      </div>
     </div>
   </div>
 </section>
@@ -489,6 +509,7 @@ p.lead{font-size:1.08rem;color:var(--bark);}
     <div style="margin-top:3rem;" class="fade-in">
       <h3 style="margin-bottom:.5rem;">Feature Prioritization — MoSCoW</h3>
       <p style="margin-bottom:1rem;">Focused MVP on core actions: post, discover, claim, deliver.</p>
+      <img src="images/food4u/MoSoCoW.png" alt="MoSCoW Prioritization" style="width:100%;border-radius:var(--r);border:1px solid var(--rule);margin-bottom:1.5rem;"/>
       <div class="moscow-grid">
         <div class="moscow-col must">
           <h4 style="padding:.5rem 1rem;">Must Have</h4>
@@ -553,7 +574,7 @@ p.lead{font-size:1.08rem;color:var(--bark);}
               <li style="font-size:.85rem;color:var(--warm-gray);padding-left:1rem;position:relative;"><span style="position:absolute;left:0;color:var(--forest);">→</span>Safety guidelines embedded — no extra steps</li>
             </ul>
           </div>
-          <div class="ph ph--tall"><span class="ph-icon">📋</span>Restaurant posting screen</div>
+          <img src="images/food4u/feat 1.png" alt="Restaurant posting screen" style="width:100%;border-radius:var(--r);border:1px solid var(--rule);"/>
         </div>
         <div class="flow-card-bottom">
           <p style="font-size:.8rem;font-style:italic;color:var(--warm-gray);max-width:none;">💡 Insight: Staff are time-constrained and donation feels like extra work. The copy-paste feature alone removed the biggest friction for repeat donors.</p>
@@ -562,7 +583,6 @@ p.lead{font-size:1.08rem;color:var(--bark);}
 
       <div class="flow-card fade-in">
         <div class="flow-card-top">
-          <div class="ph ph--tall"><span class="ph-icon">🗺️</span>Organization discovery map/feed</div>
           <div>
             <div class="flow-badge org">For Organizations</div>
             <h3>Real-time nearby discovery</h3>
@@ -591,7 +611,7 @@ p.lead{font-size:1.08rem;color:var(--bark);}
               <li style="font-size:.85rem;color:var(--warm-gray);padding-left:1rem;position:relative;"><span style="position:absolute;left:0;color:var(--forest);">→</span>Zero staff coordination required after posting</li>
             </ul>
           </div>
-          <div class="ph ph--tall"><span class="ph-icon">🚚</span>Delivery tracking screen</div>
+          <img src="images/food4u/feat 2.png" alt="Delivery tracking screen" style="width:100%;border-radius:var(--r);border:1px solid var(--rule);"/>
         </div>
         <div class="flow-card-bottom">
           <p style="font-size:.8rem;font-style:italic;color:var(--warm-gray);max-width:none;">💡 Insight: The moment restaurants had to manage driver coordination, donations stopped. Removing this step was essential.</p>
@@ -618,8 +638,8 @@ p.lead{font-size:1.08rem;color:var(--bark);}
       <p>Applied WCAG guidelines to ensure the app works for the diverse staff and volunteer base who interact with it.</p>
     </div>
     <div class="wcag-grid">
-      <div class="wcag-item fade-in"><span class="wcag-check">🎨</span><h4>Color Contrast</h4><p>All text meets AA contrast ratio. No reliance on color alone to convey meaning.</p></div>
-      <div class="wcag-item fade-in fade-in-delay-1"><span class="wcag-check">✏️</span><h4>Typography</h4><p>Clear hierarchy, minimum 16px body text, generous line height for readability.</p></div>
+      <div class="wcag-item fade-in"><img src="images/food4u/Wcag 1.png" alt="WCAG Color Contrast" style="width:100%;border-radius:var(--r);"/><h4>Color Contrast</h4><p>All text meets AA contrast ratio. No reliance on color alone to convey meaning.</p></div>
+      <div class="wcag-item fade-in fade-in-delay-1"><img src="images/food4u/Wcap 2.png" alt="WCAG Typography" style="width:100%;border-radius:var(--r);"/><h4>Typography</h4><p>Clear hierarchy, minimum 16px body text, generous line height for readability.</p></div>
       <div class="wcag-item fade-in fade-in-delay-2"><span class="wcag-check">👆</span><h4>Touch Targets</h4><p>All interactive elements minimum 44×44px for comfortable use under time pressure.</p></div>
       <div class="wcag-item fade-in fade-in-delay-3"><span class="wcag-check">🧭</span><h4>Navigation</h4><p>Minimal steps, clear labels, no dead ends — especially important for time-stressed users.</p></div>
     </div>
@@ -656,6 +676,7 @@ p.lead{font-size:1.08rem;color:var(--bark);}
         </ul>
       </div>
     </div>
+    <img src="images/food4u/usability test delta.png" alt="Usability Test Delta" style="width:100%;border-radius:var(--r);border:1px solid rgba(255,255,255,.1);margin-bottom:3rem;"/>
     <div class="grid-4">
       <div class="metric-card fade-in"><span class="metric-icon">⚡</span><span class="metric-val">&lt;60s</span><div class="metric-lbl">Post time (target)</div><p class="metric-desc">From opening app to listing live</p></div>
       <div class="metric-card fade-in fade-in-delay-1"><span class="metric-icon">♻️</span><span class="metric-val">1-tap</span><div class="metric-lbl">Repost previous</div><p class="metric-desc">Copy-paste for repeat donors</p></div>
@@ -686,7 +707,7 @@ p.lead{font-size:1.08rem;color:var(--bark);}
       <h2 style="color:#e8ede9;margin-bottom:.6rem;">Explore the full prototype</h2>
       <p style="color:rgba(255,255,255,.5);max-width:44ch;margin:0 auto 2rem;">See the complete restaurant-to-organization flow — from posting to delivery — in the interactive Figma prototype.</p>
       <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
-        <a href="#" class="btn btn-primary">View Prototype ↗</a>
+        <a href="https://www.figma.com/proto/WEpZqi52dlQflwZP79f1g9/Orange-team---P3_-Prototype?node-id=251-649&p=f&t=uzBHdtomOwCUAvIg-0&scaling=scale-down&content-scaling=fixed&page-id=43%3A6&starting-point-node-id=251%3A649" class="btn btn-primary">View Prototype ↗</a>
         <a href="index.html" class="btn btn-outline">← All Projects</a>
       </div>
     </div>
@@ -712,6 +733,51 @@ const obs = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }});
 }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
 document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+// Modal functions
+function showHint(el) {
+  el.querySelector('.hover-hint').style.opacity = '1';
+}
+function hideHint(el) {
+  el.querySelector('.hover-hint').style.opacity = '0';
+}
+function openModal(id) {
+  document.getElementById(id).classList.add('show');
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('show');
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal.show').forEach(modal => modal.classList.remove('show'));
+  }
+});
 </script>
+
+<!-- Modals -->
+<div id="affinity-modal" class="modal" onclick="closeModal('affinity-modal')">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <span class="modal-close" onclick="closeModal('affinity-modal')">✕</span>
+    <img src="images/food4u/Affni Map.png" alt="Affinity map from Food4U research"/>
+    <div class="modal-caption">Affinity Map — Key Themes from Research</div>
+  </div>
+</div>
+
+<div id="persona-modal" class="modal" onclick="closeModal('persona-modal')">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <span class="modal-close" onclick="closeModal('persona-modal')">✕</span>
+    <img src="images/food4u/persona deta.png" alt="Detailed Persona - Katie M"/>
+    <div class="modal-caption">Detailed Persona Profile</div>
+  </div>
+</div>
+
+<div id="journey-modal" class="modal" onclick="closeModal('journey-modal')">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <span class="modal-close" onclick="closeModal('journey-modal')">✕</span>
+    <img src="images/food4u/User journey.png" alt="Detailed User Journey Map"/>
+    <div class="modal-caption">Detailed User Journey Mapping</div>
+  </div>
+</div>
+
 </body>
 </html>
