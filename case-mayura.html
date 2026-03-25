@@ -249,6 +249,13 @@ strong{color:var(--ivory);font-weight:700;}
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-visual" style="opacity:.22;overflow:hidden;"><img src="images/mayura/HeroBanner.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"/></div>
+  <!-- Logo badge -->
+  <div style="position:absolute;top:6.5rem;right:2rem;z-index:3;display:flex;flex-direction:column;align-items:center;gap:.6rem;">
+    <div style="background:rgba(13,11,9,.72);border:1px solid var(--rule-gold);border-radius:var(--rlg);padding:.85rem;backdrop-filter:blur(12px);box-shadow:0 8px 32px rgba(0,0,0,.5);">
+      <img src="images/mayura/logo.png" alt="Mayura Roots logo" style="width:72px;height:72px;object-fit:contain;display:block;"/>
+    </div>
+    <span style="font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.8;">Mayura Roots</span>
+  </div>
   <div class="hero-content">
     <div class="hero-tags">
       <span class="hero-tag"><span class="dot"></span>E-Commerce Redesign</span>
@@ -393,13 +400,13 @@ strong{color:var(--ivory);font-weight:700;}
         <div class="r-icon-gold">⚙️</div>
         <h3>Feature Analysis</h3>
         <p>Reviewed features from competitors and user interviews to prioritize trust signals, storytelling, and guided path flows for the new MVP.</p>
-        <div class="lb-wrap" onclick="openLightbox('images/mayura/feature.png','Feature Analysis')" style="margin-top:1rem;"><img src="images/mayura/feature.png" alt="Feature Analysis" style="border-radius:var(--r);border:1px solid var(--rule-gold);"/><span class="lb-hint">Click to expand</span></div>
+        <div class="lb-wrap" onclick="openLightbox('images/mayura/Feature.png','Feature Analysis')" style="margin-top:1rem;"><img src="images/mayura/Feature.png" alt="Feature Analysis" style="border-radius:var(--r);border:1px solid var(--rule-gold);"/><span class="lb-hint">Click to expand</span></div>
       </div>
       <div class="r-card-dark fade-in">
         <div class="r-icon-gold">🧩</div>
         <h3>Element Analysis</h3>
         <p>Evaluated UI components for clarity, trust, and narrative consistency — especially microcopy and CTAs on product detail pages.</p>
-        <div class="lb-wrap" onclick="openLightbox('images/mayura/elementanalysis.png','Element Analysis — UI Components')" style="margin-top:1rem;"><img src="images/mayura/elementanalysis.png" alt="Element Analysis" style="border-radius:var(--r);border:1px solid var(--rule-gold);"/><span class="lb-hint">Click to expand</span></div>
+        <div class="lb-wrap" onclick="openLightbox('images/mayura/Elementanalysis.png','Element Analysis — UI Components')" style="margin-top:1rem;"><img src="images/mayura/Elementanalysis.png" alt="Element Analysis" style="border-radius:var(--r);border:1px solid var(--rule-gold);"/><span class="lb-hint">Click to expand</span></div>
       </div>
     </div>
   </div>
@@ -632,6 +639,33 @@ strong{color:var(--ivory);font-weight:700;}
 
 <div class="divider"></div>
 
+<!-- ── COMPONENTS / DESIGN SYSTEM ── -->
+<section class="section section--mid" id="components">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="lbl">07b — Component Library</span>
+      <h2>A reusable design system.</h2>
+      <p>Every component documented with states, variants, and usage guidelines — built for consistency across the full Mayura Roots catalogue.</p>
+    </div>
+    <div class="fade-in" style="background:var(--ink-light);border:1px solid var(--rule-gold);border-radius:var(--rlg);overflow:hidden;">
+      <div style="padding:.75rem 1.5rem;border-bottom:1px solid var(--rule-gold);display:flex;align-items:center;gap:.6rem;">
+        <span style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);">Components Library</span>
+        <span style="font-size:.65rem;color:var(--text-muted);">· Click to expand full view</span>
+      </div>
+      <div class="lb-wrap" onclick="openLightbox('images/mayura/Components.png','Component Library — Mayura Roots Design System')" style="border-radius:0;">
+        <img src="images/mayura/Components.png" alt="Mayura Roots component library" style="width:100%;display:block;max-height:520px;object-fit:contain;object-position:top;background:var(--ink-light);"/>
+        <span class="lb-hint">Click to expand</span>
+      </div>
+      <div style="padding:.6rem 1.5rem;border-top:1px solid var(--rule-gold);background:rgba(201,150,58,.05);display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-size:.65rem;color:var(--text-muted);letter-spacing:.06em;">↕ Scroll within lightbox to explore all components</span>
+        <span style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);">Figma · Auto-layout · Variants</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- ── TESTING ── -->
 <section class="section" id="testing">
   <div class="wrap">
@@ -686,23 +720,23 @@ strong{color:var(--ivory);font-weight:700;}
       <p>These deliverables support IA decisions, flow validation, and trust-building features.</p>
     </div>
     <div class="grid-3">
-      <!-- Open card sort card shows detailcard image -->
+      <!-- Open card sort -->
       <div class="r-card-dark fade-in">
         <div class="r-icon-gold">🃏</div>
         <h3>Open Card Sort</h3>
         <p>Base model for category labels and user mental models — foundation of the new IA structure.</p>
-        <div style="margin-top:1rem;border-radius:var(--r);overflow:hidden;border:1px solid var(--rule-gold);cursor:zoom-in;" class="lb-wrap" onclick="openLightbox('images/mayura/detailcard.png','Open Card Sort — Category Labels &amp; Mental Models')">
-          <img src="images/mayura/detailcard.png" alt="Open Card Sort" style="width:100%;display:block;max-height:none;object-fit:unset;"/>
+        <div style="margin-top:1rem;border-radius:var(--r);overflow:hidden;border:1px solid var(--rule-gold);cursor:zoom-in;" class="lb-wrap" onclick="openLightbox('images/mayura/opencardsort.png','Open Card Sort — Category Labels &amp; Mental Models')">
+          <img src="images/mayura/opencardsort.png" alt="Open Card Sort" style="width:100%;display:block;max-height:none;object-fit:unset;"/>
           <span class="lb-hint">Click to expand</span>
         </div>
       </div>
-      <!-- Detailed card sort card shows opencardsort image -->
+      <!-- Detailed card sort -->
       <div class="r-card-dark fade-in fade-in-delay-1">
         <div class="r-icon-gold">📋</div>
         <h3>Detailed Card Sort</h3>
         <p>Detailed card insights mapped to product page sections, validating the proposed navigation model.</p>
-        <div style="margin-top:1rem;border-radius:var(--r);overflow:hidden;border:1px solid var(--rule-gold);cursor:zoom-in;" class="lb-wrap" onclick="openLightbox('images/mayura/opencardsort.png','Detailed Card Sort Output')">
-          <img src="images/mayura/opencardsort.png" alt="Detailed Card Sort Output" style="width:100%;display:block;max-height:none;object-fit:unset;"/>
+        <div style="margin-top:1rem;border-radius:var(--r);overflow:hidden;border:1px solid var(--rule-gold);cursor:zoom-in;" class="lb-wrap" onclick="openLightbox('images/mayura/detailcardsort.png','Detailed Card Sort Output')">
+          <img src="images/mayura/detailcardsort.png" alt="Detailed Card Sort Output" style="width:100%;display:block;max-height:none;object-fit:unset;"/>
           <span class="lb-hint">Click to expand</span>
         </div>
       </div>
@@ -810,54 +844,6 @@ strong{color:var(--ivory);font-weight:700;}
         <div style="padding:.75rem 1rem;">
           <span style="font-size:.63rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);">Mid-Fi · PLP</span>
           <p style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem;">Landing page with category and story sections</p>
-        </div>
-      </div>
-
-      <!-- Hi-fi full -->
-      <div style="background:var(--ink-light);border:1px solid var(--rule-gold);border-radius:var(--rlg);overflow:hidden;width:280px;flex-shrink:0;">
-        <div class="lb-wrap" onclick="openLightbox('images/mayura/hifi.png','Hi-Fi — Full Design Overview')">
-          <img src="images/mayura/hifi.png" alt="Hi-Fi Full Design" style="width:100%;display:block;object-fit:cover;max-height:none;"/>
-          <span class="lb-hint">Click to expand</span>
-        </div>
-        <div style="padding:.75rem 1rem;">
-          <span style="font-size:.63rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);">Hi-Fi · Overview</span>
-          <p style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem;">Full hi-fidelity design — complete redesign</p>
-        </div>
-      </div>
-
-      <!-- Hi-fi 2 -->
-      <div style="background:var(--ink-light);border:1px solid var(--rule-gold);border-radius:var(--rlg);overflow:hidden;width:280px;flex-shrink:0;">
-        <div class="lb-wrap" onclick="openLightbox('images/mayura/hifi2.png','Hi-Fi 2 — Cultural Storytelling')">
-          <img src="images/mayura/hifi2.png" alt="Hi-Fi 2" style="width:100%;display:block;object-fit:cover;max-height:none;"/>
-          <span class="lb-hint">Click to expand</span>
-        </div>
-        <div style="padding:.75rem 1rem;">
-          <span style="font-size:.63rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);">Hi-Fi · Cultural Detail</span>
-          <p style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem;">Product page with cultural context section</p>
-        </div>
-      </div>
-
-      <!-- Hi-fi 3 -->
-      <div style="background:var(--ink-light);border:1px solid var(--rule-gold);border-radius:var(--rlg);overflow:hidden;width:280px;flex-shrink:0;">
-        <div class="lb-wrap" onclick="openLightbox('images/mayura/hifi3.png','Hi-Fi 3 — Trust &amp; Checkout')">
-          <img src="images/mayura/hifi3.png" alt="Hi-Fi 3" style="width:100%;display:block;object-fit:cover;max-height:none;"/>
-          <span class="lb-hint">Click to expand</span>
-        </div>
-        <div style="padding:.75rem 1rem;">
-          <span style="font-size:.63rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);">Hi-Fi · Trust &amp; Checkout</span>
-          <p style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem;">Secure checkout and trust signals</p>
-        </div>
-      </div>
-
-      <!-- Hi-fi PDP -->
-      <div style="background:var(--ink-light);border:1px solid var(--rule-gold);border-radius:var(--rlg);overflow:hidden;width:280px;flex-shrink:0;">
-        <div class="lb-wrap" onclick="openLightbox('images/mayura/hifipdp.png','Hi-Fi — Product Detail Page')">
-          <img src="images/mayura/hifipdp.png" alt="Hi-Fi Product Detail Page" style="width:100%;display:block;object-fit:cover;max-height:none;"/>
-          <span class="lb-hint">Click to expand</span>
-        </div>
-        <div style="padding:.75rem 1rem;">
-          <span style="font-size:.63rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);">Hi-Fi · PDP</span>
-          <p style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem;">Final hi-fi product detail page</p>
         </div>
       </div>
 
