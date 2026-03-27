@@ -38,10 +38,17 @@ em { color: var(--accent); font-style: italic; }
 @media (max-width: 768px) { nav { padding: 0 1rem; } .nav-links { gap: 1.5rem; } .container { padding: 0 1.25rem; } section { padding: 60px 0; } }
 </style>
 <style>
-.page-hero { padding: 130px 0 80px; background: var(--white); border-bottom: 1px solid var(--cream-dark); }
+.page-hero { padding: 130px 0 80px; background: var(--white); border-bottom: 1px solid var(--cream-dark); position: relative; }
 .page-hero .eyebrow { margin-bottom: 1rem; }
 .page-hero h1 { font-family: var(--serif); font-size: clamp(2.8rem,5vw,4rem); line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 1.5rem; }
 .page-hero p { font-size: 1.05rem; font-weight: 300; color: var(--ink-muted); line-height: 1.9; max-width: 580px; }
+.page-hero-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 3rem; }
+.page-hero-text { flex: 1; min-width: 0; }
+.page-hero-badge { position: absolute; right: 8rem; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.page-hero-badge img { width: 150px; height: 150px; object-fit: contain; display: block; transition: transform var(--t), opacity var(--t); }
+.page-hero-badge img:hover { transform: scale(1.05); opacity: 0.85; }
+.page-hero-badge-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); text-align: center; }
+@media (max-width: 640px) { .page-hero-inner { flex-direction: column; gap: 2rem; } .page-hero-badge { position: static; flex-direction: row; align-self: flex-start; } }
 
 #about-main { background: var(--cream); }
 .about-layout { display: grid; grid-template-columns: 340px 1fr; gap: 5rem; align-items: start; }
@@ -73,6 +80,19 @@ em { color: var(--accent); font-style: italic; }
 .value-card h4 { font-family: var(--serif); font-size: 1.1rem; margin-bottom: 0.5rem; }
 .value-card p { font-size: 0.85rem; font-weight: 300; color: var(--ink-muted); line-height: 1.7; }
 
+.sidebar-credential-link { display: flex; align-items: center; gap: 7px; text-decoration: none; color: inherit; }
+.sidebar-credential-link:hover .sidebar-credential-text { color: var(--accent); }
+.sidebar-credential-img { width: 28px; height: 28px; object-fit: contain; flex-shrink: 0; }
+.sidebar-credential-text { font-size: 0.78rem; font-weight: 500; transition: color var(--t); }
+
+.sidebar-profile-card { display: flex; align-items: center; gap: 12px; background: var(--white); border: 1px solid var(--cream-dark); border-radius: 10px; padding: 12px 14px; margin-bottom: 1.25rem; }
+.sidebar-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--accent-light); display: flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 500; color: var(--accent); flex-shrink: 0; letter-spacing: 0.02em; }
+.sidebar-profile-text { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+.sidebar-profile-name { font-size: 0.9rem; font-weight: 500; color: var(--ink); }
+.sidebar-profile-role { font-size: 0.75rem; color: var(--ink-muted); }
+.sidebar-profile-badge { flex-shrink: 0; display: block; transition: transform var(--t), opacity var(--t); }
+.sidebar-profile-badge img { width: 44px; height: 44px; object-fit: contain; display: block; }
+.sidebar-profile-badge:hover { transform: scale(1.08); opacity: 0.85; }
 @media (max-width: 860px) { .about-layout { grid-template-columns: 1fr; gap: 2.5rem; } .about-sidebar { position: static; } .skills-grid { grid-template-columns: 1fr 1fr; } .values-grid { grid-template-columns: 1fr; } }
 @media (max-width: 520px) { .skills-grid { grid-template-columns: 1fr; } }
 </style>
@@ -91,9 +111,17 @@ em { color: var(--accent); font-style: italic; }
 
 <section class="page-hero">
   <div class="container">
-    <div class="eyebrow">About Me</div>
-    <h1>Hi, I'm Priya — <em>UX Designer</em><br/>based in Sunnyvale, CA.</h1>
-    <p>I design experiences that feel intuitive, empathetic, and grounded in real human needs. I recently completed the General Assembly UX Design Bootcamp (March 2026), and I'm actively looking for UX Designer, Product Designer, or UX Research Intern roles.</p>
+    <div class="page-hero-inner">
+      <div class="page-hero-text">
+        <div class="eyebrow">About Me</div>
+        <h1>Hi, I'm Priya — <em>UX Designer</em><br/>based in Sunnyvale, CA.</h1>
+        <p>I design experiences that feel intuitive, empathetic, and grounded in real human needs. I recently completed the General Assembly UX Design Bootcamp (March 2026), and I'm actively looking for UX Designer, Product Designer, or UX Research Intern roles.</p>
+      </div>
+      <a href="https://badges.parchment.com/public/assertions/GvtYFsELTDyqQCZPV1tcXA?identity__email=tpriyadarsini25@gmail.com" target="_blank" rel="noopener" class="page-hero-badge" aria-label="Verify General Assembly UX Design Bootcamp credential">
+        <img src="images/ga-badge.png" alt="General Assembly UX Design Bootcamp Badge" />
+        <span class="page-hero-badge-label">Verified Credential</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -295,15 +323,20 @@ document.querySelectorAll('.fade-up').forEach((el, i) => {
   el.style.transitionDelay = (i * 0.05) + 's';
   observer.observe(el);
 });
-const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+// Trigger immediately for elements already in viewport
+requestAnimationFrame(() => {
+  document.querySelectorAll('.fade-up').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) el.classList.add('visible');
+  });
+});
+const currentPage = window.location.pathname.split('/').pop() || 'about.html';
 document.querySelectorAll('.nav-links a').forEach(link => {
   const href = link.getAttribute('href');
-  if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+  if (href === currentPage) {
     link.classList.add('active');
   } else {
     link.classList.remove('active');
   }
 });
 </script>
-</body>
-</html>

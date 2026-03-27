@@ -81,7 +81,10 @@ em { color: var(--accent); font-style: italic; }
 .hero-title { font-family: var(--serif); font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 1.5rem; }
 .hero-sub { font-size: 1rem; font-weight: 300; color: var(--ink-muted); line-height: 1.85; max-width: 460px; margin-bottom: 2.5rem; }
 .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-.hero-stats { display: flex; gap: 2.5rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--cream-dark); }
+.hero-stats { display: flex; gap: 2.5rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--cream-dark); align-items: center; }
+.hero-stat-badge { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.ga-badge-img { width: 56px; height: 56px; object-fit: contain; display: block; transition: transform var(--t), opacity var(--t); }
+.ga-badge-img:hover { transform: scale(1.06); opacity: 0.88; }
 .stat-num { display: block; font-family: var(--serif); font-size: 1.9rem; line-height: 1; }
 .stat-lbl { font-size: 0.72rem; color: var(--ink-muted); letter-spacing: 0.06em; text-transform: uppercase; }
 .portrait-wrap { display: flex; justify-content: flex-end; }
@@ -164,9 +167,14 @@ em { color: var(--accent); font-style: italic; }
         <a href="contact.html" class="btn btn-ghost">Let's Talk</a>
       </div>
       <div class="hero-stats">
-        <div><span class="stat-num">3</span><span class="stat-lbl">Projects</span></div>
-        <div><span class="stat-num">GA</span><span class="stat-lbl">UX Bootcamp</span></div>
-        <div><span class="stat-num">Mar '26</span><span class="stat-lbl">Grad</span></div>
+        <div style="display:flex;flex-direction:column;gap:4px;"><span class="stat-num">3</span><span class="stat-lbl">Projects</span></div>
+        <div style="display:flex;flex-direction:column;gap:4px;"><span class="stat-num">Mar '26</span><span class="stat-lbl">Grad</span></div>
+        <div class="hero-stat-badge">
+          <a href="https://badges.parchment.com/public/assertions/GvtYFsELTDyqQCZPV1tcXA?identity__email=tpriyadarsini25@gmail.com" target="_blank" rel="noopener" aria-label="Verify General Assembly UX Design Bootcamp credential">
+            <img src="images/ga-badge.png" alt="General Assembly UX Design Bootcamp Badge" class="ga-badge-img" />
+          </a>
+          <span class="stat-lbl">Verified Credential</span>
+        </div>
       </div>
     </div>
     <div class="portrait-wrap">
@@ -407,6 +415,12 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.fade-up').forEach((el, i) => {
   el.style.transitionDelay = (i * 0.05) + 's';
   observer.observe(el);
+});
+requestAnimationFrame(() => {
+  document.querySelectorAll('.fade-up').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) el.classList.add('visible');
+  });
 });
 // Active nav link
 const currentPage = window.location.pathname.split('/').pop() || 'index.html';
